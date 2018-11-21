@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:title="@string/nav_options">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/nav_change_language"
+                    android:checked="true"
+                    android:icon="@drawable/ic_language_black_24dp"
+                    android:title="@string/nav_change_language"/>
+
+                <item
+                    android:id="@+id/nav_delete_vocab"
+                    android:icon="@drawable/ic_delete_black_24dp"
+                    android:title="@string/nav_delete_vocab"/>
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/nav_about"
+        android:icon="@drawable/ic_info_black_24dp"
+        android:title="@string/nav_about"/>
+
+</menu>

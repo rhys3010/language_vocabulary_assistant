@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">LVA</string>
+    <string name="app_name">Language Vocabulary Assistant</string>
+    <string name="vocabulary_list_tab">Vocabulary List</string>
+    <string name="tests_list_tab">Tests</string>
 </resources>

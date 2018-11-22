@@ -20,10 +20,18 @@ import rhe24.cs31620.dcs.aber.ac.uk.lva.ui.vocabulary_list.VocabularyListFragmen
 
 /**
  * LVAMainActivity
+ * The app's main activity, handles all fragments and decides wether setup should be
+ * presented.
  * @author Rhys Evans
  * @version 21/11/2018
  */
 public class LVAMainActivity extends AppCompatActivity {
+
+    /**
+     * Store tabs as constants
+     */
+    private static final int VOCAB_LIST_TAB = 0;
+    private static final int TESTS_TAB = 1;
 
     /**
      * The app's shared preferences
@@ -92,8 +100,8 @@ public class LVAMainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int position){
             switch(position){
-                case 0: return new VocabularyListFragment();
-                case 1: return new TestsListFragment();
+                case VOCAB_LIST_TAB: return new VocabularyListFragment();
+                case TESTS_TAB: return new TestsListFragment();
             }
 
             return null;
@@ -106,8 +114,8 @@ public class LVAMainActivity extends AppCompatActivity {
          */
         public CharSequence getPageTitle(int position){
             switch(position){
-                case 0: return getResources().getText(R.string.vocabulary_list_tab);
-                case 1: return getResources().getText(R.string.tests_list_tab);
+                case VOCAB_LIST_TAB: return getResources().getText(R.string.vocabulary_list_tab);
+                case TESTS_TAB: return getResources().getText(R.string.tests_list_tab);
             }
             return null;
         }

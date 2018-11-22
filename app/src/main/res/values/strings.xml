@@ -8,4 +8,19 @@
     <string name="nav_options">Options</string>
     <string name="nav_open_drawer">Open Navigation Drawer</string>
     <string name="nav_close_drawer">Close Navigation Drawer</string>
+    <string name="setup_welcome_text">Welcome to LVA</string>
+    <string name="setup_get_started">Get Started</string>
+    <string name="setup_welcome_desc_text">Your Personal Vocabulary Assistant</string>
+    <string name="primary_language_spinner">Primary Language</string>
+    <string name="secondary_language_spinner">Secondary Language</string>
+
+    <!-- Array of Available Languages -->
+    <string-array name="language_array">
+        <item>PLEASE SELECT</item>
+        <item>ENGLISH</item>
+        <item>WELSH</item>
+        <item>FRENCH</item>
+        <item>SPANISH</item>
+        <item>GERMAN</item>
+    </string-array>
 </resources>

@@ -2,11 +2,41 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:buttonStyle">@style/ButtonTheme</item>
+    </style>
+
+    <!-- Base Activity Theme -->
+    <style name="ActivityTheme">
+        <item name="android:background">@color/colorBackground</item>
+    </style>
+
+    <!-- Button Theme -->
+    <style name="ButtonTheme" parent="android:Widget.Material.Button">
+        <item name="android:background">@color/colorAccent</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:padding">10dp</item>
+    </style>
+
+    <!-- Custom Spinner Theme -->
+    <style name="SpinnerTheme">
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:layout_marginTop">10dp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <!-- Get Custom Spinner Background as Drawable -->
+        <item name="android:background">@drawable/spinner_background</item>
+    </style>
+
+    <!-- Custom Spinner Item Theme -->
+    <style name="SpinnerItemTheme" parent="android:Widget.TextView.SpinnerItem">
+        <item name="android:textColor">@color/colorPrimaryDark</item>
+        <item name="android:background">@android:color/transparent</item>
     </style>
 
 </resources>

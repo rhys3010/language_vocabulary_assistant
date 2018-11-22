@@ -1,5 +1,8 @@
 package rhe24.cs31620.dcs.aber.ac.uk.lva.ui;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -23,6 +26,11 @@ import rhe24.cs31620.dcs.aber.ac.uk.lva.ui.vocabulary_list.VocabularyListFragmen
 public class LVAMainActivity extends AppCompatActivity {
 
     /**
+     * The app's shared preferences
+     */
+    SharedPreferences sharedPreferences = null;
+
+    /**
      * Called when the main activity is created
      * @param savedInstanceState
      */
@@ -31,7 +39,17 @@ public class LVAMainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lvamain);
 
-        // Set our toolbar to replace the app's default action bar
+        // Check if first time startup, if so display setup activity
+        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        // Check Shared Preferences for string that indicates wether or not setup has been completed
+        if(sharedPreferences.getBoolean("PREF_NEED_SETUP", true)){
+            // If setup has not been completed, shows setup activity to prompt user to complete setup
+            Intent intent = new Intent(this, LVASetupActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        // Set toolbar to replace the app's default action bar
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 

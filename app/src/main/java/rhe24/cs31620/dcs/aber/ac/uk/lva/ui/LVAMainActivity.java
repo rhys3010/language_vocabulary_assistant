@@ -3,6 +3,8 @@ package rhe24.cs31620.dcs.aber.ac.uk.lva.ui;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -13,6 +15,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.widget.Toast;
 
 import rhe24.cs31620.dcs.aber.ac.uk.lva.R;
 import rhe24.cs31620.dcs.aber.ac.uk.lva.ui.tests_list.TestsListFragment;
@@ -20,23 +24,17 @@ import rhe24.cs31620.dcs.aber.ac.uk.lva.ui.vocabulary_list.VocabularyListFragmen
 
 /**
  * LVAMainActivity
- * The app's main activity, handles all fragments and decides wether setup should be
- * presented.
+ * The app's main activity, handles all fragments and nav drawer
  * @author Rhys Evans
  * @version 21/11/2018
  */
-public class LVAMainActivity extends AppCompatActivity {
+public class LVAMainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     /**
      * Store tabs as constants
      */
     private static final int VOCAB_LIST_TAB = 0;
     private static final int TESTS_TAB = 1;
-
-    /**
-     * The app's shared preferences
-     */
-    SharedPreferences sharedPreferences = null;
 
     /**
      * Called when the main activity is created
@@ -48,7 +46,7 @@ public class LVAMainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lvamain);
 
         // Check if first time startup, if so display setup activity
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         // Check Shared Preferences for saved language
         if(!sharedPreferences.contains("PREF_PRIMARY_LANG") || !sharedPreferences.contains("PREF_SECONDARY_LANG")){
             // If no language present, shows setup activity to prompt user to complete setup
@@ -67,6 +65,10 @@ public class LVAMainActivity extends AppCompatActivity {
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
+        // Attatch listener to navigation drawer
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+
         // Attach pager adapter to ViewPager
         SectionsPagerAdapter pagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         ViewPager pager = findViewById(R.id.pager);
@@ -75,6 +77,29 @@ public class LVAMainActivity extends AppCompatActivity {
         // Add tabs to app bar
         TabLayout tabLayout = findViewById(R.id.tabs);
         tabLayout.setupWithViewPager(pager);
+    }
+
+    /**
+     * Handle option selection from the navigation drawer
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+        // TODO: Actually Implement
+        // If option is change language
+        if(item.getItemId() == R.id.nav_change_language){
+            // Remove language preferences from SharedPreferences and force user back to setup screen
+            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+            sharedPreferences.edit().clear().apply();
+
+            Intent intent = new Intent(this, LVASetupActivity.class);
+            startActivity(intent);
+            finish();
+        }
+
+        return true;
     }
 
     /**
@@ -122,7 +147,7 @@ public class LVAMainActivity extends AppCompatActivity {
 
         /**
          * Returns the total number of pages within the pager
-         * @return
+         * @return 2
          */
         @Override
         public int getCount(){

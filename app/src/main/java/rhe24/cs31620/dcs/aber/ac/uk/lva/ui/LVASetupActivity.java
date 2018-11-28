@@ -6,9 +6,9 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -22,12 +22,18 @@ import rhe24.cs31620.dcs.aber.ac.uk.lva.R;
  * @author Rhys Evans
  * @version 21/11/2018
  */
-public class LVASetupActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener{
+public class LVASetupActivity extends AppCompatActivity{
 
     /**
-     * The shared preferences reference to store primary and secondary language
+     * UI Element of primary spinner
      */
-    private SharedPreferences sharedPreferences = null;
+    private Spinner primarySpinner;
+
+    /**
+     * UI Element of secondary spinner
+     */
+    private Spinner secondarySpinner;
+
 
     /**
      * Called when the setup activity is created
@@ -41,23 +47,43 @@ public class LVASetupActivity extends AppCompatActivity implements AdapterView.O
         // Set up the language selection spinners
         setupSpinner(findViewById(R.id.setup_view), R.id.primary_language_spinner);
         setupSpinner(findViewById(R.id.setup_view), R.id.secondary_language_spinner);
+
+        // Initialize spinnner and button references
+        primarySpinner = findViewById(R.id.primary_language_spinner);
+        secondarySpinner = findViewById(R.id.secondary_language_spinner);
     }
 
     /**
-     * Declares setup as being complete, closing down setup activity and moving to main activity
+     * Confirm Setup by saving selected languages and switching to main activity.
      * @param v
      */
-    public void setSetupComplete(View v){
+    public void submitLanguageSelection(View v){
+        // If spinners still contain default value, inform user and exit function
+        // (button should be disabled but best to be defensive)
+        if(primarySpinner.getSelectedItemPosition() == 0 || secondarySpinner.getSelectedItemPosition() == 0){
+            // Show Error Message
+            Toast.makeText(this, getString(R.string.invalid_language_selection), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Get the language selections from the spinners
+        String primaryLanguage = primarySpinner.getSelectedItem().toString();
+        String secondaryLanguage = secondarySpinner.getSelectedItem().toString();
+
         // Get the shared preferences
-        sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         // Move back to main activity
         Intent intent = new Intent(this, LVAMainActivity.class);
         startActivity(intent);
-        // Update shared preferences to store language
-        sharedPreferences.edit().putBoolean("PREF_NEED_SETUP", false).apply();
+
+        // Update shared preferences to store languages
+        sharedPreferences.edit().putString("PREF_PRIMARY_LANG", primaryLanguage).apply();
+        sharedPreferences.edit().putString("PREF_SECONDARY_LANG", secondaryLanguage).apply();
+
         // Close down the activity
         finish();
     }
+
 
     /**
      * Perform necessary operations to setup and initialize the language
@@ -66,10 +92,9 @@ public class LVASetupActivity extends AppCompatActivity implements AdapterView.O
      * @param spinnerResourceId
      */
     private void setupSpinner(View view, int spinnerResourceId){
-        // Get the spinner and assign it's selected listener
+        // Get the spinner and set its default value
         Spinner spinner = view.findViewById(spinnerResourceId);
         spinner.setSelection(1);
-        spinner.setOnItemSelectedListener(this);
 
         // Get all the available language options for the spinner
         ArrayList<String> spinnerOptions = initializeSpinnerOptions();
@@ -81,21 +106,6 @@ public class LVASetupActivity extends AppCompatActivity implements AdapterView.O
 
         // Adding the ArrayAdapter to the spinner
         spinner.setAdapter(adapter);
-
-    }
-
-    @Override
-    public void onClick(View view) {
-
-    }
-
-    @Override
-    public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-
-    }
-
-    @Override
-    public void onNothingSelected(AdapterView<?> adapterView) {
 
     }
 

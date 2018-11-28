@@ -13,14 +13,5 @@
     <string name="setup_welcome_desc_text">Your Personal Vocabulary Assistant</string>
     <string name="primary_language_spinner">Primary Language</string>
     <string name="secondary_language_spinner">Secondary Language</string>
-
-    <!-- Array of Available Languages -->
-    <string-array name="language_array">
-        <item>PLEASE SELECT</item>
-        <item>ENGLISH</item>
-        <item>WELSH</item>
-        <item>FRENCH</item>
-        <item>SPANISH</item>
-        <item>GERMAN</item>
-    </string-array>
+    <string name="invalid_language_selection">Please Select Primary and Secondary Language</string>
 </resources>

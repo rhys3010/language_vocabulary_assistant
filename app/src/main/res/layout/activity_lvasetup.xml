@@ -80,10 +80,10 @@
 
     <!-- Button -->
     <Button
-        android:id="@+id/setup_button"
+        android:id="@+id/setup_submit_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="setSetupComplete"
+        android:onClick="submitLanguageSelection"
         android:text="@string/setup_get_started"
         android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
@@ -91,75 +91,3 @@
         app:layout_constraintTop_toBottomOf="@id/spinners_container"/>
 
 </android.support.constraint.ConstraintLayout>
-
-
-
-<!--
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/setup_view"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center_horizontal"
-    android:orientation="vertical"
-    tools:context=".ui.LVASetupActivity">
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center_horizontal"
-        android:layout_marginTop="30dp">
-
-        <View
-            android:layout_height="100dp"
-            android:layout_width="100dp"
-            android:background="@color/colorPrimary"/>
-
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:id="@+id/welcomeText"
-            android:textColor="@color/colorPrimaryDark"
-            android:text="@string/setup_welcome_text"/>
-        <TextView
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:text="@string/setup_welcome_desc_text"/>
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/primary_language_spinner"/>
-
-        <Spinner
-            android:id="@+id/primary_language_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/SpinnerTheme"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/secondary_language_spinner"/>
-
-        <Spinner
-            android:id="@+id/secondary_language_spinner"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="@style/SpinnerTheme"/>
-
-
-    </LinearLayout>
-
-
-
-
-</LinearLayout>-->

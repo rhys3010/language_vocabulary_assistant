@@ -49,9 +49,9 @@ public class LVAMainActivity extends AppCompatActivity {
 
         // Check if first time startup, if so display setup activity
         sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        // Check Shared Preferences for string that indicates wether or not setup has been completed
+        // Check Shared Preferences for saved language
         if(sharedPreferences.getBoolean("PREF_NEED_SETUP", true)){
-            // If setup has not been completed, shows setup activity to prompt user to complete setup
+            // If no language present, shows setup activity to prompt user to complete setup
             Intent intent = new Intent(this, LVASetupActivity.class);
             startActivity(intent);
             finish();

@@ -10,6 +10,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
+import java.util.ArrayList;
+import java.util.Locale;
+
 import rhe24.cs31620.dcs.aber.ac.uk.lva.R;
 
 /**
@@ -21,7 +24,10 @@ import rhe24.cs31620.dcs.aber.ac.uk.lva.R;
  */
 public class LVASetupActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener, View.OnClickListener{
 
-    SharedPreferences sharedPreferences = null;
+    /**
+     * The shared preferences reference to store primary and secondary language
+     */
+    private SharedPreferences sharedPreferences = null;
 
     /**
      * Called when the setup activity is created
@@ -33,8 +39,8 @@ public class LVASetupActivity extends AppCompatActivity implements AdapterView.O
         setContentView(R.layout.activity_lvasetup);
 
         // Set up the language selection spinners
-        setupSpinner(findViewById(R.id.setup_view), R.id.primary_language_spinner, R.array.language_array);
-        setupSpinner(findViewById(R.id.setup_view), R.id.secondary_language_spinner, R.array.language_array);
+        setupSpinner(findViewById(R.id.setup_view), R.id.primary_language_spinner);
+        setupSpinner(findViewById(R.id.setup_view), R.id.secondary_language_spinner);
     }
 
     /**
@@ -47,7 +53,7 @@ public class LVASetupActivity extends AppCompatActivity implements AdapterView.O
         // Move back to main activity
         Intent intent = new Intent(this, LVAMainActivity.class);
         startActivity(intent);
-        // Update shared preferences to prevent having to 're-setup'
+        // Update shared preferences to store language
         sharedPreferences.edit().putBoolean("PREF_NEED_SETUP", false).apply();
         // Close down the activity
         finish();
@@ -58,16 +64,18 @@ public class LVASetupActivity extends AppCompatActivity implements AdapterView.O
      * selection spinners
      * @param view
      * @param spinnerResourceId
-     * @param arrayResourceId
      */
-    private void setupSpinner(View view, int spinnerResourceId, int arrayResourceId){
+    private void setupSpinner(View view, int spinnerResourceId){
         // Get the spinner and assign it's selected listener
         Spinner spinner = view.findViewById(spinnerResourceId);
         spinner.setSelection(1);
         spinner.setOnItemSelectedListener(this);
 
-        // Initialise array adapter with custom spinner layout
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(view.getContext(), arrayResourceId, R.layout.simple_spinner_item);
+        // Get all the available language options for the spinner
+        ArrayList<String> spinnerOptions = initializeSpinnerOptions();
+
+        // Initialise array adapter with custom spinner layout and language options
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(), R.layout.simple_spinner_item, spinnerOptions);
 
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -89,5 +97,22 @@ public class LVASetupActivity extends AppCompatActivity implements AdapterView.O
     @Override
     public void onNothingSelected(AdapterView<?> adapterView) {
 
+    }
+
+    /**
+     * Populate the array that contains all spinner options by converting locales to strings
+     */
+    private ArrayList<String> initializeSpinnerOptions(){
+        Locale[] locales = Locale.getAvailableLocales();
+        ArrayList<String> options = new ArrayList<>();
+        // Add default selection to start of list
+        options.add("Please Select");
+
+        // Iterate through all locales, converting them to a string suitable for the spinner
+        for(Locale l : locales){
+            options.add(l.getDisplayName());
+        }
+
+        return options;
     }
 }

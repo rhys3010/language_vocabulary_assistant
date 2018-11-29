@@ -11,7 +11,205 @@
     <string name="setup_welcome_text">Welcome to LVA</string>
     <string name="setup_get_started">Get Started</string>
     <string name="setup_welcome_desc_text">Your Personal Vocabulary Assistant</string>
-    <string name="primary_language_spinner">Primary Language</string>
-    <string name="secondary_language_spinner">Secondary Language</string>
-    <string name="invalid_language_selection">Please Select Primary and Secondary Language</string>
+    <string name="primary_language_input">Primary Language</string>
+    <string name="secondary_language_input">Secondary Language</string>
+    <string name="invalid_language_input">Please Enter a Primary and Secondary Language</string>
+    <string name="language_input_hint">Please Enter Language</string>
+
+    <string-array name="language_suggestions_array">
+        <item>Afrikaans</item>
+        <item>Aghem</item>
+        <item>Akan</item>
+        <item>Amharic</item>
+        <item>Arabic</item>
+        <item>Assamese</item>
+        <item>Asu</item>
+        <item>Asturian</item>
+        <item>Azerbaijani</item>
+        <item>Basaa</item>
+        <item>Belarusian</item>
+        <item>Bemba</item>
+        <item>Bena</item>
+        <item>Bengali</item>
+        <item>Bulgarian</item>
+        <item>Bambara</item>
+        <item>Bangla</item>
+        <item>Tibetan</item>
+        <item>Breton</item>
+        <item>Bodo</item>
+        <item>Bosnian</item>
+        <item>Catalan</item>
+        <item>Chechen</item>
+        <item>Chiga</item>
+        <item>Cherokee</item>
+        <item>Central Kurdish</item>
+        <item>Czech</item>
+        <item>Welsh</item>
+        <item>Danish</item>
+        <item>Taita</item>
+        <item>German</item>
+        <item>Zarma</item>
+        <item>Lower Sorbian</item>
+        <item>Duala</item>
+        <item>Jola-Fonyi</item>
+        <item>Dzongkha</item>
+        <item>Embu</item>
+        <item>Ewe</item>
+        <item>Greek</item>
+        <item>English</item>
+        <item>Esperanto</item>
+        <item>Spanish</item>
+        <item>Estonian</item>
+        <item>Basque</item>
+        <item>Ewondo</item>
+        <item>Persian</item>
+        <item>Fulah</item>
+        <item>Finnish</item>
+        <item>Filipino</item>
+        <item>Faroese</item>
+        <item>French</item>
+        <item>Friulian</item>
+        <item>Western Frisian</item>
+        <item>Irish</item>
+        <item>Scottish Gaelic</item>
+        <item>Galician</item>
+        <item>Swiss German</item>
+        <item>Gujarati</item>
+        <item>Gusii</item>
+        <item>Manx</item>
+        <item>Manx</item>
+        <item>Hausa</item>
+        <item>Hawaiian</item>
+        <item>Hebrew</item>
+        <item>Hindi</item>
+        <item>Croatian</item>
+        <item>Upper Sorbian</item>
+        <item>Hungarian</item>
+        <item>Armenian</item>
+        <item>Indonesian</item>
+        <item>Igbo</item>
+        <item>Sichuan Yi</item>
+        <item>Icelandic</item>
+        <item>Italian</item>
+        <item>Japanese</item>
+        <item>Javanese</item>
+        <item>Ngomba</item>
+        <item>Machame</item>
+        <item>Georgian</item>
+        <item>Kabyle</item>
+        <item>Kamba</item>
+        <item>Makonde</item>
+        <item>Kabuverdianu</item>
+        <item>Koyra Chiini</item>
+        <item>Kikuyu</item>
+        <item>Kazakh</item>
+        <item>Kako</item>
+        <item>Kalaallisut</item>
+        <item>Kalenjin</item>
+        <item>Khmer</item>
+        <item>Kannada</item>
+        <item>Korean</item>
+        <item>Konkani</item>
+        <item>Kashmiri</item>
+        <item>Shambala</item>
+        <item>Bafia</item>
+        <item>Colognian</item>
+        <item>Cornish</item>
+        <item>Kyrgyz</item>
+        <item>Langi</item>
+        <item>Luxembourgish</item>
+        <item>Ganda</item>
+        <item>Lakota</item>
+        <item>Lingala</item>
+        <item>Lao</item>
+        <item>Northern Luri</item>
+        <item>Lithuanian</item>
+        <item>Luba-Katanga</item>
+        <item>Luo</item>
+        <item>Luyia</item>
+        <item>Latvian</item>
+        <item>Masai</item>
+        <item>Meru</item>
+        <item>Morisyen</item>
+        <item>Malagasy</item>
+        <item>Makhuwa-Meetto</item>
+        <item>Macedonian</item>
+        <item>Malayalam</item>
+        <item>Mongolian</item>
+        <item>Marathi</item>
+        <item>Malay</item>
+        <item>Maltese</item>
+        <item>Mundang</item>
+        <item>Burmese</item>
+        <item>Mazanderani</item>
+        <item>Nama</item>
+        <item>Norwegian Bokmal</item>
+        <item>North Ndebele</item>
+        <item>Low German</item>
+        <item>Nepali</item>
+        <item>Dutch</item>
+        <item>Kwasio</item>
+        <item>Norwegian Nynorsk</item>
+        <item>Ngiemboon</item>
+        <item>Nuer</item>
+        <item>Nyankole</item>
+        <item>Oromo</item>
+        <item>Odia</item>
+        <item>Ossetic</item>
+        <item>Punjabi</item>
+        <item>Polish</item>
+        <item>Pashto</item>
+        <item>Portuguese</item>
+        <item>Quechua</item>
+        <item>Romansh</item>
+        <item>Rundi</item>
+        <item>Romanian</item>
+        <item>Rombo</item>
+        <item>Russian</item>
+        <item>Kinyarwanda</item>
+        <item>Rwa</item>
+        <item>Sakha</item>
+        <item>Samburu</item>
+        <item>Sangu</item>
+        <item>Northern Sami</item>
+        <item>Sena</item>
+        <item>Koyraboro Senni</item>
+        <item>Sango</item>
+        <item>Tachelhit</item>
+        <item>Sinhala</item>
+        <item>Slovak</item>
+        <item>Slovenian</item>
+        <item>Inari Sami</item>
+        <item>Shona</item>
+        <item>Somali</item>
+        <item>Albanian</item>
+        <item>Serbian</item>
+        <item>Swedish</item>
+        <item>Swahili</item>
+        <item>Tamil</item>
+        <item>Telugu</item>
+        <item>Teso</item>
+        <item>Thai</item>
+        <item>Tigrinya</item>
+        <item>Tongan</item>
+        <item>Turkish</item>
+        <item>Tasawaq</item>
+        <item>Central Atlast Tamazight</item>
+        <item>Uyghur</item>
+        <item>Ukrainian</item>
+        <item>Urdu</item>
+        <item>Uzbek</item>
+        <item>Vai</item>
+        <item>Vietnamese</item>
+        <item>Vunjo</item>
+        <item>Walser</item>
+        <item>Soga</item>
+        <item>Yangben</item>
+        <item>Yiddish</item>
+        <item>Yoruba</item>
+        <item>Cantonese</item>
+        <item>Standard Moroccan Tamazight</item>
+        <item>Chinese</item>
+        <item>Zulu</item>
+    </string-array>
 </resources>

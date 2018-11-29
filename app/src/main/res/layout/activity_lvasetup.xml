@@ -57,24 +57,30 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/primary_language_spinner" />
+            android:text="@string/primary_language_input" />
 
-        <Spinner
-            android:id="@+id/primary_language_spinner"
-            style="@style/SpinnerTheme"
+        <AutoCompleteTextView
+            android:id="@+id/primary_language_input"
             android:layout_width="300dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/language_input_hint"
+            android:maxLength="25"
+            android:theme="@style/TextInputTheme"
+            android:imeOptions="actionNext"/>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/secondary_language_spinner" />
+            android:text="@string/secondary_language_input" />
 
-        <Spinner
-            android:id="@+id/secondary_language_spinner"
-            style="@style/SpinnerTheme"
+        <AutoCompleteTextView
+            android:id="@+id/secondary_language_input"
             android:layout_width="300dp"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="@string/language_input_hint"
+            android:maxLength="25"
+            android:theme="@style/TextInputTheme"
+            android:imeOptions="actionDone"/>
 
     </LinearLayout>
 

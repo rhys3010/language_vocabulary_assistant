@@ -6,9 +6,13 @@ import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
-import android.widget.Spinner;
+import android.widget.AutoCompleteTextView;
 import android.widget.Toast;
+
+import org.apache.commons.lang3.StringUtils;
+import org.apache.commons.text.WordUtils;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -24,16 +28,6 @@ import rhe24.cs31620.dcs.aber.ac.uk.lva.R;
  */
 public class LVASetupActivity extends AppCompatActivity{
 
-    /**
-     * UI Element of primary spinner
-     */
-    private Spinner primarySpinner;
-
-    /**
-     * UI Element of secondary spinner
-     */
-    private Spinner secondarySpinner;
-
 
     /**
      * Called when the setup activity is created
@@ -44,13 +38,8 @@ public class LVASetupActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lvasetup);
 
-        // Set up the language selection spinners
-        setupSpinner(findViewById(R.id.setup_view), R.id.primary_language_spinner);
-        setupSpinner(findViewById(R.id.setup_view), R.id.secondary_language_spinner);
-
-        // Initialize spinnner and button references
-        primarySpinner = findViewById(R.id.primary_language_spinner);
-        secondarySpinner = findViewById(R.id.secondary_language_spinner);
+        setupAutoComplete(findViewById(R.id.setup_view), R.id.primary_language_input, R.array.language_suggestions_array);
+        setupAutoComplete(findViewById(R.id.setup_view), R.id.secondary_language_input,  R.array.language_suggestions_array);
     }
 
     /**
@@ -58,17 +47,20 @@ public class LVASetupActivity extends AppCompatActivity{
      * @param v
      */
     public void submitLanguageSelection(View v){
-        // If spinners still contain default value, inform user and exit function
-        // (button should be disabled but best to be defensive)
-        if(primarySpinner.getSelectedItemPosition() == 0 || secondarySpinner.getSelectedItemPosition() == 0){
+        // Get the language selections from the imputs
+        AutoCompleteTextView primaryLangInput = findViewById(R.id.primary_language_input);
+        AutoCompleteTextView secondaryLangInput = findViewById(R.id.secondary_language_input);
+
+        // Format string correctly before storing
+        String primaryLanguage = WordUtils.capitalizeFully(primaryLangInput.getText().toString());
+        String secondaryLanguage = WordUtils.capitalizeFully(secondaryLangInput.getText().toString());
+
+        // If inputs still contain default value, inform user and exit function
+        if(StringUtils.isBlank(primaryLanguage) || StringUtils.isBlank(secondaryLanguage)){
             // Show Error Message
-            Toast.makeText(this, getString(R.string.invalid_language_selection), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.invalid_language_input), Toast.LENGTH_SHORT).show();
             return;
         }
-
-        // Get the language selections from the spinners
-        String primaryLanguage = primarySpinner.getSelectedItem().toString();
-        String secondaryLanguage = secondarySpinner.getSelectedItem().toString();
 
         // Get the shared preferences
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
@@ -84,45 +76,12 @@ public class LVASetupActivity extends AppCompatActivity{
         finish();
     }
 
-
     /**
-     * Perform necessary operations to setup and initialize the language
-     * selection spinners
-     * @param view
-     * @param spinnerResourceId
+     * Set up the auto-complete for language selection inputs.
      */
-    private void setupSpinner(View view, int spinnerResourceId){
-        // Get the spinner and set its default value
-        Spinner spinner = view.findViewById(spinnerResourceId);
-        spinner.setSelection(1);
-
-        // Get all the available language options for the spinner
-        ArrayList<String> spinnerOptions = initializeSpinnerOptions();
-
-        // Initialise array adapter with custom spinner layout and language options
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(view.getContext(), R.layout.simple_spinner_item, spinnerOptions);
-
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // Adding the ArrayAdapter to the spinner
-        spinner.setAdapter(adapter);
-
-    }
-
-    /**
-     * Populate the array that contains all spinner options by converting locales to strings
-     */
-    private ArrayList<String> initializeSpinnerOptions(){
-        Locale[] locales = Locale.getAvailableLocales();
-        ArrayList<String> options = new ArrayList<>();
-        // Add default selection to start of list
-        options.add("Please Select");
-
-        // Iterate through all locales, converting them to a string suitable for the spinner
-        for(Locale l : locales){
-            options.add(l.getDisplayName());
-        }
-
-        return options;
+    private void setupAutoComplete(View view, int inputResourceId, int arrayResourceId){
+        AutoCompleteTextView languageInput = view.findViewById(inputResourceId);
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(view.getContext(), arrayResourceId, android.R.layout.simple_dropdown_item_1line);
+        languageInput.setAdapter(adapter);
     }
 }

@@ -1,0 +1,8 @@
+Language Setup
+--------------
+
+> If first time launch, setup screen shows
+> If language has been selected, dont show setup screen
+> If invalid/empty entry in language input, show TOAST message.
+> When submit button is pressed, language is saved in Shared Prefernces
+

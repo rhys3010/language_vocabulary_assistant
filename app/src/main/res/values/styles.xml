@@ -39,4 +39,13 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <!-- Custom Text Input Theme -->
+    <style name="TextInputTheme">
+        <item name="android:singleLine">true</item>
+        <item name="android:lines">1</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:inputType">textCapWords</item>
+        <item name="android:completionThreshold">1</item>
+    </style>
+
 </resources>

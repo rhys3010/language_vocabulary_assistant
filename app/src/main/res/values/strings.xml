@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Vocabulary Assistant</string>
     <string name="vocabulary_list_tab">Vocabulary List</string>
-    <string name="tests_list_tab">Tests</string>
+    <string name="practice_tab">Practice</string>
     <string name="nav_change_language">Change Languages</string>
     <string name="nav_delete_vocab">Delete Vocabulary</string>
     <string name="nav_about">About</string>

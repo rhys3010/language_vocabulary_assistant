@@ -1,4 +1,4 @@
-package rhe24.cs31620.dcs.aber.ac.uk.lva.ui.vocabulary_list;
+package rhe24.cs31620.dcs.aber.ac.uk.lva.ui.vocabulary;
 
 
 import android.content.SharedPreferences;

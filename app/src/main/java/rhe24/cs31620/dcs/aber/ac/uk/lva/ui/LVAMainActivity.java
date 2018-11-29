@@ -16,11 +16,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import rhe24.cs31620.dcs.aber.ac.uk.lva.R;
-import rhe24.cs31620.dcs.aber.ac.uk.lva.ui.tests_list.TestsListFragment;
-import rhe24.cs31620.dcs.aber.ac.uk.lva.ui.vocabulary_list.VocabularyListFragment;
+import rhe24.cs31620.dcs.aber.ac.uk.lva.ui.practice.PracticeFragment;
+import rhe24.cs31620.dcs.aber.ac.uk.lva.ui.vocabulary.VocabularyListFragment;
 
 /**
  * LVAMainActivity
@@ -34,7 +33,7 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
      * Store tabs as constants
      */
     private static final int VOCAB_LIST_TAB = 0;
-    private static final int TESTS_TAB = 1;
+    private static final int PRACTICE_TAB = 1;
 
     /**
      * Called when the main activity is created
@@ -126,7 +125,7 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
         public Fragment getItem(int position){
             switch(position){
                 case VOCAB_LIST_TAB: return new VocabularyListFragment();
-                case TESTS_TAB: return new TestsListFragment();
+                case PRACTICE_TAB: return new PracticeFragment();
             }
 
             return null;
@@ -140,7 +139,7 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
         public CharSequence getPageTitle(int position){
             switch(position){
                 case VOCAB_LIST_TAB: return getResources().getText(R.string.vocabulary_list_tab);
-                case TESTS_TAB: return getResources().getText(R.string.tests_list_tab);
+                case PRACTICE_TAB: return getResources().getText(R.string.practice_tab);
             }
             return null;
         }

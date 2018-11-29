@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="rhe24.cs31620.dcs.aber.ac.uk.lva">
+    package="uk.ac.aber.dcs.cs31620.rhe24.lva">
 
     <application
         android:allowBackup="true"
@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.LVAMainActivity" android:screenOrientation="portrait">
+        <activity android:name="uk.ac.aber.dcs.cs31620.rhe24.lva.ui.LVAMainActivity" android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.LVASetupActivity" android:screenOrientation="portrait"></activity>
+        <activity android:name="uk.ac.aber.dcs.cs31620.rhe24.lva.ui.LVASetupActivity" android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

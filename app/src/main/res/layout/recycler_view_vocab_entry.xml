@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="vocabEntry"
+            type="uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry"/>
+    </data>
+
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/wordPrimaryLangLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:text="@{vocabEntry.wordPrimaryLanguage}"/>
+
+        <TextView
+            android:id="@+id/wordSecondaryLangLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:text="@{vocabEntry.wordSecondaryLanguage}"/>
+
+    </RelativeLayout>
+</layout>

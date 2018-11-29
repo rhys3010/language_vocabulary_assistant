@@ -43,13 +43,13 @@
             android:text="@string/setup_welcome_desc_text" />
     </LinearLayout>
 
-    <!-- Spinners -->
+    <!-- Language Input -->
     <LinearLayout
         android:id="@+id/spinners_container"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="@dimen/lang_input_margin"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/intro_container">
@@ -61,7 +61,7 @@
 
         <AutoCompleteTextView
             android:id="@+id/primary_language_input"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/lang_input_width"
             android:layout_height="wrap_content"
             android:hint="@string/language_input_hint"
             android:maxLength="25"
@@ -75,7 +75,7 @@
 
         <AutoCompleteTextView
             android:id="@+id/secondary_language_input"
-            android:layout_width="300dp"
+            android:layout_width="@dimen/lang_input_width"
             android:layout_height="wrap_content"
             android:hint="@string/language_input_hint"
             android:maxLength="25"

@@ -8,6 +8,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -33,7 +35,7 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel
  * @author Rhys Evans
  * @version 21/11/2018
  */
-public class VocabularyListFragment extends Fragment {
+public class VocabularyListFragment extends Fragment{
 
     /**
      * The view model class to interface with the database
@@ -49,6 +51,11 @@ public class VocabularyListFragment extends Fragment {
      * The previous vocabulary list
      */
     private LiveData<List<VocabularyEntry>> oldVocabularyEntries;
+
+    /**
+     * The recycler view that lists all vocab entries
+     */
+    private RecyclerView vocabularyEntriesList;
 
 
     public VocabularyListFragment() {
@@ -80,12 +87,7 @@ public class VocabularyListFragment extends Fragment {
             vocabularyListViewModel.setAdapter(vocabularyListAdapter);
         }
 
-        // Initialize recycler view
-        RecyclerView vocabularyList = view.findViewById(R.id.vocabulary_list);
-        // Attach Adapter to Recycler View
-        vocabularyList.setAdapter(vocabularyListAdapter);
-        vocabularyList.setLayoutManager(new LinearLayoutManager(getContext()));
-
+        setupRecyclerView(view);
         setupObserver();
 
         // Set list language preference headings
@@ -124,4 +126,51 @@ public class VocabularyListFragment extends Fragment {
             });
         }
     }
+
+    /**
+     * Setup the recycler view to accommodate fab
+     * (Code adapted from: https://stackoverflow.com/questions/31617398/floatingactionbutton-hide-on-list-scroll)
+     */
+    private void setupRecyclerView(View view){
+        final FloatingActionButton fab = view.findViewById(R.id.vocabulary_fab);
+
+        // Initialize recycler view
+        vocabularyEntriesList = view.findViewById(R.id.vocabulary_list);
+
+        // Attach Adapter to Recycler View
+        vocabularyEntriesList.setAdapter(vocabularyListAdapter);
+        vocabularyEntriesList.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        // Handle Scrolling
+        vocabularyEntriesList.addOnScrollListener(new RecyclerView.OnScrollListener() {
+
+            /**
+             * When recycle view is scrolled, hide the fab (if not already hidden)
+             * @param recyclerView
+             * @param dx
+             * @param dy
+             */
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy){
+                // Check change in y axis scroll
+                if(dy > 0 || dy < 0 && fab.isShown()){
+                    fab.hide();
+                }
+            }
+
+            /**
+             * When recycle view is done scrolling, show the fab again
+             * @param recyclerView
+             * @param newState
+             */
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                if(newState == RecyclerView.SCROLL_STATE_IDLE){
+                    fab.show();
+                }
+                super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
+    }
+
 }

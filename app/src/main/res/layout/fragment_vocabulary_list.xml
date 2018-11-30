@@ -1,56 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    tools:context=".ui.vocabulary.VocabularyListFragment">
+    android:layout_height="match_parent"
+    tools:context=".ui.LVAMainActivity">
 
-    <!-- Dummy Entry for Language Preference -->
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingStart="10dp"
-        android:paddingEnd="5dp"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:layout_marginTop="@dimen/vocab_list_entry_margin">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        tools:context=".ui.vocabulary.VocabularyListFragment">
 
-        <TextView
-            android:id="@+id/language_preference_primary"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:gravity="start"
-            android:textColor="@color/colorPrimaryDark"
-            android:textAllCaps="true"/>
+        <!-- Dummy Entry for Language Preference -->
 
-        <TextView
-            android:id="@+id/language_preference_secondary"
-            android:layout_width="0dp"
+        <LinearLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="4"
-            android:layout_marginStart="5dp"
-            android:gravity="start"
-            android:textColor="@color/colorPrimaryDark"
-            android:textAllCaps="true"/>
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="5dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="@dimen/vocab_list_entry_margin">
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="2"
-            android:layout_marginEnd="5dp"
-            android:gravity="center"/>
+            <TextView
+                android:id="@+id/language_preference_primary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:gravity="start"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAllCaps="true"/>
+
+            <TextView
+                android:id="@+id/language_preference_secondary"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4"
+                android:layout_marginStart="5dp"
+                android:gravity="start"
+                android:textColor="@color/colorPrimaryDark"
+                android:textAllCaps="true"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:layout_marginEnd="5dp"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/vocabulary_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
     </LinearLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/vocabulary_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/vocabulary_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/fab_margin"
+        android:src="@drawable/ic_add_black_24dp"
+        android:tint="@android:color/white"
+        android:layout_gravity="bottom|end" />
 
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

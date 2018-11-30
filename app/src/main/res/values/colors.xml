@@ -6,6 +6,6 @@
     <color name="colorAccent">#56e29f</color>
     <!-- Slightly off-white colour for view backgrounds -->
     <color name="colorBackground">#F0F0F0</color>
-    <!-- Sligh Grey for Input Boxes -->
+    <!-- Slight Grey for Input Boxes -->
     <color name="colorInput">#E5E5E8</color>
 </resources>

@@ -162,10 +162,11 @@ public class VocabularyListFragment extends Fragment{
                     fab.hide();
                 }
 
-                // If recycle view can scroll no further, show FAB
-                // (fixes weird delay when recycle view is flung-scrolled to top/bottom)
+                // If recycle view can scroll no further, show FAB and cancel current scroll
+                // (fixes weird delay when recycle view is flung to top/bottom)
                 if(!recyclerView.canScrollVertically(-1) || !recyclerView.canScrollVertically(1)){
                     fab.show();
+                    recyclerView.stopScroll();
                 }
             }
 

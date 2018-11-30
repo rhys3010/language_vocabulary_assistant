@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import java.util.List;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.datasource.LVARepository;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.util.SharedPreferencesManager;
 
 /**
  * Interfaces between the UI and the Database
@@ -31,6 +32,8 @@ public class VocabularyListViewModel extends AndroidViewModel {
      */
     private VocabularyListRecyclerAdapter adapter;
 
+    private SharedPreferencesManager sharedPreferencesManager;
+
     /**
      * Construct viewmodel, initialize repository and load data from database
      * @param application
@@ -40,6 +43,9 @@ public class VocabularyListViewModel extends AndroidViewModel {
 
         // Initialize repository
         repository = new LVARepository(application);
+
+        // Initialize shared prefernce manager
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(application.getApplicationContext());
 
         // Load all vocabulary entries from DB
         vocabularyList = repository.getAllVocabularyEntries();
@@ -62,12 +68,26 @@ public class VocabularyListViewModel extends AndroidViewModel {
     }
 
     /**
+     * Get the primary language from shared preferences
+     * @return
+     */
+    public String getPrimaryLanguage(){
+        return sharedPreferencesManager.getPrimaryLanguage();
+    }
+
+    /**
+     * Get the secondary language from shared preferences
+     * @return
+     */
+    public String getSecondaryLanguage(){
+        return sharedPreferencesManager.getSecondaryLanguage();
+    }
+
+    /**
      * Sets the recycler view adapter
      * @param adapter
      */
     public void setAdapter(VocabularyListRecyclerAdapter adapter){
         this.adapter = adapter;
     }
-
-
 }

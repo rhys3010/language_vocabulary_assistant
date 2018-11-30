@@ -22,6 +22,7 @@ import java.util.Objects;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.datasource.LVARepository;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.util.SharedPreferencesManager;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListRecyclerAdapter;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
@@ -87,6 +88,13 @@ public class VocabularyListFragment extends Fragment {
 
         setupObserver();
 
+        // Set list language preference headings
+        TextView primaryLanguageLabel = view.findViewById(R.id.language_preference_primary);
+        TextView secondaryLanguageLabel = view.findViewById(R.id.language_preference_secondary);
+
+        primaryLanguageLabel.setText(vocabularyListViewModel.getPrimaryLanguage());
+        secondaryLanguageLabel.setText(vocabularyListViewModel.getSecondaryLanguage());
+
         return view;
     }
 
@@ -116,5 +124,4 @@ public class VocabularyListFragment extends Fragment {
             });
         }
     }
-
 }

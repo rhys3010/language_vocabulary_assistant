@@ -103,6 +103,30 @@ public abstract class LVARoomDatabase extends RoomDatabase {
             vocabList.add(new VocabularyEntry("Thank You", "Merci"));
             vocabList.add(new VocabularyEntry("Thank You", "Diolch"));
             vocabList.add(new VocabularyEntry("A Very Long Phrase is entered here", "A very long translation is entered here"));
+            vocabList.add(new VocabularyEntry("Hello", "Bonjour"));
+            vocabList.add(new VocabularyEntry("Hello", "Helo"));
+            vocabList.add(new VocabularyEntry("Goodbye", "Au Revoir"));
+            vocabList.add(new VocabularyEntry("Goodbye", "Hwyl Fawr"));
+            vocabList.add(new VocabularyEntry("Thank You", "Merci"));
+            vocabList.add(new VocabularyEntry("Thank You", "Diolch"));
+            vocabList.add(new VocabularyEntry("Hello", "Bonjour"));
+            vocabList.add(new VocabularyEntry("Hello", "Helo"));
+            vocabList.add(new VocabularyEntry("Goodbye", "Au Revoir"));
+            vocabList.add(new VocabularyEntry("Goodbye", "Hwyl Fawr"));
+            vocabList.add(new VocabularyEntry("Thank You", "Merci"));
+            vocabList.add(new VocabularyEntry("Thank You", "Diolch"));
+            vocabList.add(new VocabularyEntry("Hello", "Bonjour"));
+            vocabList.add(new VocabularyEntry("Hello", "Helo"));
+            vocabList.add(new VocabularyEntry("Goodbye", "Au Revoir"));
+            vocabList.add(new VocabularyEntry("Goodbye", "Hwyl Fawr"));
+            vocabList.add(new VocabularyEntry("Thank You", "Merci"));
+            vocabList.add(new VocabularyEntry("Thank You", "Diolch"));
+            vocabList.add(new VocabularyEntry("Hello", "Bonjour"));
+            vocabList.add(new VocabularyEntry("Hello", "Helo"));
+            vocabList.add(new VocabularyEntry("Goodbye", "Au Revoir"));
+            vocabList.add(new VocabularyEntry("Goodbye", "Hwyl Fawr"));
+            vocabList.add(new VocabularyEntry("Thank You", "Merci"));
+            vocabList.add(new VocabularyEntry("Thank You", "Diolch"));
 
             vocabularyEntryDao.insertVocabularyEntry(vocabList);
 

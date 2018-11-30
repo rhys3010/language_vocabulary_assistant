@@ -11,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -88,6 +89,7 @@ public class VocabularyListFragment extends Fragment{
         }
 
         setupRecyclerView(view);
+        setupFab(view);
         setupObserver();
 
         // Set list language preference headings
@@ -128,11 +130,14 @@ public class VocabularyListFragment extends Fragment{
     }
 
     /**
-     * Setup the recycler view to accommodate fab
+     * Setup the recycler view
+     * and accommodate fab dissapearing on scroll
      * (Code adapted from: https://stackoverflow.com/questions/31617398/floatingactionbutton-hide-on-list-scroll)
      */
     private void setupRecyclerView(View view){
-        final FloatingActionButton fab = view.findViewById(R.id.vocabulary_fab);
+        // A little bit hacky, should probably use some kind of interface to get views that belong to parent
+        // activity, but for just one view it would be a little excessive.
+        final FloatingActionButton fab = getActivity().findViewById(R.id.vocabulary_fab);
 
         // Initialize recycler view
         vocabularyEntriesList = view.findViewById(R.id.vocabulary_list);
@@ -169,6 +174,28 @@ public class VocabularyListFragment extends Fragment{
                     fab.show();
                 }
                 super.onScrollStateChanged(recyclerView, newState);
+            }
+        });
+    }
+
+    /**
+     * Setup the Floating Action Button to open new vocab entry
+     * dialog when clicked
+     * @param view
+     */
+    private void setupFab(View view){
+        final FloatingActionButton fab = getActivity().findViewById(R.id.vocabulary_fab);
+
+        fab.setOnClickListener(new View.OnClickListener(){
+
+            /**
+             * Open the custom add new vocab entry dialog when clicked
+             * @param view
+             */
+            @Override
+            public void onClick(View view){
+                AddVocabularyEntryDialogFragment addVocabDialog = AddVocabularyEntryDialogFragment.newInstance("Add New Word");
+                addVocabDialog.show(getActivity().getFragmentManager(), "fragment_add_vocabulary_entry");
             }
         });
     }

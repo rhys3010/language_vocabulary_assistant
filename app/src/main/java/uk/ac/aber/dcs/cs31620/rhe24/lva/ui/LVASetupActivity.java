@@ -14,6 +14,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.text.WordUtils;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.util.SharedPreferencesManager;
 
 /**
  * LVASetupActivity
@@ -24,6 +25,10 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
  */
 public class LVASetupActivity extends AppCompatActivity{
 
+    /**
+     * Shared preference manager
+     */
+    private SharedPreferencesManager sharedPreferencesManager;
 
     /**
      * Called when the setup activity is created
@@ -33,6 +38,9 @@ public class LVASetupActivity extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lvasetup);
+
+        // Initialize shared preference manager
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(getApplicationContext());
 
         setupAutoComplete(findViewById(R.id.setup_view), R.id.primary_language_input, R.array.language_suggestions_array);
         setupAutoComplete(findViewById(R.id.setup_view), R.id.secondary_language_input,  R.array.language_suggestions_array);
@@ -58,15 +66,13 @@ public class LVASetupActivity extends AppCompatActivity{
             return;
         }
 
-        // Get the shared preferences
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         // Move back to main activity
         Intent intent = new Intent(this, LVAMainActivity.class);
         startActivity(intent);
 
         // Update shared preferences to store languages
-        sharedPreferences.edit().putString("PREF_PRIMARY_LANG", primaryLanguage).apply();
-        sharedPreferences.edit().putString("PREF_SECONDARY_LANG", secondaryLanguage).apply();
+        sharedPreferencesManager.putPrimaryLanguage(primaryLanguage);
+        sharedPreferencesManager.putSecondaryLanguage(secondaryLanguage);
 
         // Close down the activity
         finish();

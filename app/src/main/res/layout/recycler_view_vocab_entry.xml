@@ -19,7 +19,6 @@
         android:background="@android:color/white">
 
         <TextView
-            android:id="@+id/wordPrimaryLangLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
@@ -27,7 +26,6 @@
             android:text="@{vocabEntry.wordPrimaryLanguage}"/>
 
         <TextView
-            android:id="@+id/wordSecondaryLangLabel"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"

@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.util.SharedPreferencesManager;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.practice.PracticeFragment;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary.VocabularyListFragment;
 
@@ -36,6 +37,11 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
     private static final int PRACTICE_TAB = 1;
 
     /**
+     * Shared preference manager
+     */
+    private SharedPreferencesManager sharedPreferencesManager;
+
+    /**
      * Called when the main activity is created
      * @param savedInstanceState
      */
@@ -44,10 +50,11 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lvamain);
 
-        // Check if first time startup, if so display setup activity
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        // Check Shared Preferences for saved language
-        if(!sharedPreferences.contains("PREF_PRIMARY_LANG") || !sharedPreferences.contains("PREF_SECONDARY_LANG")){
+        // Initialize shared preference manager
+        sharedPreferencesManager = SharedPreferencesManager.getInstance(getApplicationContext());
+
+        // Check is there is already a language selection saved
+        if(!sharedPreferencesManager.isLanguageSaved()){
             // If no language present, shows setup activity to prompt user to complete setup
             Intent intent = new Intent(this, LVASetupActivity.class);
             startActivity(intent);
@@ -90,8 +97,7 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
         // If option is change language
         if(item.getItemId() == R.id.nav_change_language){
             // Remove language preferences from SharedPreferences and force user back to setup screen
-            SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-            sharedPreferences.edit().clear().apply();
+            sharedPreferencesManager.deleteLanguages();
 
             Intent intent = new Intent(this, LVASetupActivity.class);
             startActivity(intent);

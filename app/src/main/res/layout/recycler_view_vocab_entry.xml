@@ -6,27 +6,42 @@
             type="uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry"/>
     </data>
 
-    <RelativeLayout
+    <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground"
-        android:orientation="vertical"
-        android:padding="5dp">
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="5dp"
+        android:paddingTop="@dimen/vocab_list_entry_vertical_padding"
+        android:paddingBottom="@dimen/vocab_list_entry_vertical_padding"
+        android:layout_marginTop="@dimen/vocab_list_entry_margin"
+        android:background="@android:color/white">
 
         <TextView
             android:id="@+id/wordPrimaryLangLabel"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
+            android:layout_weight="4"
+            android:gravity="start"
             android:text="@{vocabEntry.wordPrimaryLanguage}"/>
 
         <TextView
             android:id="@+id/wordSecondaryLangLabel"
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
+            android:layout_weight="4"
+            android:layout_marginStart="5dp"
+            android:gravity="start"
             android:text="@{vocabEntry.wordSecondaryLanguage}"/>
 
-    </RelativeLayout>
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_marginEnd="5dp"
+            android:gravity="center"
+            android:text="|"/>
+
+    </LinearLayout>
 </layout>

@@ -4,7 +4,7 @@ android {
     compileSdkVersion 27
     dataBinding.enabled = true
     defaultConfig {
-        applicationId "rhe24.cs31620.dcs.aber.ac.uk.lva"
+        applicationId "uk.ac.aber.dcs.cs31620.rhe24.lva"
         minSdkVersion 21
         targetSdkVersion 27
         versionCode 1

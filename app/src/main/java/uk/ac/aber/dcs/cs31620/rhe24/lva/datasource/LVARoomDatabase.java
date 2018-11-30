@@ -4,6 +4,7 @@ import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
+import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.support.annotation.NonNull;
@@ -51,6 +52,17 @@ public abstract class LVARoomDatabase extends RoomDatabase {
     }
 
     /**
+     * Migrating the database from version 1 to 2
+     */
+    static final Migration MIGRATION_1_2 = new Migration(1, 2){
+
+        @Override
+        public void migrate(SupportSQLiteDatabase db){
+
+        }
+    };
+
+    /**
      * Allows for database initialization
      */
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
@@ -90,6 +102,7 @@ public abstract class LVARoomDatabase extends RoomDatabase {
             vocabList.add(new VocabularyEntry("Goodbye", "Hwyl Fawr"));
             vocabList.add(new VocabularyEntry("Thank You", "Merci"));
             vocabList.add(new VocabularyEntry("Thank You", "Diolch"));
+            vocabList.add(new VocabularyEntry("A Very Long Phrase is entered here", "A very long translation is entered here"));
 
             vocabularyEntryDao.insertVocabularyEntry(vocabList);
 

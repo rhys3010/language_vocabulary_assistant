@@ -161,6 +161,12 @@ public class VocabularyListFragment extends Fragment{
                 if(dy > 0 || dy < 0 && fab.isShown()){
                     fab.hide();
                 }
+
+                // If recycle view can scroll no further, show FAB
+                // (fixes weird delay when recycle view is flung-scrolled to top/bottom)
+                if(!recyclerView.canScrollVertically(-1) || !recyclerView.canScrollVertically(1)){
+                    fab.show();
+                }
             }
 
             /**
@@ -170,9 +176,13 @@ public class VocabularyListFragment extends Fragment{
              */
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+
+                // If scrolling has stopped, show FAB
                 if(newState == RecyclerView.SCROLL_STATE_IDLE){
                     fab.show();
                 }
+
+
                 super.onScrollStateChanged(recyclerView, newState);
             }
         });

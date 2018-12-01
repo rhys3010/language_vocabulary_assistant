@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
@@ -118,7 +119,11 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
             FloatingActionButton fab = findViewById(R.id.vocabulary_fab);
 
             @Override
-            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels){}
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels){
+                // When page is scrolled, expose appbar again
+                AppBarLayout appBarLayout = findViewById(R.id.app_bar_layout);
+                appBarLayout.setExpanded(true);
+            }
 
             /**
              * Hide/Show fab depending on current tab

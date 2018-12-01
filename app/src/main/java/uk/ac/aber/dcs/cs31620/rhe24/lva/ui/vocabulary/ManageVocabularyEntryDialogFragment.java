@@ -5,7 +5,6 @@ import android.app.Dialog;
 import android.support.v4.app.DialogFragment;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -15,13 +14,13 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
 
 /**
- * AddVocabularyEntryDialogFragment.java
+ * ManageVocabularyEntryDialogFragment.java
  *
- * A dialog modal to add new Vocabulary Entry into the vocabulary list
+ * A dialog modal to add or edit a Vocabulary Entry in the vocabulary list
  * @author Rhys Evans
  * @version 30/11/2018
  */
-public class AddVocabularyEntryDialogFragment extends DialogFragment {
+public class ManageVocabularyEntryDialogFragment extends DialogFragment {
 
     /**
      * The key that the word in the primary language is saved under in saved instance state bundle
@@ -49,15 +48,15 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
     private EditText secondaryWordInput;
 
     // Empty Constructor
-    public AddVocabularyEntryDialogFragment(){
+    public ManageVocabularyEntryDialogFragment(){
     }
 
     /**
      * Create instance of dialog
      * @return
      */
-    public static AddVocabularyEntryDialogFragment newInstance(){
-        return new AddVocabularyEntryDialogFragment();
+    public static ManageVocabularyEntryDialogFragment newInstance(){
+        return new ManageVocabularyEntryDialogFragment();
     }
 
     /**
@@ -75,7 +74,7 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
         // Get the activity's layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
         // Create the dialog view by inflating the layout
-        View view = inflater.inflate(R.layout.fragment_add_vocabulary_entry, null);
+        View view = inflater.inflate(R.layout.fragment_manage_vocabulary_entry, null);
 
         setupInputsAndLabels(view, savedInstanceState);
 
@@ -104,8 +103,8 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
     }
 
     /**
-     * Setup the input labels to display correct language prefernces
-     * and setup the input content based on saved instance state
+     * Setup all the labels to display correct languages, alter the dialog title
+     * depending on wether its an edit dialog or an add dialog.
      */
     private void setupInputsAndLabels(View view, Bundle savedInstanceState){
         // Initialize the word input labels

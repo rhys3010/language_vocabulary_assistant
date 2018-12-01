@@ -20,7 +20,8 @@
     <string name="word_input_hint">Please Enter Word or Phrase</string>
     <string name="dialog_add_word">Add</string>
     <string name="dialog_cancel">Cancel</string>
-    <string name="dialog_add_word_title">Add New Word or Phrase</string>
+    <string name="dialog_add_word_title">Add New Vocabulary Entry</string>
+    <string name="dialog_edit_word_title">Edit Vocabulary Entry</string>
     <string name="dialog_add_word_input_label">Word in %1$s</string>
     <string name="vocab_entry_menu_edit">Edit</string>
     <string name="vocab_entry_menu_delete">Delete</string>

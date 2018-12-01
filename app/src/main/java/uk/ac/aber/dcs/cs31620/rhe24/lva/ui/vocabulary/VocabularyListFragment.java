@@ -4,14 +4,10 @@ package uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -200,8 +196,8 @@ public class VocabularyListFragment extends Fragment{
              */
             @Override
             public void onClick(View view){
-                AddVocabularyEntryDialogFragment addVocabDialog = AddVocabularyEntryDialogFragment.newInstance();
-                addVocabDialog.show(getActivity().getSupportFragmentManager(),"fragment_add_vocabulary_entry");
+                ManageVocabularyEntryDialogFragment addVocabDialog = ManageVocabularyEntryDialogFragment.newInstance();
+                addVocabDialog.show(getActivity().getSupportFragmentManager(),"fragment_manage_vocabulary_entry");
             }
         });
     }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -79,6 +80,7 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
         SectionsPagerAdapter pagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
         ViewPager pager = findViewById(R.id.pager);
         pager.setAdapter(pagerAdapter);
+        pager.addOnPageChangeListener(addPageChangeListener());
 
         // Add tabs to app bar
         TabLayout tabLayout = findViewById(R.id.tabs);
@@ -105,6 +107,40 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
         }
 
         return true;
+    }
+
+    /**
+     * Hide FAB on different pages using ViewPager events
+     */
+    private ViewPager.OnPageChangeListener addPageChangeListener(){
+        return new ViewPager.OnPageChangeListener(){
+
+            FloatingActionButton fab = findViewById(R.id.vocabulary_fab);
+
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels){}
+
+            /**
+             * Hide/Show fab depending on current tab
+             * @param position
+             */
+            @Override
+            public void onPageSelected(int position){
+                switch(position){
+                    case VOCAB_LIST_TAB:
+                        fab.show();
+                        break;
+                    default:
+                        fab.hide();
+                        break;
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state){
+            }
+
+        };
     }
 
     /**

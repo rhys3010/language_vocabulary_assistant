@@ -44,8 +44,21 @@
         <item name="android:singleLine">true</item>
         <item name="android:lines">1</item>
         <item name="android:maxLines">1</item>
-        <item name="android:inputType">textCapWords</item>
         <item name="android:completionThreshold">1</item>
+    </style>
+
+    <!-- Custom Dialog Style -->
+    <style name="DialogTheme" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:buttonBarNegativeButtonStyle">@style/NegativeButtonTheme</item>
+        <item name="android:buttonBarPositiveButtonStyle">@style/PositiveButtonTheme</item>
+    </style>
+
+    <style name="NegativeButtonTheme" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@android:color/tab_indicator_text</item>
+    </style>
+
+    <style name="PositiveButtonTheme" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
 </resources>

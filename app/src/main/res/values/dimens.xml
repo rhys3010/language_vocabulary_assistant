@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="default_margin">10dp</dimen>
+    <dimen name="default_padding">10dp</dimen>
     <dimen name="lang_input_width">300dp</dimen>
     <dimen name="lang_input_margin">50dp</dimen>
     <dimen name="vocab_list_entry_margin">2.5dp</dimen>

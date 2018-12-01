@@ -2,11 +2,44 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="wrap_content"
     android:layout_width="wrap_content"
-    android:layout_gravity="center"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:padding="@dimen/default_padding">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/dialog_add_word_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorDarkGray"
+        android:layout_marginBottom="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World"/>
+        android:text="Word in English"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/TextInputTheme"
+        android:imeOptions="actionNext"
+        android:hint="@string/word_input_hint"
+        android:maxLength="50"
+        android:inputType="textCapSentences"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Word in Russian"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/TextInputTheme"
+        android:imeOptions="actionDone"
+        android:hint="@string/word_input_hint"
+        android:maxLength="50"
+        android:inputType="textCapSentences"/>
 </LinearLayout>

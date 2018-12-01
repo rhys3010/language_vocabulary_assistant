@@ -205,7 +205,7 @@ public class VocabularyListFragment extends Fragment{
              */
             @Override
             public void onClick(View view){
-                AddVocabularyEntryDialogFragment addVocabDialog = AddVocabularyEntryDialogFragment.newInstance("Add New Word");
+                AddVocabularyEntryDialogFragment addVocabDialog = AddVocabularyEntryDialogFragment.newInstance();
                 addVocabDialog.show(getActivity().getFragmentManager(), "fragment_add_vocabulary_entry");
             }
         });

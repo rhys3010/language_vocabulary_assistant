@@ -174,7 +174,6 @@ public class VocabularyListFragment extends Fragment{
                     fab.show();
                 }
 
-
                 super.onScrollStateChanged(recyclerView, newState);
             }
         });
@@ -196,8 +195,8 @@ public class VocabularyListFragment extends Fragment{
              */
             @Override
             public void onClick(View view){
-                ManageVocabularyEntryDialogFragment addVocabDialog = ManageVocabularyEntryDialogFragment.newInstance();
-                addVocabDialog.show(getActivity().getSupportFragmentManager(),"fragment_manage_vocabulary_entry");
+                AddVocabularyEntryDialogFragment addVocabDialog = AddVocabularyEntryDialogFragment.newInstance();
+                addVocabDialog.show(getActivity().getSupportFragmentManager(),"fragment_add_vocabulary_entry");
             }
         });
     }

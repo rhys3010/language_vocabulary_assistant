@@ -135,6 +135,7 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch(menuItem.getItemId()){
 
+                            // Open the edit entry dialog
                             case R.id.vocab_entry_menu_edit:
                                 break;
 

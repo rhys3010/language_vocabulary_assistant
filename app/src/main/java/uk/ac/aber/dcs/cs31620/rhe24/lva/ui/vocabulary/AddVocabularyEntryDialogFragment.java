@@ -2,6 +2,7 @@ package uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -14,13 +15,13 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
 
 /**
- * ManageVocabularyEntryDialogFragment.java
+ * AddVocabularyEntryDialogFragment.java
  *
- * A dialog modal to add or edit a Vocabulary Entry in the vocabulary list
+ * A dialog modal to add a Vocabulary Entry to the vocabulary list
  * @author Rhys Evans
  * @version 30/11/2018
  */
-public class ManageVocabularyEntryDialogFragment extends DialogFragment {
+public class AddVocabularyEntryDialogFragment extends DialogFragment {
 
     /**
      * The key that the word in the primary language is saved under in saved instance state bundle
@@ -47,16 +48,17 @@ public class ManageVocabularyEntryDialogFragment extends DialogFragment {
      */
     private EditText secondaryWordInput;
 
+
     // Empty Constructor
-    public ManageVocabularyEntryDialogFragment(){
+    public AddVocabularyEntryDialogFragment(){
     }
 
     /**
-     * Create instance of dialog
+     * Create instance of dialog and pass needed arguments
      * @return
      */
-    public static ManageVocabularyEntryDialogFragment newInstance(){
-        return new ManageVocabularyEntryDialogFragment();
+    public static AddVocabularyEntryDialogFragment newInstance(){
+        return new AddVocabularyEntryDialogFragment();
     }
 
     /**
@@ -65,6 +67,7 @@ public class ManageVocabularyEntryDialogFragment extends DialogFragment {
      * @return
      */
     @Override
+    @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Initialize View Model
         vocabularyListViewModel = ViewModelProviders.of(this).get(VocabularyListViewModel.class);
@@ -74,7 +77,7 @@ public class ManageVocabularyEntryDialogFragment extends DialogFragment {
         // Get the activity's layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
         // Create the dialog view by inflating the layout
-        View view = inflater.inflate(R.layout.fragment_manage_vocabulary_entry, null);
+        View view = inflater.inflate(R.layout.fragment_add_vocabulary_entry, null);
 
         setupInputsAndLabels(view, savedInstanceState);
 
@@ -85,7 +88,6 @@ public class ManageVocabularyEntryDialogFragment extends DialogFragment {
         // TODO: Add behaviour via viewmodel
         builder.setPositiveButton(R.string.dialog_add_word, null);
         builder.setNegativeButton(R.string.dialog_cancel, null);
-
 
         return builder.create();
     }
@@ -103,20 +105,24 @@ public class ManageVocabularyEntryDialogFragment extends DialogFragment {
     }
 
     /**
-     * Setup all the labels to display correct languages, alter the dialog title
-     * depending on wether its an edit dialog or an add dialog.
+     * Setup all the labels to display correct languages and populate word input
+     * from saved instance
+     *
+     * @param view
+     * @param savedInstanceState
      */
     private void setupInputsAndLabels(View view, Bundle savedInstanceState){
-        // Initialize the word input labels
+        // Initialize all labels;
         TextView primaryLanguageLabel = view.findViewById(R.id.primary_word_input_label);
         TextView secondaryLanguageLabel = view.findViewById(R.id.secondary_word_input_label);
-
-        primaryLanguageLabel.setText(getString(R.string.dialog_add_word_input_label, vocabularyListViewModel.getPrimaryLanguage()));
-        secondaryLanguageLabel.setText(getString(R.string.dialog_add_word_input_label, vocabularyListViewModel.getSecondaryLanguage()));
 
         // Initialize the word inputs
         primaryWordInput = view.findViewById(R.id.primary_word_input);
         secondaryWordInput = view.findViewById(R.id.secondary_word_input);
+
+        // Set the word input labels to contain correct languages
+        primaryLanguageLabel.setText(getString(R.string.dialog_add_word_input_label, vocabularyListViewModel.getPrimaryLanguage()));
+        secondaryLanguageLabel.setText(getString(R.string.dialog_add_word_input_label, vocabularyListViewModel.getSecondaryLanguage()));
 
         // If a savedInstanceState bundle contains the edit text contents, place them in there
         if(savedInstanceState != null){

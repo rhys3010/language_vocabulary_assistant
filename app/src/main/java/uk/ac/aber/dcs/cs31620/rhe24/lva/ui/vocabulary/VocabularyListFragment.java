@@ -12,7 +12,6 @@ import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -24,8 +23,6 @@ import java.util.List;
 import java.util.Objects;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
-import uk.ac.aber.dcs.cs31620.rhe24.lva.datasource.LVARepository;
-import uk.ac.aber.dcs.cs31620.rhe24.lva.model.util.SharedPreferencesManager;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListRecyclerAdapter;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
@@ -39,7 +36,7 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel
 public class VocabularyListFragment extends Fragment{
 
     /**
-     * The view model class to interface with the database
+     * The view model class to interface with the persistent data
      */
     private VocabularyListViewModel vocabularyListViewModel;
 
@@ -86,7 +83,7 @@ public class VocabularyListFragment extends Fragment{
         setupFab(view);
         setupObserver();
 
-        // Set list language preference headings
+        // Set list language preference headings from Shared Preferences
         TextView primaryLanguageLabel = view.findViewById(R.id.language_preference_primary);
         TextView secondaryLanguageLabel = view.findViewById(R.id.language_preference_secondary);
 
@@ -204,7 +201,7 @@ public class VocabularyListFragment extends Fragment{
             @Override
             public void onClick(View view){
                 AddVocabularyEntryDialogFragment addVocabDialog = AddVocabularyEntryDialogFragment.newInstance();
-                addVocabDialog.show(getActivity().getFragmentManager(), "fragment_add_vocabulary_entry");
+                addVocabDialog.show(getActivity().getSupportFragmentManager(),"fragment_add_vocabulary_entry");
             }
         });
     }

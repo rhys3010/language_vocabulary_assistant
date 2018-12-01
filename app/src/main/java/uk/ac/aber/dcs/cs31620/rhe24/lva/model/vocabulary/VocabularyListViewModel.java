@@ -11,7 +11,7 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.datasource.LVARepository;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.util.SharedPreferencesManager;
 
 /**
- * Interfaces between the UI and the Database
+ * Interfaces between the UI and Persistent Data storage
  * @author Rhys Evans
  * @version 29/11/2018
  */

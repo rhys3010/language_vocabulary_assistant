@@ -2,13 +2,17 @@ package uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.app.DialogFragment;
+import android.support.v4.app.DialogFragment;
+import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.text.SpannableStringBuilder;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
 
 /**
  * AddVocabularyEntryDialogFragment.java
@@ -28,6 +32,11 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
      * The key that the word in the secondary language is saved under in saved instance state bundle
      */
     private static final String SECONDARY_LANGUAGE_WORD_KEY = "SECONDARY_LANGUAGE_WORD";
+
+    /**
+     * The view model class to interface with the persistent data
+     */
+    private VocabularyListViewModel vocabularyListViewModel;
 
     /**
      * The view object of the primary word input
@@ -58,29 +67,17 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
      */
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
+        // Initialize View Model
+        vocabularyListViewModel = ViewModelProviders.of(this).get(VocabularyListViewModel.class);
+
         // The dialog builder
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.DialogTheme);
         // Get the activity's layout inflater
         LayoutInflater inflater = getActivity().getLayoutInflater();
-
         // Create the dialog view by inflating the layout
         View view = inflater.inflate(R.layout.fragment_add_vocabulary_entry, null);
 
-        // Initialize the word input objects
-        primaryWordInput = view.findViewById(R.id.primary_word_input);
-        secondaryWordInput = view.findViewById(R.id.secondary_word_input);
-
-        // If a savedInstanceState bundle contains the edit text contents, place them in there
-        if(savedInstanceState != null){
-            if(savedInstanceState.containsKey(PRIMARY_LANGUAGE_WORD_KEY)){
-                primaryWordInput.setText(savedInstanceState.getString(PRIMARY_LANGUAGE_WORD_KEY));
-            }
-
-            if(savedInstanceState.containsKey(SECONDARY_LANGUAGE_WORD_KEY)){
-                secondaryWordInput.setText(savedInstanceState.getString(SECONDARY_LANGUAGE_WORD_KEY));
-            }
-        }
-
+        setupInputsAndLabels(view, savedInstanceState);
 
         // Build the dialog by assigning view
         builder.setView(view);
@@ -104,5 +101,33 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
 
         outState.putString(PRIMARY_LANGUAGE_WORD_KEY, primaryWordInput.getText().toString());
         outState.putString(SECONDARY_LANGUAGE_WORD_KEY, secondaryWordInput.getText().toString());
+    }
+
+    /**
+     * Setup the input labels to display correct language prefernces
+     * and setup the input content based on saved instance state
+     */
+    private void setupInputsAndLabels(View view, Bundle savedInstanceState){
+        // Initialize the word input labels
+        TextView primaryLanguageLabel = view.findViewById(R.id.primary_word_input_label);
+        TextView secondaryLanguageLabel = view.findViewById(R.id.secondary_word_input_label);
+
+        primaryLanguageLabel.setText(getString(R.string.dialog_add_word_input_label, vocabularyListViewModel.getPrimaryLanguage()));
+        secondaryLanguageLabel.setText(getString(R.string.dialog_add_word_input_label, vocabularyListViewModel.getSecondaryLanguage()));
+
+        // Initialize the word inputs
+        primaryWordInput = view.findViewById(R.id.primary_word_input);
+        secondaryWordInput = view.findViewById(R.id.secondary_word_input);
+
+        // If a savedInstanceState bundle contains the edit text contents, place them in there
+        if(savedInstanceState != null){
+            if(savedInstanceState.containsKey(PRIMARY_LANGUAGE_WORD_KEY)){
+                primaryWordInput.setText(savedInstanceState.getString(PRIMARY_LANGUAGE_WORD_KEY));
+            }
+
+            if(savedInstanceState.containsKey(SECONDARY_LANGUAGE_WORD_KEY)){
+                secondaryWordInput.setText(savedInstanceState.getString(SECONDARY_LANGUAGE_WORD_KEY));
+            }
+        }
     }
 }

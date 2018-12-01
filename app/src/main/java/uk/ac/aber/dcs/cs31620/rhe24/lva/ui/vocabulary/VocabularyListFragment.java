@@ -53,12 +53,6 @@ public class VocabularyListFragment extends Fragment{
      */
     private LiveData<List<VocabularyEntry>> oldVocabularyEntries;
 
-    /**
-     * The recycler view that lists all vocab entries
-     */
-    private RecyclerView vocabularyEntriesList;
-
-
     public VocabularyListFragment() {
         // Required empty public constructor
     }
@@ -139,12 +133,16 @@ public class VocabularyListFragment extends Fragment{
         // activity, but for just one view it would be a little excessive.
         final FloatingActionButton fab = getActivity().findViewById(R.id.vocabulary_fab);
 
-        // Initialize recycler view
-        vocabularyEntriesList = view.findViewById(R.id.vocabulary_list);
+        // The recycler view
+        VocabularyListRecyclerView vocabularyEntriesList = view.findViewById(R.id.vocabulary_list);
+        // The recycler view's empty alternative
+        View emptyVocabularyEntriesList = view.findViewById(R.id.vocabulary_list_empty);
 
         // Attach Adapter to Recycler View
         vocabularyEntriesList.setAdapter(vocabularyListAdapter);
         vocabularyEntriesList.setLayoutManager(new LinearLayoutManager(getContext()));
+        // Assign the empty view
+        vocabularyEntriesList.setEmptyView(emptyVocabularyEntriesList);
 
         // Handle Scrolling
         vocabularyEntriesList.addOnScrollListener(new RecyclerView.OnScrollListener() {

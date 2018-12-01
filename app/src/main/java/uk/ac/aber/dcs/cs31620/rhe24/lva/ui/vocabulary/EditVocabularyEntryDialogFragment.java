@@ -2,7 +2,7 @@ package uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -15,13 +15,13 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
 
 /**
- * AddVocabularyEntryDialogFragment.java
+ * EditVocabularyEntryDialogFragment.java
  *
- * A dialog modal to add a Vocabulary Entry to the vocabulary list
+ * A dialog to edit a vocabulary entry within the vocabulary list
  * @author Rhys Evans
- * @version 30/11/2018
+ * @version 1/12/2018
  */
-public class AddVocabularyEntryDialogFragment extends DialogFragment {
+public class EditVocabularyEntryDialogFragment extends DialogFragment {
 
     /**
      * The key that the word in the primary language is saved under in saved instance state bundle
@@ -48,45 +48,42 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
      */
     private EditText secondaryWordInput;
 
-
     // Empty Constructor
-    public AddVocabularyEntryDialogFragment(){
-    }
+    public EditVocabularyEntryDialogFragment(){}
 
     /**
-     * Create instance of dialog
+     * Create instance of dialog and pass the needed arguments
      * @return
      */
-    public static AddVocabularyEntryDialogFragment newInstance(){
-        return new AddVocabularyEntryDialogFragment();
+    public static EditVocabularyEntryDialogFragment newInstance(){
+        return new EditVocabularyEntryDialogFragment();
     }
 
     /**
-     * Inflate the dialog view and add dialog buttons
+     * Inflate the dialog view and setup all views
      * @param savedInstanceState
      * @return
      */
     @Override
-    @NonNull
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Initialize View Model
+    @Nullable
+    public Dialog onCreateDialog(Bundle savedInstanceState){
+        // Initialize the view model
         vocabularyListViewModel = ViewModelProviders.of(this).get(VocabularyListViewModel.class);
 
-        // The dialog builder
+        // Create the dialog builder
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity(), R.style.DialogTheme);
-        // Get the activity's layout inflater
-        LayoutInflater inflater = getActivity().getLayoutInflater();
-        // Create the dialog view by inflating the layout
+        LayoutInflater inflater =  getActivity().getLayoutInflater();
+
+        // Create the dialog's view
         View view = inflater.inflate(R.layout.fragment_manage_vocabulary_entry, null);
 
         setupInputsAndLabels(view, savedInstanceState);
 
-        // Build the dialog by assigning view
         builder.setView(view);
 
         // Add buttons
         // TODO: Add behaviour via viewmodel
-        builder.setPositiveButton(R.string.dialog_add_word, null);
+        builder.setPositiveButton(R.string.dialog_edit_word, null);
         builder.setNegativeButton(R.string.dialog_cancel, null);
 
         return builder.create();
@@ -106,7 +103,7 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
 
     /**
      * Setup all the labels to display correct languages and populate word input
-     * from saved instance
+     * from either saved instance or from the contents of the current entry
      *
      * @param view
      * @param savedInstanceState
@@ -122,7 +119,7 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
         secondaryWordInput = view.findViewById(R.id.secondary_word_input);
 
         // Set title label
-        dialogTitle.setText(R.string.dialog_add_word_title);
+        dialogTitle.setText(R.string.dialog_edit_word_title);
 
         // Set the word input labels to contain correct languages
         primaryLanguageLabel.setText(getString(R.string.dialog_add_word_input_label, vocabularyListViewModel.getPrimaryLanguage()));

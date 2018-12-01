@@ -1,5 +1,7 @@
 package uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary;
 
+import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
@@ -15,6 +17,8 @@ import java.util.List;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.databinding.RecyclerViewVocabEntryBinding;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary.AddVocabularyEntryDialogFragment;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary.EditVocabularyEntryDialogFragment;
 
 /**
  * Recycler View Adapter to display vocabulary list
@@ -50,7 +54,7 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
         /**
          * The popup menu icon for every entry list
          */
-        public ImageView popupMenuIcon;
+        private ImageView popupMenuIcon;
 
         /**
          * The data binding object for vocab entry
@@ -137,6 +141,9 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
 
                             // Open the edit entry dialog
                             case R.id.vocab_entry_menu_edit:
+                                EditVocabularyEntryDialogFragment editVocabDialog = EditVocabularyEntryDialogFragment.newInstance();
+                                FragmentManager fm = ((FragmentActivity)context).getSupportFragmentManager();
+                                editVocabDialog.show(fm,"fragment_edit_vocabulary_entry");
                                 break;
 
                             case R.id.vocab_entry_menu_delete:

@@ -10,6 +10,7 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 
@@ -56,5 +57,4 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
 
         return builder.create();
     }
-
 }

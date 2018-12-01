@@ -34,6 +34,7 @@
             android:text="@{vocabEntry.wordSecondaryLanguage}"/>
 
         <ImageView
+            android:id="@+id/vocab_entry_popup_menu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
@@ -41,7 +42,7 @@
             android:gravity="center"
             android:src="@drawable/ic_more_vert_black_24dp"
             android:contentDescription="@string/vocab_entry_options"
-            android:tint="@color/colorPrimaryLight"/>
+            android:tint="@color/colorPrimaryLight" />
 
     </LinearLayout>
 </layout>

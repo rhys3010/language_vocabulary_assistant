@@ -5,8 +5,11 @@ import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 
 import java.util.List;
 
@@ -45,6 +48,11 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         /**
+         * The popup menu icon for every entry list
+         */
+        public ImageView popupMenuIcon;
+
+        /**
          * The data binding object for vocab entry
          */
         RecyclerViewVocabEntryBinding vocabEntryBinding;
@@ -52,6 +60,9 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
         ViewHolder(View entryView) {
             super(entryView);
             vocabEntryBinding = DataBindingUtil.bind(entryView);
+
+            // Initialize popup menu icon
+            popupMenuIcon = entryView.findViewById(R.id.vocab_entry_popup_menu);
         }
 
         /**
@@ -66,7 +77,7 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
     }
 
     /**
-     * Returns the number of enties in the data
+     * Returns the number of entries in the data
      *
      * @return
      */
@@ -92,6 +103,8 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
         // Create a new vocab entry view
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_vocab_entry, parent, false);
 
+        view.findViewById(R.id.vocab_entry_popup_menu);
+
         return new ViewHolder(view);
     }
 
@@ -105,6 +118,43 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
         if(vocabularyEntryList != null){
             holder.bindDataSet(vocabularyEntryList.get(position));
         }
+
+        // Add behaviour to popup menu icon
+        holder.popupMenuIcon.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+
+                // Create the popup menu
+                PopupMenu popupMenu = new PopupMenu(context, holder.popupMenuIcon);
+                popupMenu.inflate(R.menu.menu_vocab_entry);
+
+                // Add click listener for the popup menu
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch(menuItem.getItemId()){
+
+                            case R.id.vocab_entry_menu_edit:
+                                break;
+
+                            case R.id.vocab_entry_menu_delete:
+                                break;
+
+                            case R.id.vocab_entry_menu_pin:
+                                break;
+                        }
+
+                        return false;
+                    }
+                });
+
+                // Show the popup
+                popupMenu.show();
+            }
+
+        });
+
     }
 
     /**

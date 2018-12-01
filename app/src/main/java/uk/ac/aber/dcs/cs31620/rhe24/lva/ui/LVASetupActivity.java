@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.apache.commons.lang3.StringUtils;
@@ -44,13 +45,22 @@ public class LVASetupActivity extends AppCompatActivity{
 
         setupAutoComplete(findViewById(R.id.setup_view), R.id.primary_language_input, R.array.language_suggestions_array);
         setupAutoComplete(findViewById(R.id.setup_view), R.id.secondary_language_input,  R.array.language_suggestions_array);
+
+        // Add behaviour to submit button
+        Button submitButton = findViewById(R.id.setup_submit_button);
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                submitLanguageSelection(view);
+            }
+        });
     }
 
     /**
      * Confirm Setup by saving selected languages and switching to main activity.
      * @param v
      */
-    public void submitLanguageSelection(View v){
+    private void submitLanguageSelection(View v){
         // Get the language selections from the imputs
         AutoCompleteTextView primaryLangInput = findViewById(R.id.primary_language_input);
         AutoCompleteTextView secondaryLangInput = findViewById(R.id.secondary_language_input);

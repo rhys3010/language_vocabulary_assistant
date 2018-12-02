@@ -72,11 +72,41 @@
             android:layout_height="wrap_content"
             android:scrollbars="vertical"/>
 
-        <TextView
+        <!-- Empty List Display -->
+        <LinearLayout
             android:id="@+id/vocabulary_list_empty"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Empty List"/>
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/default_margin">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_format_list_bulleted_black_24dp"
+                android:tint="@color/colorPrimary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vocab_list_empty_title"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/default_margin"
+                android:textAllCaps="true"
+                android:textSize="24sp"
+                android:textColor="@color/colorPrimary"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/vocab_list_empty_message"
+                android:layout_gravity="center"
+                android:textAllCaps="true"
+                android:textSize="12sp"
+                android:layout_marginTop="@dimen/default_margin"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 

@@ -95,7 +95,7 @@ public class VocabularyEntry {
      * Sets the vocabulary entry's word in primary language
      * @param wordPrimaryLanguage
      */
-    public void setWordPrimaryLanguage(String wordPrimaryLanguage) {
+    public void setWordPrimaryLanguage(@NonNull String wordPrimaryLanguage) {
         this.wordPrimaryLanguage = wordPrimaryLanguage;
     }
 
@@ -103,7 +103,7 @@ public class VocabularyEntry {
      * Sets the vocabulary entry's word in secondary language
      * @param wordSecondaryLanguage
      */
-    public void setWordSecondaryLanguage(String wordSecondaryLanguage) {
+    public void setWordSecondaryLanguage(@NonNull String wordSecondaryLanguage) {
         this.wordSecondaryLanguage = wordSecondaryLanguage;
     }
 

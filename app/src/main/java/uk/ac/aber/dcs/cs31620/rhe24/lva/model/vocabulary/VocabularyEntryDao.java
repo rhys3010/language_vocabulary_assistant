@@ -72,9 +72,9 @@ public interface VocabularyEntryDao {
     VocabularyEntry fetchVocabularyEntryById(int id);
 
     /**
-     * Get all vocabulary entries
+     * Get all vocabulary entries ordered by date created
      * @return
      */
-    @Query("SELECT * FROM vocabulary_entries")
+    @Query("SELECT * FROM vocabulary_entries ORDER BY created_at DESC")
     LiveData<List<VocabularyEntry>> getAllVocabularyEntries();
 }

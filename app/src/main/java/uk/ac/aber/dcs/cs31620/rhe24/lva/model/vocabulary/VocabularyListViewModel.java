@@ -112,6 +112,14 @@ public class VocabularyListViewModel extends AndroidViewModel {
     }
 
     /**
+     * Delete a specific vocabulary entry
+     * @param entry - The Entry to delete
+     */
+    public void deleteVocabularyEntry(VocabularyEntry entry){
+        repository.deleteVocabularyEntry(entry);
+    }
+
+    /**
      * Sets the recycler view adapter
      * @param adapter
      */

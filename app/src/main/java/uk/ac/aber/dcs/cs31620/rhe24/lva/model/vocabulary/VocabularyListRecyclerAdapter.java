@@ -1,10 +1,11 @@
 package uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary;
 
-import android.app.Activity;
-import android.app.AlertDialog;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
@@ -37,11 +38,18 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
     private List<VocabularyEntry> vocabularyEntryList;
 
     /**
+     * The View Model of the vocabulary list - used to interface with persistent data
+     */
+    private VocabularyListViewModel vocabularyListViewModel;
+
+    /**
      * Initializes Adapter
      * @param context
      */
     public VocabularyListRecyclerAdapter(Context context){
         this.context = context;
+        // Initialize View Model
+        vocabularyListViewModel = ViewModelProviders.of((LVAMainActivity)context).get(VocabularyListViewModel.class);
     }
 
     /**
@@ -118,7 +126,7 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
      * @param position
      */
     @Override
-    public void onBindViewHolder(@NonNull final ViewHolder holder, int position){
+    public void onBindViewHolder(@NonNull final ViewHolder holder, final int position){
         if(vocabularyEntryList != null){
             holder.bindDataSet(vocabularyEntryList.get(position));
         }
@@ -144,6 +152,7 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
                                 break;
 
                             case R.id.vocab_entry_menu_delete:
+                                deleteEntry(position);
                                 break;
                         }
 
@@ -165,5 +174,29 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
     public void changeDataSet(List<VocabularyEntry> vocabularyEntryList){
         this.vocabularyEntryList = vocabularyEntryList;
         notifyDataSetChanged();
+    }
+
+    /**
+     * Prompt user for confirmation then delete a specified  entry
+     */
+    private void deleteEntry(final int entryIndex){
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(context, R.style.DialogTheme);
+        dialogBuilder.setTitle(R.string.delete_vocabulary_entry_dialog_title);
+        // Set negative button to do nothing
+        dialogBuilder.setNegativeButton(android.R.string.no, null);
+
+        // Set positive button to delete language preferences and return to setup screen
+        dialogBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Get the entry from the list using the index provided
+                VocabularyEntry entry = vocabularyEntryList.get(entryIndex);
+                // Delete the entry
+                vocabularyListViewModel.deleteVocabularyEntry(entry);
+            }
+        });
+
+        // Show the dialog
+        dialogBuilder.show();
     }
 }

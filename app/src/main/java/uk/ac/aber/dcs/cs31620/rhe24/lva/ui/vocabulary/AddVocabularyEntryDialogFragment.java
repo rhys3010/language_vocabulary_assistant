@@ -184,6 +184,9 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
             // Add the new entry
             VocabularyEntry newEntry = new VocabularyEntry(primaryWord, secondaryWord);
             vocabularyListViewModel.insertVocabularyEntry(newEntry);
+
+            // Dismiss the dialog
+            dismiss();
         }
 
     }

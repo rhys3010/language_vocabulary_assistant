@@ -4,6 +4,7 @@ package uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary;
 import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -22,6 +23,7 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListRecyclerAdapter;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.LVAMainActivity;
 
 /**
  * VocabularyListFragment
@@ -200,5 +202,4 @@ public class VocabularyListFragment extends Fragment{
             }
         });
     }
-
 }

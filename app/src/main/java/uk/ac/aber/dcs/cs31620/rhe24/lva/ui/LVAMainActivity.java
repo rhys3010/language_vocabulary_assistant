@@ -1,5 +1,7 @@
 package uk.ac.aber.dcs.cs31620.rhe24.lva.ui;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
@@ -14,6 +16,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -21,6 +24,7 @@ import android.view.MenuItem;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.util.SharedPreferencesManager;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.practice.PracticeFragment;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary.VocabularyListFragment;
 
@@ -39,9 +43,9 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
     private static final int PRACTICE_TAB = 1;
 
     /**
-     * Shared preference manager
+     * The view model class to interface with the persistent data
      */
-    private SharedPreferencesManager sharedPreferencesManager;
+    private VocabularyListViewModel vocabularyListViewModel;
 
     /**
      * Called when the main activity is created
@@ -51,12 +55,11 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lvamain);
-
-        // Initialize shared preference manager
-        sharedPreferencesManager = SharedPreferencesManager.getInstance(getApplicationContext());
+        // Initialize View Model
+        vocabularyListViewModel = ViewModelProviders.of(this).get(VocabularyListViewModel.class);
 
         // Check is there is already a language selection saved
-        if(!sharedPreferencesManager.isLanguageSaved()){
+        if(!vocabularyListViewModel.isLanguageSaved()){
             // If no language present, shows setup activity to prompt user to complete setup
             Intent intent = new Intent(this, LVASetupActivity.class);
             startActivity(intent);
@@ -96,18 +99,83 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
 
-        // TODO: Actually Implement
-        // If option is change language
-        if(item.getItemId() == R.id.nav_change_language){
-            // Remove language preferences from SharedPreferences and force user back to setup screen
-            sharedPreferencesManager.deleteLanguages();
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
 
-            Intent intent = new Intent(this, LVASetupActivity.class);
-            startActivity(intent);
-            finish();
+        switch(item.getItemId()){
+            case R.id.nav_change_language:
+                changeLanguagePreferences(this);
+                break;
+
+            case R.id.nav_delete_vocab:
+                deleteVocabulary();
+                break;
+
+            case R.id.nav_about:
+                break;
         }
 
+        // Close nav drawer after selection is made
+        drawer.closeDrawers();
+
         return true;
+    }
+
+    /**
+     * Prompt for confirmation and delete the user's language preferences
+     * (+ vocabulary)
+     */
+    private void changeLanguagePreferences(final AppCompatActivity activity){
+
+        // Prompt user for confirmation first
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this, R.style.DialogTheme);
+        dialogBuilder.setTitle(R.string.change_language_dialog_title);
+        dialogBuilder.setMessage(R.string.change_language_dialog_message);
+        // Set negative button to do nothing
+        dialogBuilder.setNegativeButton(android.R.string.no, null);
+
+        // Set positive button to delete language preferences and return to setup screen
+        dialogBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Delete Language Preferences
+                vocabularyListViewModel.deleteLanguages();
+                // Delete vocabulary
+                vocabularyListViewModel.deleteVocabularyList();
+
+                // Change screen
+                // Switch to setup screen
+                Intent intent = new Intent(activity, LVASetupActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
+        // Show the dialog
+        dialogBuilder.show();
+    }
+
+    /**
+     * Prompt for confirmation and deletet the user's vocabulary.
+     */
+    private void deleteVocabulary(){
+        // Prompt user for confirmation first
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this, R.style.DialogTheme);
+        dialogBuilder.setTitle(R.string.delete_vocabulary_dialog_title);
+        dialogBuilder.setMessage(R.string.delete_vocabulary_dialog_message);
+        // Set negative button to do nothing
+        dialogBuilder.setNegativeButton(android.R.string.no, null);
+
+        // Set positive button to delete language preferences and return to setup screen
+        dialogBuilder.setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                // Delete vocabulary
+                vocabularyListViewModel.deleteVocabularyList();
+            }
+        });
+
+        // Show the dialog
+        dialogBuilder.show();
     }
 
     /**

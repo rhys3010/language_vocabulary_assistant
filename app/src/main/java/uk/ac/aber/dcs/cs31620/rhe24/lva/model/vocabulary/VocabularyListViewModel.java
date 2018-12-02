@@ -84,11 +84,31 @@ public class VocabularyListViewModel extends AndroidViewModel {
     }
 
     /**
+     * Get whether or not user has set language
+     * @return
+     */
+    public boolean isLanguageSaved(){ return sharedPreferencesManager.isLanguageSaved(); }
+
+    /**
      * Insert a vocabulary entry into the database
      * @param entry
      */
     public void insertVocabularyEntry(VocabularyEntry entry){
         repository.insertVocabularyEntry(entry);
+    }
+
+    /**
+     * Delete language preferences
+     */
+    public void deleteLanguages(){
+        sharedPreferencesManager.deleteLanguages();
+    }
+
+    /**
+     * Delete all vocabulary entries
+     */
+    public void deleteVocabularyList(){
+        repository.deleteVocabularyList();
     }
 
     /**

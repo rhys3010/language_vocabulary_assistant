@@ -1,7 +1,7 @@
 package uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
@@ -18,8 +18,6 @@ import java.util.List;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.databinding.RecyclerViewVocabEntryBinding;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.LVAMainActivity;
-import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary.AddVocabularyEntryDialogFragment;
-import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary.EditVocabularyEntryDialogFragment;
 
 /**
  * Recycler View Adapter to display vocabulary list
@@ -32,6 +30,7 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
      * Application Context
      */
     private final Context context;
+
     /**
      * The vocabulary entry list (dataset)
      */
@@ -142,9 +141,6 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
 
                             // Open the edit entry dialog
                             case R.id.vocab_entry_menu_edit:
-                                EditVocabularyEntryDialogFragment editVocabDialog = EditVocabularyEntryDialogFragment.newInstance();
-                                FragmentManager fm = ((LVAMainActivity)context).getSupportFragmentManager();
-                                editVocabDialog.show(fm, "fragment_edit_vocabulary_entry");
                                 break;
 
                             case R.id.vocab_entry_menu_delete:

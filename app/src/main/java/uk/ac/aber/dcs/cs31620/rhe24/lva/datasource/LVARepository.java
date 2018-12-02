@@ -64,6 +64,13 @@ public class LVARepository {
     }
 
     /**
+     * Delete entire list
+     */
+    public void deleteVocabularyList(){
+        new DeleteAllAsyncTask(vocabularyEntryDao).execute();
+    }
+
+    /**
      * Make deletions on a seperate thread
      */
     private static class DeleteAsyncTask extends AsyncTask<VocabularyEntry, Void, Void>{
@@ -76,6 +83,25 @@ public class LVARepository {
         @Override
         protected Void doInBackground(final VocabularyEntry... params){
             mAsyncTaskDao.deleteVocabularyEntry(params[0]);
+
+            return null;
+        }
+    }
+
+    /**
+     * Perform database clear on seperate thread
+     */
+    private static class DeleteAllAsyncTask extends AsyncTask<Void, Void, Void>{
+
+        private VocabularyEntryDao mAsyncTaskDao;
+
+        DeleteAllAsyncTask(VocabularyEntryDao vocabularyEntryDao){
+            mAsyncTaskDao = vocabularyEntryDao;
+        }
+
+        @Override
+        protected Void doInBackground(final Void... params){
+            mAsyncTaskDao.deleteAll();
 
             return null;
         }

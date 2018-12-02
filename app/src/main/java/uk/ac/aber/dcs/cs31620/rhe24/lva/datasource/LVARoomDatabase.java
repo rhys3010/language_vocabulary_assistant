@@ -43,7 +43,7 @@ public abstract class LVARoomDatabase extends RoomDatabase {
         if(INSTANCE == null){
             synchronized(LVARoomDatabase.class){
                 if (INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), LVARoomDatabase.class, "lva_database").addCallback(sRoomDatabaseCallback).build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), LVARoomDatabase.class, "lva_database").allowMainThreadQueries().addCallback(sRoomDatabaseCallback).build();
                 }
             }
         }
@@ -92,6 +92,7 @@ public abstract class LVARoomDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(final Void... params){
+
             // TEMP
             // Populate Database with test data
             List<VocabularyEntry> vocabList = new ArrayList<>();

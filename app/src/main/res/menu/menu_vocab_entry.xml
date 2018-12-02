@@ -7,9 +7,4 @@
     <item
         android:id="@+id/vocab_entry_menu_delete"
         android:title="@string/vocab_entry_menu_delete"/>
-
-    <item
-        android:id="@+id/vocab_entry_menu_pin"
-        android:title="@string/vocab_entry_menu_pin"/>
-
 </menu>

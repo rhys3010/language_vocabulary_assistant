@@ -52,7 +52,7 @@ public class VocabularyEntry {
      * @param wordPrimaryLanguage
      * @param wordSecondaryLanguage
      */
-    public VocabularyEntry(String wordPrimaryLanguage, String wordSecondaryLanguage){
+    public VocabularyEntry(@NonNull String wordPrimaryLanguage, @NonNull  String wordSecondaryLanguage){
         this.wordPrimaryLanguage = wordPrimaryLanguage;
         this.wordSecondaryLanguage = wordSecondaryLanguage;
         // Created now
@@ -63,6 +63,7 @@ public class VocabularyEntry {
      * Returns the vocabulary entry's word in primary language
      * @return
      */
+    @NonNull
     public String getWordPrimaryLanguage() {
         return wordPrimaryLanguage;
     }
@@ -71,6 +72,7 @@ public class VocabularyEntry {
      * Returns the vocabulary entry's word in secondary language
      * @return
      */
+    @NonNull
     public String getWordSecondaryLanguage() {
         return wordSecondaryLanguage;
     }

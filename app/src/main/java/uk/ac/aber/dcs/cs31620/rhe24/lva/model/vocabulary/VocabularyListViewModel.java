@@ -84,6 +84,14 @@ public class VocabularyListViewModel extends AndroidViewModel {
     }
 
     /**
+     * Insert a vocabulary entry into the database
+     * @param entry
+     */
+    public void insertVocabularyEntry(VocabularyEntry entry){
+        repository.insertVocabularyEntry(entry);
+    }
+
+    /**
      * Sets the recycler view adapter
      * @param adapter
      */

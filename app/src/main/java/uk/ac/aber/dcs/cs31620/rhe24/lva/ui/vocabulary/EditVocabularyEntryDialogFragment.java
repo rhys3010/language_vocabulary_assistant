@@ -2,10 +2,12 @@ package uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.support.v4.app.FragmentTransaction;
 import android.support.annotation.Nullable;
 import android.support.v4.app.DialogFragment;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.EditText;
@@ -100,6 +102,7 @@ public class EditVocabularyEntryDialogFragment extends DialogFragment {
         outState.putString(PRIMARY_LANGUAGE_WORD_KEY, primaryWordInput.getText().toString());
         outState.putString(SECONDARY_LANGUAGE_WORD_KEY, secondaryWordInput.getText().toString());
     }
+
 
     /**
      * Setup all the labels to display correct languages and populate word input

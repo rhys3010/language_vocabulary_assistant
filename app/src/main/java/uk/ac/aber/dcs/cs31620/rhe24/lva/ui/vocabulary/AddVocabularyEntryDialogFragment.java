@@ -2,16 +2,22 @@ package uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import org.apache.commons.lang3.StringUtils;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
 
 /**
@@ -84,13 +90,19 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
         // Build the dialog by assigning view
         builder.setView(view);
 
-        // Add buttons
-        // TODO: Add behaviour via viewmodel
-        builder.setPositiveButton(R.string.dialog_add_word, null);
+        // Add Buttons
+        builder.setPositiveButton(R.string.dialog_add_word, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                submitVocabularyEntry();
+            }
+        });
+
         builder.setNegativeButton(R.string.dialog_cancel, null);
 
         return builder.create();
     }
+
 
     /**
      * When instance state is saved, add primary word and secondary word to bundle
@@ -138,5 +150,25 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
                 secondaryWordInput.setText(savedInstanceState.getString(SECONDARY_LANGUAGE_WORD_KEY));
             }
         }
+    }
+
+    /**
+     * Submit the vocabulary entry through the view model
+     */
+    private void submitVocabularyEntry(){
+        // Get the word values
+        String primaryWord = primaryWordInput.getText().toString();
+        String secondaryWord = secondaryWordInput.getText().toString();
+
+        // Verify they're valid (not empty)
+        if(StringUtils.isBlank(primaryWord) || StringUtils.isBlank(secondaryWord)){
+            // Show Error Message
+            Toast.makeText(getActivity(), getString(R.string.invalid_word_input), Toast.LENGTH_SHORT).show();
+        }else{
+            // Add the new entry
+            VocabularyEntry newEntry = new VocabularyEntry(primaryWord, secondaryWord);
+            vocabularyListViewModel.insertVocabularyEntry(newEntry);
+        }
+
     }
 }

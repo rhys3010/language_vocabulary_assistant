@@ -90,17 +90,33 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
         // Build the dialog by assigning view
         builder.setView(view);
 
-        // Add Buttons
-        builder.setPositiveButton(R.string.dialog_add_word, new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialogInterface, int i) {
-                submitVocabularyEntry();
-            }
-        });
-
+        // Add Buttons (declare positive button event handler as null for now)
+        builder.setPositiveButton(R.string.dialog_add_word,null);
         builder.setNegativeButton(R.string.dialog_cancel, null);
 
         return builder.create();
+    }
+
+    /**
+     * Add behaviour to buttons here to prevent automatic dismissal of dialog
+     */
+    @Override
+    public void onStart(){
+        super.onStart();
+        AlertDialog dialog = (AlertDialog)getDialog();
+
+        // Assign behaviour to positive button
+        if(dialog != null){
+            Button positiveButton = dialog.getButton(Dialog.BUTTON_POSITIVE);
+            positiveButton.setOnClickListener(new View.OnClickListener(){
+
+                @Override
+                public void onClick(View v) {
+                    submitVocabularyEntry();
+                }
+            });
+
+        }
     }
 
 

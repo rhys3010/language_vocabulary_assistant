@@ -22,16 +22,15 @@ public class VocabularyListViewModel extends AndroidViewModel {
      */
     private LVARepository repository;
 
-    /**
-     * All Vocabulary Entries
-     */
-    private LiveData<List<VocabularyEntry>> vocabularyList;
 
     /**
      * Recycler View Adapter for Vocabulary List
      */
     private VocabularyListRecyclerAdapter adapter;
 
+    /**
+     * The shared preference manager
+     */
     private SharedPreferencesManager sharedPreferencesManager;
 
     /**
@@ -46,17 +45,31 @@ public class VocabularyListViewModel extends AndroidViewModel {
 
         // Initialize shared prefernce manager
         sharedPreferencesManager = SharedPreferencesManager.getInstance(application.getApplicationContext());
-
-        // Load all vocabulary entries from DB
-        vocabularyList = repository.getAllVocabularyEntries();
     }
 
     /**
      * Gets all vocabulary entries
      * @return
      */
-    public LiveData<List<VocabularyEntry>> getVocabularyList(){
-        return vocabularyList;
+    public LiveData<List<VocabularyEntry>> getVocabularyList(VocabularyListSortType sortType){
+
+        // Return a different list depending on sort
+        switch(sortType){
+
+            case DATE_CREATED_DESC:
+                return repository.getAllVocabularyEntriesByDateCreatedDesc();
+
+            case DATE_CREATED_ASC:
+                return repository.getAllVocabularyEntriesByDateCreatedAsc();
+
+            // Default list (unsorted)
+            case UNSORTED:
+                return repository.getAllVocabularyEntries();
+
+        }
+
+        // Default list (unsorted)
+        return repository.getAllVocabularyEntries();
     }
 
     /**

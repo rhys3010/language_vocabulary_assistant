@@ -72,9 +72,23 @@ public interface VocabularyEntryDao {
     VocabularyEntry fetchVocabularyEntryById(int id);
 
     /**
-     * Get all vocabulary entries ordered by date created
+     * Get all vocabulary entries (unordered)
+     * @return
+     */
+    @Query("SELECT * FROM vocabulary_entries")
+    LiveData<List<VocabularyEntry>> getAllVocabularyEntries();
+
+    /**
+     * Get all vocabulary entries (sorted by creation date descending)
      * @return
      */
     @Query("SELECT * FROM vocabulary_entries ORDER BY created_at DESC")
-    LiveData<List<VocabularyEntry>> getAllVocabularyEntries();
+    LiveData<List<VocabularyEntry>> getAllVocabularyEntriesByDateCreatedDesc();
+
+    /**
+     * Get all vocabulary entries (sorted by creation date ascending)
+     * @return
+     */
+    @Query("SELECT * FROM vocabulary_entries ORDER BY created_at ASC")
+    LiveData<List<VocabularyEntry>> getAllVocabularyEntriesByDateCreatedAsc();
 }

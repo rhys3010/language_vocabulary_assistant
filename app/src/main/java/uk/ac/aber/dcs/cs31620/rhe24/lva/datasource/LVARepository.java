@@ -40,10 +40,26 @@ public class LVARepository {
     }
 
     /**
-     * Get all Vocabulary Entries
+     * Get all Vocabulary Entries (default/unsorted)
      */
     public LiveData<List<VocabularyEntry>> getAllVocabularyEntries(){
         return vocabularyEntryDao.getAllVocabularyEntries();
+    }
+
+    /**
+     * Get all vocabulary Entries (sorted by date created desc)
+     * @return
+     */
+    public LiveData<List<VocabularyEntry>> getAllVocabularyEntriesByDateCreatedDesc(){
+        return vocabularyEntryDao.getAllVocabularyEntriesByDateCreatedDesc();
+    }
+
+    /**
+     * Get all vocabulary Entries (sorted by date created asc)
+     * @return
+     */
+    public LiveData<List<VocabularyEntry>> getAllVocabularyEntriesByDateCreatedAsc(){
+        return vocabularyEntryDao.getAllVocabularyEntriesByDateCreatedAsc();
     }
 
     /**

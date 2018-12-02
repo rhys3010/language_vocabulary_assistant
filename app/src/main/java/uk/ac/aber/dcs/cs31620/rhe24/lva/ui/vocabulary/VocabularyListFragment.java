@@ -12,8 +12,11 @@ import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 
 import java.util.List;
@@ -22,6 +25,7 @@ import java.util.Objects;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListRecyclerAdapter;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListSortType;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.LVAMainActivity;
 
@@ -44,9 +48,15 @@ public class VocabularyListFragment extends Fragment{
     private VocabularyListRecyclerAdapter vocabularyListAdapter;
 
     /**
+     * The vocabulary list
+     */
+    private LiveData<List<VocabularyEntry>> vocabularyEntriesList;
+
+    /**
      * The previous vocabulary list
      */
     private LiveData<List<VocabularyEntry>> oldVocabularyEntries;
+
 
     public VocabularyListFragment() {
         // Required empty public constructor
@@ -69,6 +79,7 @@ public class VocabularyListFragment extends Fragment{
         // Initialize View Model
         vocabularyListViewModel = ViewModelProviders.of(this).get(VocabularyListViewModel.class);
 
+        // Initialize adapter
         vocabularyListAdapter = vocabularyListViewModel.getAdapter();
 
         // If adapter has not yet been created
@@ -77,9 +88,12 @@ public class VocabularyListFragment extends Fragment{
             vocabularyListViewModel.setAdapter(vocabularyListAdapter);
         }
 
+        vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.UNSORTED);
+
         setupRecyclerView(view);
         setupFab(view);
         setupObserver();
+        setupSortIcon(view);
 
         // Set list language preference headings from Shared Preferences
         TextView primaryLanguageLabel = view.findViewById(R.id.language_preference_primary);
@@ -96,8 +110,6 @@ public class VocabularyListFragment extends Fragment{
      * Handle the Live Data observer associated with the vocabulary list
      */
     private void setupObserver(){
-        LiveData<List<VocabularyEntry>> vocabularyEntriesList = vocabularyListViewModel.getVocabularyList();
-
         // Remove any pre-existing observers if the list of vocabulary has changed
         if(!Objects.equals(oldVocabularyEntries, vocabularyEntriesList)){
             if(oldVocabularyEntries != null){
@@ -201,5 +213,53 @@ public class VocabularyListFragment extends Fragment{
                 addVocabDialog.show(getActivity().getSupportFragmentManager(),"fragment_add_vocabulary_entry");
             }
         });
+    }
+
+    /**
+     * Setup the sort icon to display a popup menu
+     */
+    private void setupSortIcon(View view){
+
+        // The sort icon
+        final ImageView sortIcon = view.findViewById(R.id.vocab_list_sort_icon);
+        // Open popup menu on click
+        sortIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // Create the popup menu
+                PopupMenu popupMenu = new PopupMenu(getContext(), sortIcon);
+                popupMenu.inflate(R.menu.menu_vocab_list_sort);
+
+                // Add click listener for the popup menu
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+
+                    @Override
+                    public boolean onMenuItemClick(MenuItem menuItem) {
+                        switch(menuItem.getItemId()){
+
+                            // Sort entries by created date in ascending order and update observer
+                            case R.id.vocab_list_sort_created_asc:
+                                vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.DATE_CREATED_ASC);
+                                setupObserver();
+                                break;
+
+                            // Sort entries by created date in descending order and update observer
+                            case R.id.vocab_list_sort_created_desc:
+                                vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.DATE_CREATED_DESC);
+                                setupObserver();
+                                break;
+                        }
+
+                        return false;
+                    }
+                });
+
+                // Show the popup
+                popupMenu.show();
+
+            }
+        });
+
     }
 }

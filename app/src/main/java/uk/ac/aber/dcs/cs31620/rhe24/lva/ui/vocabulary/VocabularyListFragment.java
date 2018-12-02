@@ -241,15 +241,25 @@ public class VocabularyListFragment extends Fragment{
                             // Sort entries by created date in ascending order and update observer
                             case R.id.vocab_list_sort_created_asc:
                                 vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.DATE_CREATED_ASC);
-                                setupObserver();
                                 break;
 
                             // Sort entries by created date in descending order and update observer
                             case R.id.vocab_list_sort_created_desc:
                                 vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.DATE_CREATED_DESC);
-                                setupObserver();
                                 break;
+
+                            case R.id.vocab_list_sort_alphabet_asc:
+                                vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.ALPHABETICAL_ASC);
+                                break;
+
+                            case R.id.vocab_list_sort_alphabet_desc:
+                                vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.ALPHABETICAL_DESC);
+                                break;
+
                         }
+
+                        // Update Observer
+                        setupObserver();
 
                         return false;
                     }

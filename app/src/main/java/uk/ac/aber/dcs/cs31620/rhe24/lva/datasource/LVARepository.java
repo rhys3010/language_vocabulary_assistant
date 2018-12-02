@@ -63,6 +63,22 @@ public class LVARepository {
     }
 
     /**
+     * Get all vocabulary Entries (sorted alphabetically A-Z)
+     */
+    public LiveData<List<VocabularyEntry>> getAllVocabularyEntriesByAlphabetAsc(){
+        return vocabularyEntryDao.getAllVocabularyEntriesByAlphabetAsc();
+    }
+
+    /**
+     * Get all vocabulary Entries (sorted alphabetically Z-A)
+     */
+    public LiveData<List<VocabularyEntry>> getAllVocabularyEntriesByAlphabetDesc(){
+        return vocabularyEntryDao.getAllVocabularyEntriesByAlphabetDesc();
+    }
+
+
+
+    /**
      * Get a given vocabulary entry by ID
      * @param id
      * @return

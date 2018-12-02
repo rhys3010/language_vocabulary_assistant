@@ -91,4 +91,16 @@ public interface VocabularyEntryDao {
      */
     @Query("SELECT * FROM vocabulary_entries ORDER BY created_at ASC")
     LiveData<List<VocabularyEntry>> getAllVocabularyEntriesByDateCreatedAsc();
+
+    /**
+     * Get all vocabulary Entries (sorted alphabetically Z-A)
+     */
+    @Query("SELECT * FROM vocabulary_entries ORDER BY word_primary_language DESC")
+    LiveData<List<VocabularyEntry>> getAllVocabularyEntriesByAlphabetDesc();
+
+    /**
+     * Get all vocabulary Entries (sorted alphabetically A-Z)
+     */
+    @Query("SELECT * FROM vocabulary_entries ORDER BY word_primary_language ASC")
+    LiveData<List<VocabularyEntry>> getAllVocabularyEntriesByAlphabetAsc();
 }

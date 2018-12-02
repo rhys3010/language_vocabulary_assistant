@@ -62,6 +62,12 @@ public class VocabularyListViewModel extends AndroidViewModel {
             case DATE_CREATED_ASC:
                 return repository.getAllVocabularyEntriesByDateCreatedAsc();
 
+            case ALPHABETICAL_ASC:
+                return repository.getAllVocabularyEntriesByAlphabetAsc();
+
+            case ALPHABETICAL_DESC:
+                return repository.getAllVocabularyEntriesByAlphabetDesc();
+
             // Default list (unsorted)
             case UNSORTED:
                 return repository.getAllVocabularyEntries();

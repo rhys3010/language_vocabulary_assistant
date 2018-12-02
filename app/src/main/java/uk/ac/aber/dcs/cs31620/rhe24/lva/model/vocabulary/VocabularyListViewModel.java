@@ -102,6 +102,7 @@ public class VocabularyListViewModel extends AndroidViewModel {
         return sharedPreferencesManager.getSecondaryLanguage();
     }
 
+
     /**
      * Get whether or not user has set language
      * @return

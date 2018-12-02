@@ -36,12 +36,6 @@ public interface VocabularyEntryDao {
     @Insert(onConflict = IGNORE)
     void insertVocabularyEntry(List<VocabularyEntry> vocabularyEntryList);
 
-    /**
-     * Overloaded method to insert multiple entries from array
-     * @param vocabularyEntries
-     */
-    @Insert(onConflict = IGNORE)
-    void insertVocabularyEntry(VocabularyEntry[] vocabularyEntries);
 
     /**
      * Update a current vocabulary entry

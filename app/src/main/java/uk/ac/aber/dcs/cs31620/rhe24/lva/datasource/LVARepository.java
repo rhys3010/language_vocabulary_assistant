@@ -23,6 +23,7 @@ public class LVARepository {
      */
     private VocabularyEntryDao vocabularyEntryDao;
 
+
     /**
      * Construct the repository
      * @param application
@@ -77,16 +78,6 @@ public class LVARepository {
     }
 
 
-
-    /**
-     * Get a given vocabulary entry by ID
-     * @param id
-     * @return
-     */
-    public VocabularyEntry getVocabularyEntryById(int id){
-        return vocabularyEntryDao.fetchVocabularyEntryById(id);
-    }
-
     /**
      * Delete an individual vocabulary entry
      * @param vocabularyEntry
@@ -139,6 +130,7 @@ public class LVARepository {
         }
     }
 
+
     /**
      * Make database insertions on a seperate thread
      */
@@ -153,7 +145,6 @@ public class LVARepository {
         @Override
         protected Void doInBackground(final VocabularyEntry... params){
             mAsyncTaskDao.insertVocabularyEntry(params[0]);
-
             return null;
         }
     }

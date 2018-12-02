@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -21,6 +22,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.util.SharedPreferencesManager;
@@ -171,6 +173,14 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Delete vocabulary
                 vocabularyListViewModel.deleteVocabularyList();
+
+                // Display snackbar
+                View contentView = findViewById(R.id.coordinator_layout);
+                String snackbarMessage = getString(R.string.snackbar_vocab_deleted);
+
+                Snackbar snackbar = Snackbar.make(contentView, snackbarMessage, Snackbar.LENGTH_LONG);
+
+                snackbar.show();
             }
         });
 

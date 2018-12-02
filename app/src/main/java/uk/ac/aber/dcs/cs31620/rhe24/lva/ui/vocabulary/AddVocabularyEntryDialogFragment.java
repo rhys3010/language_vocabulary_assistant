@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.support.annotation.NonNull;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
@@ -115,7 +116,6 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
                     submitVocabularyEntry();
                 }
             });
-
         }
     }
 
@@ -170,6 +170,7 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
 
     /**
      * Submit the vocabulary entry through the view model
+     * display snackbar to allow 'undo'
      */
     private void submitVocabularyEntry(){
         // Get the word values
@@ -182,11 +183,19 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
             Toast.makeText(getActivity(), getString(R.string.invalid_word_input), Toast.LENGTH_SHORT).show();
         }else{
             // Add the new entry
-            VocabularyEntry newEntry = new VocabularyEntry(primaryWord, secondaryWord);
+            final VocabularyEntry newEntry = new VocabularyEntry(primaryWord, secondaryWord);
             vocabularyListViewModel.insertVocabularyEntry(newEntry);
 
             // Dismiss the dialog
             dismiss();
+
+            // Display snackbar
+            View contentView = getActivity().findViewById(R.id.coordinator_layout);
+            String snackbarMessage = getString(R.string.snackbar_word_added, primaryWord);
+
+            Snackbar snackbar = Snackbar.make(contentView, snackbarMessage, Snackbar.LENGTH_LONG);
+
+            snackbar.show();
         }
 
     }

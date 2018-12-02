@@ -7,9 +7,10 @@
         android:id="@+id/vocab_list_sort_created_asc"
         android:title="@string/vocab_list_sort_created_asc"/>
     <item
-        android:id="@+id/vocab_list_sort_alphabet_desc"
-        android:title="@string/vocab_list_sort_alphabet_asc"/>
-    <item
         android:id="@+id/vocab_list_sort_alphabet_asc"
         android:title="@string/vocab_list_sort_alphabet_desc"/>
+    <item
+        android:id="@+id/vocab_list_sort_alphabet_desc"
+        android:title="@string/vocab_list_sort_alphabet_asc"/>
+
 </menu>

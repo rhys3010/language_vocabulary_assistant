@@ -1,11 +1,13 @@
 package uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary;
 
+import android.app.Dialog;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.databinding.DataBindingUtil;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,6 +22,7 @@ import java.util.List;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.databinding.RecyclerViewVocabEntryBinding;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.LVAMainActivity;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary.EditVocabularyEntryDialogFragment;
 
 /**
  * Recycler View Adapter to display vocabulary list
@@ -150,6 +153,9 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
 
                             // Open the edit entry dialog
                             case R.id.vocab_entry_menu_edit:
+                                // TODO: Fix this maybe? :(
+                                //EditVocabularyEntryDialogFragment editDialog = EditVocabularyEntryDialogFragment.newInstance();
+                                //editDialog.show(((LVAMainActivity)context).getSupportFragmentManager(), "fragment_edit_vocabulary_entry");
                                 break;
 
                             case R.id.vocab_entry_menu_delete:

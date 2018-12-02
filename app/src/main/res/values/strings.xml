@@ -8,6 +8,7 @@
     <string name="nav_options">Options</string>
     <string name="nav_open_drawer">Open Navigation Drawer</string>
     <string name="nav_close_drawer">Close Navigation Drawer</string>
+
     <string name="setup_welcome_text">Welcome to LVA</string>
     <string name="setup_get_started">Get Started</string>
     <string name="setup_welcome_desc_text">Your Personal Vocabulary Assistant</string>
@@ -15,6 +16,7 @@
     <string name="secondary_language_input">Secondary Language</string>
     <string name="invalid_language_input">Please Enter a Primary and Secondary Language</string>
     <string name="language_input_hint">Please Enter Language</string>
+
     <string name="no_language_preference">No Language</string>
     <string name="vocab_entry_options">Vocabulary Entry Options</string>
     <string name="word_input_hint">Please Enter Word or Phrase</string>
@@ -28,11 +30,13 @@
     <string name="vocab_entry_menu_edit">Edit</string>
     <string name="vocab_entry_menu_delete">Delete</string>
     <string name="vocab_entry_menu_pin">Pin</string>
+
     <string name="change_language_dialog_message">Changing language preference will delete your current vocabulary list. This cannot be undone.</string>
     <string name="delete_vocabulary_dialog_title">Delete Vocabulary?</string>
     <string name="change_language_dialog_title">Are you Sure?</string>
     <string name="delete_vocabulary_dialog_message">This will delete your current vocabulary list. This cannot be undone.</string>
     <string name="delete_vocabulary_entry_dialog_title">Delete This Vocabulary Entry?</string>
+
     <string name="vocab_list_sort_icon">Sort Vocabulary List By Date</string>
     <string name="vocab_list_sort_created_asc">Oldest to Newest</string>
     <string name="vocab_list_sort_created_desc">Newest to Oldest</string>
@@ -41,10 +45,17 @@
     <string name="vocab_list_sort_alphabet_asc">Z-A</string>
     <string name="vocab_list_empty_title">Empty Vocabulary</string>
     <string name="vocab_list_empty_message">Click the + button to start adding words</string>
+
     <string name="snackbar_word_added">\'%1$s\' Added</string>
     <string name="undo">Undo</string>
     <string name="snackbar_word_deleted">Entry Deleted</string>
     <string name="snackbar_vocab_deleted">Vocabulary Deleted</string>
+
+    <string name="practice_last_test_time">Last Practice</string>
+    <string name="practice_most_recent_score">Most Recent Practice Score</string>
+    <string name="practice_average_score">Average Practice Score</string>
+    <string name="practice_best_score">Best Practice Score</string>
+    <string name="practice_start_button">Start Practice</string>
 
     <string-array name="language_suggestions_array">
         <item>Afrikaans</item>

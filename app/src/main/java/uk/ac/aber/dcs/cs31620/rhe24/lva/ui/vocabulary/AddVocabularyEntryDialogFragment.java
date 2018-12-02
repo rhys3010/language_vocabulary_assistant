@@ -2,7 +2,6 @@ package uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
@@ -118,7 +117,6 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
             });
         }
     }
-
 
     /**
      * When instance state is saved, add primary word and secondary word to bundle

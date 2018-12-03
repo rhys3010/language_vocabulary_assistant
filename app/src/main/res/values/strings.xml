@@ -57,7 +57,8 @@
     <string name="practice_best_score">Best Practice Score</string>
     <string name="practice_start_button">Start Practice</string>
     <string name="practice_submit">Submit</string>
-    <string name="practice_discard">Discard</string>
+    <string name="practice_discard">Give Up</string>
+    <string name="practice_answer_hint">Enter Translation</string>
 
     <string-array name="language_suggestions_array">
         <item>Afrikaans</item>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="vocabEntry"
+            type="uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry"/>
+    </data>
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/RecyclerViewItem"
+        android:background="@android:color/white"
+        android:layout_marginTop="@dimen/recycler_view_item_margin_top">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="start"
+            android:text="@{vocabEntry.wordPrimaryLanguage}"/>
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:layout_marginStart="5dp"
+            android:gravity="start"
+            android:theme="@style/TextInputTheme"
+            android:inputType="textCapSentences"
+            android:imeOptions="actionNext"
+            android:maxLength="50"
+            android:hint="@string/practice_answer_hint"/>
+
+    </LinearLayout>
+
+
+</layout>

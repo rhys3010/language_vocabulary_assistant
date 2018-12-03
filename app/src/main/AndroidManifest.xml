@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name="uk.ac.aber.dcs.cs31620.rhe24.lva.ui.LVASetupActivity" android:screenOrientation="portrait"></activity>
-        <activity android:name=".ui.practice.PracticeActivity"></activity>
+        <activity android:name=".ui.practice.PracticeActivity" android:windowSoftInputMode="stateHidden"></activity>
     </application>
 
 </manifest>

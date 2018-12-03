@@ -4,10 +4,13 @@
     <dimen name="default_padding">10dp</dimen>
     <dimen name="lang_input_width">300dp</dimen>
     <dimen name="lang_input_margin">50dp</dimen>
-    <dimen name="vocab_list_entry_margin">2.5dp</dimen>
-    <dimen name="vocab_list_entry_vertical_padding">20dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="empty_list_view_margin">50dp</dimen>
     <dimen name="practice_stats_margin">20dp</dimen>
     <dimen name="practice_start_button_margin">40dp</dimen>
+
+    <dimen name="recycler_view_item_margin_top">2.5dp</dimen>
+    <dimen name="recycler_view_item_vertical_padding">10dp</dimen>
+    <dimen name="recycler_view_item_end_padding">2.5dp</dimen>
+    <dimen name="recycler_view_item_start_padding">5dp</dimen>
 </resources>

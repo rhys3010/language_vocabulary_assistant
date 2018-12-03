@@ -71,4 +71,13 @@
         <item name="android:textSize">46sp</item>
     </style>
 
+    <!-- Custom RecyclerView Item -->
+    <style name="RecyclerViewItem">
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingStart">@dimen/recycler_view_item_start_padding</item>
+        <item name="android:paddingEnd">@dimen/recycler_view_item_end_padding</item>
+        <item name="android:paddingTop">@dimen/recycler_view_item_vertical_padding</item>
+        <item name="android:paddingBottom">@dimen/recycler_view_item_vertical_padding</item>
+    </style>
+
 </resources>

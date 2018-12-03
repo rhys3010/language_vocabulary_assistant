@@ -3,8 +3,6 @@ package uk.ac.aber.dcs.cs31620.rhe24.lva.ui;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -25,9 +23,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
-import uk.ac.aber.dcs.cs31620.rhe24.lva.model.util.SharedPreferencesManager;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
-import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.practice.PracticeFragment;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.practice.PracticeOverviewFragment;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary.VocabularyListFragment;
 
 /**
@@ -43,6 +40,7 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
      */
     private static final int VOCAB_LIST_TAB = 0;
     private static final int PRACTICE_TAB = 1;
+
 
     /**
      * The view model class to interface with the persistent data
@@ -121,6 +119,7 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
 
         return true;
     }
+
 
     /**
      * Prompt for confirmation and delete the user's language preferences
@@ -250,7 +249,7 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
         public Fragment getItem(int position){
             switch(position){
                 case VOCAB_LIST_TAB: return new VocabularyListFragment();
-                case PRACTICE_TAB: return new PracticeFragment();
+                case PRACTICE_TAB: return new PracticeOverviewFragment();
             }
 
             return null;

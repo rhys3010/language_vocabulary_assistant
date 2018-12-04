@@ -68,7 +68,7 @@
     </style>
 
     <style name="PracticeScoreContentTheme">
-        <item name="android:textSize">46sp</item>
+        <item name="android:textSize">42sp</item>
     </style>
 
     <!-- Custom RecyclerView Item -->

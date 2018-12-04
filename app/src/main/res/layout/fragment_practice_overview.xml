@@ -32,7 +32,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_marginTop="@dimen/default_margin">
+                android:layout_marginTop="@dimen/default_margin"
+                android:gravity="center_horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -42,6 +43,7 @@
                     android:theme="@style/PracticeScoreHeadingTheme"/>
 
                 <TextView
+                    android:id="@+id/last_practice_time_label"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/default_margin"
@@ -63,7 +65,7 @@
                     android:text="@string/practice_most_recent_score"
                     android:theme="@style/PracticeScoreHeadingTheme"/>
 
-                <FrameLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal">
@@ -77,13 +79,25 @@
                         android:progressDrawable="@drawable/score_display_progress_background" />
 
                     <ProgressBar
+                        android:id="@+id/most_recent_score_progress"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:max="100"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/score_display_progress_foreground"/>
-                </FrameLayout>
+                        android:progress="10"
+                        android:progressDrawable="@drawable/score_display_progress_foreground"
+                        android:rotation="-90"/>
+
+                    <TextView
+                        android:id="@+id/most_recent_score_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textSize="@dimen/practice_score_size"
+                        android:layout_centerInParent="true"
+                        android:gravity="center"
+                        android:text="6/10"/>
+
+                </RelativeLayout>
             </LinearLayout>
 
             <!-- Average Score -->
@@ -101,7 +115,7 @@
                     android:text="@string/practice_average_score"
                     android:theme="@style/PracticeScoreHeadingTheme"/>
 
-                <FrameLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal">
@@ -115,13 +129,24 @@
                         android:progressDrawable="@drawable/score_display_progress_background" />
 
                     <ProgressBar
+                        android:id="@+id/average_score_progress"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:max="100"
                         android:progress="0"
-                        android:progressDrawable="@drawable/score_display_progress_foreground"/>
-                </FrameLayout>
+                        android:progressDrawable="@drawable/score_display_progress_foreground"
+                        android:rotation="-90"/>
+
+                    <TextView
+                        android:id="@+id/average_score_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="@dimen/practice_score_size"
+                        android:gravity="center"
+                        android:text="6/10"/>
+                </RelativeLayout>
             </LinearLayout>
 
             <!-- Best Score -->
@@ -139,7 +164,7 @@
                     android:text="@string/practice_best_score"
                     android:theme="@style/PracticeScoreHeadingTheme"/>
 
-                <FrameLayout
+                <RelativeLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal">
@@ -153,13 +178,24 @@
                         android:progressDrawable="@drawable/score_display_progress_background" />
 
                     <ProgressBar
+                        android:id="@+id/best_score_progress"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="150dp"
                         android:layout_height="150dp"
                         android:max="100"
-                        android:progress="0"
-                        android:progressDrawable="@drawable/score_display_progress_foreground"/>
-                </FrameLayout>
+                        android:progress="60"
+                        android:progressDrawable="@drawable/score_display_progress_foreground"
+                        android:rotation="-90"/>
+
+                    <TextView
+                        android:id="@+id/best_score_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:textSize="@dimen/practice_score_size"
+                        android:gravity="center"
+                        android:text="6/10"/>
+                </RelativeLayout>
             </LinearLayout>
 
         </LinearLayout>

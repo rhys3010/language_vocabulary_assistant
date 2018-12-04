@@ -254,11 +254,9 @@ public class PracticeActivity extends AppCompatActivity {
 
         // Add behaviour to submit button
         submitButton.setOnClickListener(new View.OnClickListener(){
-
             @Override
             public void onClick(View view) {
-                PracticeAnswer answer = answers.get(0);
-                System.out.println(answer.getAnswer() + " : " + answer.getCorrectAnswer() + " : " + answer.getQuestion());
+                submitPractice();
             }
         });
     }
@@ -286,5 +284,33 @@ public class PracticeActivity extends AppCompatActivity {
 
         // Show the dialog
         dialogBuilder.show();
+    }
+
+    /**
+     * Submit the practice attempt
+     */
+    private void submitPractice(){
+        // The score for the practice attempt
+        int score = 0;
+
+        // Traverse dictionary to add up score
+        for(int i = 0; i < answers.size(); i++){
+            int key = answers.keyAt(i);
+
+            // Increment score if answer was correct
+            if(answers.get(key).isAnswerCorrect()){
+                score++;
+            }
+        }
+
+        // TEMP
+        // display score in a dialog
+        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
+        dialogBuilder.setTitle("Finished");
+        dialogBuilder.setMessage("Your Score: " + score);
+        dialogBuilder.show();
+
+        // End Activity
+        finish();
     }
 }

@@ -198,7 +198,7 @@ public class PracticeActivity extends AppCompatActivity {
             return answer.getAnswer();
         }
 
-        // Return emmpty string if no answer was found
+        // Return empty string if no answer was found
         return "";
     }
 

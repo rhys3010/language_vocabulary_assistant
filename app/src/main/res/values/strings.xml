@@ -51,7 +51,7 @@
     <string name="snackbar_word_deleted">Entry Deleted</string>
     <string name="snackbar_vocab_deleted">Vocabulary Deleted</string>
 
-    <string name="practice_last_test_time">Last Practice</string>
+    <string name="practice_last_test_time">Last Practice Time</string>
     <string name="practice_most_recent_score">Most Recent Practice Score</string>
     <string name="practice_average_score">Average Practice Score</string>
     <string name="practice_best_score">Best Practice Score</string>
@@ -65,6 +65,7 @@
     <string name="practice_score_label">You Scored: </string>
     <string name="practice_score">%1$d/%2$d</string>
     <string name="practice_incorrect_answers"><u>Incorrect Answers</u></string>
+    <string name="practice_no_answer">Unanswered</string>
 
     <string-array name="language_suggestions_array">
         <item>Afrikaans</item>

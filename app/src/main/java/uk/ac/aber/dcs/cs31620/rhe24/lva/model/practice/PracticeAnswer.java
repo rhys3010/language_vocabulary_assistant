@@ -109,6 +109,14 @@ public class PracticeAnswer implements Parcelable {
     }
 
     /**
+     * Set the user's answer to the question
+     * @param answer
+     */
+    public void setAnswer(String answer){
+        this.answer = answer;
+    }
+
+    /**
      * The CREATOR constant for parcelable
      */
     public static final Parcelable.Creator<PracticeAnswer> CREATOR = new Parcelable.Creator<PracticeAnswer>(){

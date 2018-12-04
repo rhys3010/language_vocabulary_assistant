@@ -50,7 +50,7 @@ public abstract class LVARoomDatabase extends RoomDatabase {
         if(INSTANCE == null){
             synchronized(LVARoomDatabase.class){
                 if (INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), LVARoomDatabase.class, "lva_database").addCallback(sRoomDatabaseCallback).addMigrations(MIGRATION_1_2).build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), LVARoomDatabase.class, "lva_database").addMigrations(MIGRATION_1_2).build();
                 }
             }
         }
@@ -69,75 +69,4 @@ public abstract class LVARoomDatabase extends RoomDatabase {
 
         }
     };
-
-    /**
-     * Allows for database initialization
-     */
-    private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
-
-        @Override
-        public void onOpen(@NonNull SupportSQLiteDatabase db){
-            super.onOpen(db);
-
-            // Ensure databse is built in a seperate thread
-            new PopulateDbAsync(INSTANCE).execute();
-        }
-    };
-
-    /**
-     * Inner Class to Populate the database initially
-     */
-    private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
-
-        /**
-         * The Data Access Object for vocabulary entry
-         */
-        private final VocabularyEntryDao vocabularyEntryDao;
-        private final PracticeAttemptDao practiceAttemptDao;
-
-        PopulateDbAsync(LVARoomDatabase db){
-            vocabularyEntryDao = db.getVocabularyEntryDao();
-            practiceAttemptDao = db.getPracticeAttemptDao();
-        }
-
-        @Override
-        protected Void doInBackground(final Void... params){
-
-            // Nuke table
-            vocabularyEntryDao.deleteAll();
-            practiceAttemptDao.deleteAll();
-
-            // TEMP
-            // Populate Database with test data
-            List<VocabularyEntry> vocabList = new ArrayList<>();
-
-            vocabList.add(new VocabularyEntry("Complete", "Gorffen"));
-            vocabList.add(new VocabularyEntry("House", "Ty"));
-            vocabList.add(new VocabularyEntry("First", "Cyntaf"));
-            vocabList.add(new VocabularyEntry("Look", "Edrych"));
-            vocabList.add(new VocabularyEntry("New", "Newydd"));
-            vocabList.add(new VocabularyEntry("Truck", "Tryc"));
-            vocabList.add(new VocabularyEntry("Christmas", "Nadolig"));
-            vocabList.add(new VocabularyEntry("Attempting", "Ymdrechu"));
-            vocabList.add(new VocabularyEntry("Worked", "Gweithio"));
-            vocabList.add(new VocabularyEntry("Working", "Gweithio"));
-            vocabList.add(new VocabularyEntry("Job", "Swydd"));
-            vocabList.add(new VocabularyEntry("Hurts", "Brifo"));
-            vocabList.add(new VocabularyEntry("Cutest", "Delaf"));
-            vocabList.add(new VocabularyEntry("Turkey", "Twrci"));
-            vocabList.add(new VocabularyEntry("New House", "Ty Newydd"));
-            vocabList.add(new VocabularyEntry("Compared to last time", "Cymharu i tro dwaethaf"));
-            vocabList.add(new VocabularyEntry("Thank you", "Diolch"));
-            vocabList.add(new VocabularyEntry("How are you?", "Syt wyt ti?"));
-            vocabList.add(new VocabularyEntry("Singing", "Canu"));
-            vocabList.add(new VocabularyEntry("Television", "Teledu"));
-
-            vocabularyEntryDao.insertVocabularyEntry(vocabList);
-
-            practiceAttemptDao.insertPracticeAttempt(new PracticeAttempt(6, 10));
-            practiceAttemptDao.insertPracticeAttempt(new PracticeAttempt(3, 10));
-
-            return null;
-        }
-    }
 }

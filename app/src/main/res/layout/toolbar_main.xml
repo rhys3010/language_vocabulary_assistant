@@ -5,4 +5,4 @@
     app:title="@string/app_name"
     android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
     android:background="?attr/colorPrimary"
-    app:layout_scrollFlags="scroll|enterAlways"/>
+    app:layout_scrollFlags="scroll|enterAlways|snap"/>

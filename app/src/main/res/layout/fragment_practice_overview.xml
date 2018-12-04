@@ -19,7 +19,8 @@
         android:id="@+id/dashboard_grid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/practice_start_button">
+        android:layout_below="@id/practice_start_button"
+        android:scrollbars="vertical">
 
         <LinearLayout
             android:layout_width="match_parent"

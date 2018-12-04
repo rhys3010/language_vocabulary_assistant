@@ -21,6 +21,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttempt;
@@ -106,13 +107,15 @@ public class PracticeOverviewFragment extends Fragment {
             public void onChanged(@Nullable PracticeAttempt practiceAttempt) {
                 if(practiceAttempt != null) {
                     // Display the date as nicely formatted and locale specific
-                    String date = new SimpleDateFormat("dd/MM/yy - HH:mm", getResources().getConfiguration().locale).format(practiceAttempt.getDateCreated());
+                    // Using java's Locale method because there are no internal locale changes in the app, so system default is OK
+                    String date = new SimpleDateFormat("dd/MM/yy - HH:mm", Locale.getDefault()).format(practiceAttempt.getDateCreated());
                     mostRecentPracticeTimeLabel.setText(date);
                     // Convert score to percentage
                     int score = (int)(((float)practiceAttempt.getScore() / (float)practiceAttempt.getMaxScore()) * 100);
                     mostRecentPracticeScoreLabel.setText(getString(R.string.practice_score_percentage, score));
                     mostRecentPracticeScoreProgress.setProgress(score);
                 }else{
+                    mostRecentPracticeTimeLabel.setText(R.string.practice_no_recent_practices);
                     mostRecentPracticeScoreLabel.setText(getString(R.string.practice_score_0));
                     mostRecentPracticeScoreProgress.setProgress(0);
                 }

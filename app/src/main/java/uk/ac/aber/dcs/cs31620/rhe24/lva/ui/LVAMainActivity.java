@@ -117,9 +117,6 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
             case R.id.nav_delete_vocab:
                 deleteVocabulary();
                 break;
-
-            case R.id.nav_about:
-                break;
         }
 
         // Close nav drawer after selection is made

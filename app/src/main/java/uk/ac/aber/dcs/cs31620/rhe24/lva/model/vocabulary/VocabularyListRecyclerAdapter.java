@@ -148,14 +148,6 @@ public class VocabularyListRecyclerAdapter extends RecyclerView.Adapter<Vocabula
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
                         switch(menuItem.getItemId()){
-
-                            // Open the edit entry dialog
-                            case R.id.vocab_entry_menu_edit:
-                                // TODO: Fix this maybe? :(
-                                //EditVocabularyEntryDialogFragment editDialog = EditVocabularyEntryDialogFragment.newInstance();
-                                //editDialog.show(((LVAMainActivity)context).getSupportFragmentManager(), "fragment_edit_vocabulary_entry");
-                                break;
-
                             case R.id.vocab_entry_menu_delete:
                                 deleteEntry(position);
                                 break;

@@ -27,6 +27,7 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttempt;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeViewModel;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.practice.PracticeOverviewFragment;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary.AddVocabularyEntryDialogFragment;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary.VocabularyListFragment;
 
 /**
@@ -43,16 +44,16 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
     private static final int VOCAB_LIST_TAB = 0;
     private static final int PRACTICE_TAB = 1;
 
-
     /**
      * The view model class for vcocabulary lsit to interface with the persistent data
      */
     private VocabularyListViewModel vocabularyListViewModel;
 
     /**
-     * The View model class for practice  to interface with persistent data
+     * The View model class for practice to interface with persistent data
      */
     private PracticeViewModel practiceViewModel;
+
 
     /**
      * Called when the main activity is created
@@ -73,6 +74,10 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
             startActivity(intent);
             finish();
         }
+
+
+        // Setup the floating action button
+        setupFab();
 
         // Set toolbar to replace the app's default action bar
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -123,6 +128,27 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
         drawer.closeDrawers();
 
         return true;
+    }
+
+
+    /**
+     * Setup the Floating Action Button to open new vocab entry
+     * dialog when clicked
+     */
+    private void setupFab(){
+        final FloatingActionButton fab = findViewById(R.id.vocabulary_fab);
+
+        fab.setOnClickListener(new View.OnClickListener(){
+            /**
+             * Open the custom add new vocab entry dialog when clicked
+             * @param view
+             */
+            @Override
+            public void onClick(View view){
+                AddVocabularyEntryDialogFragment addVocabDialog = AddVocabularyEntryDialogFragment.newInstance();
+                addVocabDialog.show(getSupportFragmentManager(),"fragment_add_vocabulary_entry");
+            }
+        });
     }
 
 

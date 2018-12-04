@@ -89,7 +89,6 @@ public class VocabularyListFragment extends Fragment{
         vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.UNSORTED);
 
         setupRecyclerView(view);
-        setupFab(view);
         setupObserver();
         setupSortIcon(view);
 
@@ -165,10 +164,9 @@ public class VocabularyListFragment extends Fragment{
                     fab.hide();
                 }
 
-                // If recycle view can scroll no further, show FAB and cancel current scroll
+                // If recycle view can scroll no further,  cancel current scroll
                 // (fixes weird delay when recycle view is flung to top/bottom)
                 if(!recyclerView.canScrollVertically(-1) || !recyclerView.canScrollVertically(1)){
-                    fab.show();
                     recyclerView.stopScroll();
                 }
             }
@@ -191,27 +189,6 @@ public class VocabularyListFragment extends Fragment{
         });
     }
 
-    /**
-     * Setup the Floating Action Button to open new vocab entry
-     * dialog when clicked
-     * @param view
-     */
-    private void setupFab(View view){
-        final FloatingActionButton fab = getActivity().findViewById(R.id.vocabulary_fab);
-
-        fab.setOnClickListener(new View.OnClickListener(){
-
-            /**
-             * Open the custom add new vocab entry dialog when clicked
-             * @param view
-             */
-            @Override
-            public void onClick(View view){
-                AddVocabularyEntryDialogFragment addVocabDialog = AddVocabularyEntryDialogFragment.newInstance();
-                addVocabDialog.show(getActivity().getSupportFragmentManager(),"fragment_add_vocabulary_entry");
-            }
-        });
-    }
 
     /**
      * Setup the sort icon to display a popup menu

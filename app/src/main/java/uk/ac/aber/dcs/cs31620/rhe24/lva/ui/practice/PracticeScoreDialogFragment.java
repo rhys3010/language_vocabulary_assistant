@@ -4,7 +4,8 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
-import android.support.v7.app.AlertDialog;
+import android.app.AlertDialog;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -109,11 +110,11 @@ public class PracticeScoreDialogFragment extends DialogFragment {
         // Colour the score label depending on score
         // 0-3 RED, 4-7 AMBER, 8-10 GREEN
         if(score >= 0 && score < 4){
-            scoreLabel.setTextColor(getResources().getColor(R.color.colorDanger));
+            scoreLabel.setTextColor(ContextCompat.getColor(getContext(), R.color.colorDanger));
         }else if(score > 4 && score < 7){
-            scoreLabel.setTextColor(getResources().getColor(R.color.colorWarning));
+            scoreLabel.setTextColor(ContextCompat.getColor(getContext(), R.color.colorWarning));
         }else{
-            scoreLabel.setTextColor(getResources().getColor(R.color.colorSuccess));
+            scoreLabel.setTextColor(ContextCompat.getColor(getContext(), R.color.colorSuccess));
         }
     }
 }

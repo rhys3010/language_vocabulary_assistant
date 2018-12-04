@@ -10,20 +10,18 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:theme="@style/RecyclerViewItem">
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:gravity="center_horizontal"
             android:text="@{answer.question}"/>
 
         <TextView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:gravity="center_horizontal"
             android:textColor="@color/colorDanger"
             android:text="@{answer.answer}"/>
 
@@ -31,7 +29,6 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="3"
-            android:gravity="center_horizontal"
             android:textColor="@color/colorSuccess"
             android:text="@{answer.correctAnswer}"/>
     </LinearLayout>

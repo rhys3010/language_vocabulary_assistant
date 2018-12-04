@@ -47,7 +47,9 @@ public class PracticeActivity extends AppCompatActivity {
      * Saved Instance state keys
      */
     private static final String CURRENT_LIST_KEY = "CURRENT_LIST";
-    private static final String ANSWERS_KEY = "ANSWERS_KEY";
+    private static final String ANSWERS_KEY = "ANSWERS";
+    private static final String INCORRECT_ANSWERS_KEY = "INCORRECT_ANSWERS";
+    private static final String SCORE_KEY = "SCORE";
 
     /**
      * The view model to interface with database
@@ -106,6 +108,10 @@ public class PracticeActivity extends AppCompatActivity {
         }else{
             // If saved instance state is available, get the answers from there
             answers = savedInstanceState.getSparseParcelableArray(ANSWERS_KEY);
+            // Get incorrect answers
+            incorrectAnswers = savedInstanceState.getParcelableArrayList(INCORRECT_ANSWERS_KEY);
+            // Get score
+            score = savedInstanceState.getInt(SCORE_KEY);
         }
 
 
@@ -156,11 +162,18 @@ public class PracticeActivity extends AppCompatActivity {
         super.onSaveInstanceState(outState);
 
         // Save question set (cast as ArrayList (for some reason it doesnt like List<> ??))
-        ArrayList<VocabularyEntry> list = new ArrayList<>(currentList);
-        outState.putParcelableArrayList(CURRENT_LIST_KEY, list);
+        ArrayList<VocabularyEntry> vocabularyList = new ArrayList<>(currentList);
+        outState.putParcelableArrayList(CURRENT_LIST_KEY, vocabularyList);
 
         // Save answers to instance state
         outState.putSparseParcelableArray(ANSWERS_KEY, answers);
+
+        // Save incorrect answers to instance state
+        ArrayList<PracticeAnswer>  incorrectAnswersList = new ArrayList<>(incorrectAnswers);
+        outState.putParcelableArrayList(INCORRECT_ANSWERS_KEY, incorrectAnswersList);
+
+        // Save score to instance state
+        outState.putInt(SCORE_KEY, score);
     }
 
     /**

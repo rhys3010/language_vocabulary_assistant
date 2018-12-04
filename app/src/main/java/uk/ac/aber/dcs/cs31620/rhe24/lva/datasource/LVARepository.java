@@ -6,6 +6,8 @@ import android.os.AsyncTask;
 
 import java.util.List;
 
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttempt;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttemptDao;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntryDao;
 
@@ -23,6 +25,11 @@ public class LVARepository {
      */
     private VocabularyEntryDao vocabularyEntryDao;
 
+    /**
+     * The data access object for practice attempt
+     */
+    private PracticeAttemptDao practiceAttemptDao;
+
 
     /**
      * Construct the repository
@@ -31,13 +38,21 @@ public class LVARepository {
     public LVARepository(Application application){
         LVARoomDatabase db = LVARoomDatabase.getDatabase(application);
         vocabularyEntryDao = db.getVocabularyEntryDao();
+        practiceAttemptDao = db.getPracticeAttemptDao();
     }
 
     /**
      * Insert a vocabulary entry to the database using VocabularyEntryDAO
      */
     public void insertVocabularyEntry(VocabularyEntry vocabularyEntry){
-        new InsertAsyncTask(vocabularyEntryDao).execute(vocabularyEntry);
+        new InsertVocabularyEntryAsyncTask(vocabularyEntryDao).execute(vocabularyEntry);
+    }
+
+    /**
+     * Insert a practice attempt into the database
+     */
+    public void insertPracticeAttempt(PracticeAttempt practiceAttempt){
+        new InsertPracticeAttemptAsyncTask(practiceAttemptDao).execute(practiceAttempt);
     }
 
     /**
@@ -77,29 +92,56 @@ public class LVARepository {
         return vocabularyEntryDao.getAllVocabularyEntriesByAlphabetDesc();
     }
 
+    /**
+     * Get all practice attempts
+     */
+    public LiveData<List<PracticeAttempt>> getAllPracticeAttempts(){
+        return practiceAttemptDao.getAllPracticeAttempts();
+    }
+
+    /**
+     * Get most recent practice attempt
+     */
+    public LiveData<PracticeAttempt> getMostRecentPracticeAttempt(){
+        return practiceAttemptDao.getMostRecentPracticeAttempt();
+    }
+
+    /**
+     * Get best practice attempt
+     */
+    public LiveData<PracticeAttempt> getBestPracticeAttempt(){
+        return practiceAttemptDao.getBestPracticeAttempt();
+    }
 
     /**
      * Delete an individual vocabulary entry
      * @param vocabularyEntry
      */
     public void deleteVocabularyEntry(VocabularyEntry vocabularyEntry){
-        new DeleteAsyncTask(vocabularyEntryDao).execute(vocabularyEntry);
+        new DeleteVocabularyEntryAsyncTask(vocabularyEntryDao).execute(vocabularyEntry);
     }
 
     /**
      * Delete entire list
      */
     public void deleteVocabularyList(){
-        new DeleteAllAsyncTask(vocabularyEntryDao).execute();
+        new DeleteAllVocabularyEntriesAsyncTask(vocabularyEntryDao).execute();
     }
 
     /**
-     * Make deletions on a seperate thread
+     * Delete All Practice Attempts
      */
-    private static class DeleteAsyncTask extends AsyncTask<VocabularyEntry, Void, Void>{
+    public void deleteAllPracticeAttempts(){
+        new DeleteAllPracticeAttemptsAsyncTask(practiceAttemptDao).execute();
+    }
+
+    /**
+     * Make vocabulary entry deletions on a seperate thread
+     */
+    private static class DeleteVocabularyEntryAsyncTask extends AsyncTask<VocabularyEntry, Void, Void>{
         private VocabularyEntryDao mAsyncTaskDao;
 
-        DeleteAsyncTask(VocabularyEntryDao vocabularyEntryDao){
+        DeleteVocabularyEntryAsyncTask(VocabularyEntryDao vocabularyEntryDao){
             mAsyncTaskDao = vocabularyEntryDao;
         }
 
@@ -112,13 +154,13 @@ public class LVARepository {
     }
 
     /**
-     * Perform database clear on seperate thread
+     * Remove all vocabulary entries on a seperate thread
      */
-    private static class DeleteAllAsyncTask extends AsyncTask<Void, Void, Void>{
+    private static class DeleteAllVocabularyEntriesAsyncTask extends AsyncTask<Void, Void, Void>{
 
         private VocabularyEntryDao mAsyncTaskDao;
 
-        DeleteAllAsyncTask(VocabularyEntryDao vocabularyEntryDao){
+        DeleteAllVocabularyEntriesAsyncTask(VocabularyEntryDao vocabularyEntryDao){
             mAsyncTaskDao = vocabularyEntryDao;
         }
 
@@ -130,21 +172,57 @@ public class LVARepository {
         }
     }
 
+    /**
+     * Remove all practice attempts on a seperate thread
+     */
+    private static class DeleteAllPracticeAttemptsAsyncTask extends AsyncTask<Void, Void, Void>{
+
+        private PracticeAttemptDao mAsyncTaskDao;
+
+        DeleteAllPracticeAttemptsAsyncTask(PracticeAttemptDao practiceAttemptDao){
+            mAsyncTaskDao = practiceAttemptDao;
+        }
+
+        @Override
+        protected Void doInBackground(final Void... params){
+            mAsyncTaskDao.deleteAll();
+            return null;
+        }
+    }
+
 
     /**
-     * Make database insertions on a seperate thread
+     * Insert Vocabulary Entries on a seperate thread
      */
-    private static class InsertAsyncTask extends AsyncTask<VocabularyEntry, Void, Void>{
+    private static class InsertVocabularyEntryAsyncTask extends AsyncTask<VocabularyEntry, Void, Void>{
 
         private VocabularyEntryDao mAsyncTaskDao;
 
-        InsertAsyncTask(VocabularyEntryDao vocabularyEntryDao){
+        InsertVocabularyEntryAsyncTask(VocabularyEntryDao vocabularyEntryDao){
             mAsyncTaskDao = vocabularyEntryDao;
         }
 
         @Override
         protected Void doInBackground(final VocabularyEntry... params){
             mAsyncTaskDao.insertVocabularyEntry(params[0]);
+            return null;
+        }
+    }
+
+    /**
+     * Insert Practice Attempts on a seperate thread
+     */
+    private static class InsertPracticeAttemptAsyncTask extends AsyncTask<PracticeAttempt, Void, Void>{
+
+        private PracticeAttemptDao mAsyncTaskDao;
+
+        InsertPracticeAttemptAsyncTask(PracticeAttemptDao practiceAttemptDao){
+            mAsyncTaskDao = practiceAttemptDao;
+        }
+
+        @Override
+        protected Void doInBackground(final PracticeAttempt... params){
+            mAsyncTaskDao.insertPracticeAttempt(params[0]);
             return null;
         }
     }

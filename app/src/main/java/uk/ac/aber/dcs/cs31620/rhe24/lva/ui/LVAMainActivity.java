@@ -23,6 +23,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttempt;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeViewModel;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.practice.PracticeOverviewFragment;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary.VocabularyListFragment;
@@ -43,9 +45,14 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
 
 
     /**
-     * The view model class to interface with the persistent data
+     * The view model class for vcocabulary lsit to interface with the persistent data
      */
     private VocabularyListViewModel vocabularyListViewModel;
+
+    /**
+     * The View model class for practice  to interface with persistent data
+     */
+    private PracticeViewModel practiceViewModel;
 
     /**
      * Called when the main activity is created
@@ -55,8 +62,9 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lvamain);
-        // Initialize View Model
+        // Initialize View Models
         vocabularyListViewModel = ViewModelProviders.of(this).get(VocabularyListViewModel.class);
+        practiceViewModel = ViewModelProviders.of(this).get(PracticeViewModel.class);
 
         // Check is there is already a language selection saved
         if(!vocabularyListViewModel.isLanguageSaved()){
@@ -142,6 +150,8 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
                 vocabularyListViewModel.deleteLanguages();
                 // Delete vocabulary
                 vocabularyListViewModel.deleteVocabularyList();
+                // Delete Practice attempts
+                practiceViewModel.deleteAllPracticeAttempts();
 
                 // Change screen
                 // Switch to setup screen
@@ -172,6 +182,8 @@ public class LVAMainActivity extends AppCompatActivity implements NavigationView
             public void onClick(DialogInterface dialogInterface, int i) {
                 // Delete vocabulary
                 vocabularyListViewModel.deleteVocabularyList();
+                // Delete Practice attempts
+                practiceViewModel.deleteAllPracticeAttempts();
 
                 // Display snackbar
                 View contentView = findViewById(R.id.coordinator_layout);

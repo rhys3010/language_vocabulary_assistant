@@ -34,7 +34,7 @@
     <string name="change_language_dialog_message">Changing language preference will delete your current vocabulary list. This cannot be undone.</string>
     <string name="delete_vocabulary_dialog_title">Delete Vocabulary?</string>
     <string name="change_language_dialog_title">Are you Sure?</string>
-    <string name="delete_vocabulary_dialog_message">This will delete your current vocabulary list. This cannot be undone.</string>
+    <string name="delete_vocabulary_dialog_message">This will delete your current vocabulary list and practice scores. This cannot be undone.</string>
     <string name="delete_vocabulary_entry_dialog_title">Delete This Vocabulary Entry?</string>
 
     <string name="vocab_list_sort_icon">Sort Vocabulary List By Date</string>
@@ -51,11 +51,16 @@
     <string name="snackbar_word_deleted">Entry Deleted</string>
     <string name="snackbar_vocab_deleted">Vocabulary Deleted</string>
 
-    <string name="practice_last_test_time">Last Practice Time</string>
+    <string name="practice_last_test_time">Most Recent Practice Attempt</string>
     <string name="practice_most_recent_score">Most Recent Practice Score</string>
     <string name="practice_average_score">Average Practice Score</string>
     <string name="practice_best_score">Best Practice Score</string>
     <string name="practice_start_button">Start Practice</string>
+    <string name="practice_no_recent_practices">No Recent Practice Attempts</string>
+    <string name="practice_score_0">0\%</string>
+    <string name="practice_score_percentage">%1$d%%</string>
+
+
     <string name="practice_submit">Submit</string>
     <string name="practice_discard">Give Up</string>
     <string name="practice_answer_hint">Enter Translation</string>
@@ -66,7 +71,6 @@
     <string name="practice_score">%1$d/%2$d</string>
     <string name="practice_incorrect_answers"><u>Incorrect Answers</u></string>
     <string name="practice_no_answer">Unanswered</string>
-
     <string-array name="language_suggestions_array">
         <item>Afrikaans</item>
         <item>Aghem</item>

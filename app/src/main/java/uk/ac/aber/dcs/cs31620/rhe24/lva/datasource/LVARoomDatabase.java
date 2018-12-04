@@ -12,6 +12,8 @@ import android.support.annotation.NonNull;
 import java.util.ArrayList;
 import java.util.List;
 
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttempt;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttemptDao;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntryDao;
 
@@ -20,7 +22,7 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntryDao;
  * @author Rhys Evans
  * @version 29/11/2018
  */
-@Database(entities = {VocabularyEntry.class}, version = 1)
+@Database(entities = {VocabularyEntry.class, PracticeAttempt.class}, version = 2)
 public abstract class LVARoomDatabase extends RoomDatabase {
 
     /**
@@ -35,6 +37,11 @@ public abstract class LVARoomDatabase extends RoomDatabase {
     public abstract VocabularyEntryDao getVocabularyEntryDao();
 
     /**
+     * Get the data access object for practice attempt
+     */
+    public abstract PracticeAttemptDao getPracticeAttemptDao();
+
+    /**
      * Returns the Room Database object
      * @param context
      * @return
@@ -43,7 +50,7 @@ public abstract class LVARoomDatabase extends RoomDatabase {
         if(INSTANCE == null){
             synchronized(LVARoomDatabase.class){
                 if (INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), LVARoomDatabase.class, "lva_database").addCallback(sRoomDatabaseCallback).build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), LVARoomDatabase.class, "lva_database").addCallback(sRoomDatabaseCallback).addMigrations(MIGRATION_1_2).build();
                 }
             }
         }
@@ -58,6 +65,7 @@ public abstract class LVARoomDatabase extends RoomDatabase {
 
         @Override
         public void migrate(SupportSQLiteDatabase db){
+            db.execSQL("CREATE TABLE IF NOT EXISTS `practice_attempts` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `score` INTEGER NOT NULL, `max_score` INTEGER NOT NULL, `created_at` INTEGER NOT NULL)");
 
         }
     };
@@ -85,9 +93,11 @@ public abstract class LVARoomDatabase extends RoomDatabase {
          * The Data Access Object for vocabulary entry
          */
         private final VocabularyEntryDao vocabularyEntryDao;
+        private final PracticeAttemptDao practiceAttemptDao;
 
         PopulateDbAsync(LVARoomDatabase db){
             vocabularyEntryDao = db.getVocabularyEntryDao();
+            practiceAttemptDao = db.getPracticeAttemptDao();
         }
 
         @Override
@@ -95,6 +105,7 @@ public abstract class LVARoomDatabase extends RoomDatabase {
 
             // Nuke table
             vocabularyEntryDao.deleteAll();
+            practiceAttemptDao.deleteAll();
 
             // TEMP
             // Populate Database with test data
@@ -122,6 +133,9 @@ public abstract class LVARoomDatabase extends RoomDatabase {
             vocabList.add(new VocabularyEntry("Television", "Teledu"));
 
             vocabularyEntryDao.insertVocabularyEntry(vocabList);
+
+            practiceAttemptDao.insertPracticeAttempt(new PracticeAttempt(6, 10));
+            practiceAttemptDao.insertPracticeAttempt(new PracticeAttempt(3, 10));
 
             return null;
         }

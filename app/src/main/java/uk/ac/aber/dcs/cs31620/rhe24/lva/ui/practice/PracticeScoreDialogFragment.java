@@ -61,7 +61,11 @@ public class PracticeScoreDialogFragment extends DialogFragment {
         View view = inflater.inflate(R.layout.fragment_practice_score, null, false);
         builder.setView(view);
 
-        setupScoreLabel(view);
+        // Update Score label
+        int score = ((PracticeActivity)getActivity()).getScore();
+        // Place value in score label
+        TextView scoreLabel = view.findViewById(R.id.score_label);
+        scoreLabel.setText(getString(R.string.practice_score, score, ((PracticeActivity)getActivity()).getMaxScore()));
 
         // Create adapter
         if(practiceResultsRecyclerAdapter == null){
@@ -93,28 +97,6 @@ public class PracticeScoreDialogFragment extends DialogFragment {
         // End Activity
         if(getActivity() != null){
             getActivity().finish();
-        }
-    }
-
-    /**
-     * Setup the score label to display correct value and
-     * color
-     */
-    private void setupScoreLabel(View view){
-        int score = ((PracticeActivity)getActivity()).getScore();
-
-        // Place value in score label
-        TextView scoreLabel = view.findViewById(R.id.score_label);
-        scoreLabel.setText(getString(R.string.practice_score, score, ((PracticeActivity)getActivity()).getMaxScore()));
-
-        // Colour the score label depending on score
-        // 0-3 RED, 4-7 AMBER, 8-10 GREEN
-        if(score >= 0 && score < 4){
-            scoreLabel.setTextColor(ContextCompat.getColor(getContext(), R.color.colorDanger));
-        }else if(score > 4 && score < 7){
-            scoreLabel.setTextColor(ContextCompat.getColor(getContext(), R.color.colorWarning));
-        }else{
-            scoreLabel.setTextColor(ContextCompat.getColor(getContext(), R.color.colorSuccess));
         }
     }
 }

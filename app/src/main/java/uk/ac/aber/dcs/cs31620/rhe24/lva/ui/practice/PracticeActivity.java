@@ -22,6 +22,7 @@ import java.util.Objects;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAnswer;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttempt;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeQuestionsRecyclerAdapter;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeViewModel;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
@@ -215,7 +216,7 @@ public class PracticeActivity extends AppCompatActivity {
      * @return
      */
     public int getMaxScore(){
-        return NUMBER_OF_ENTRIES;
+        return currentList.size();
     }
 
     /**
@@ -357,6 +358,9 @@ public class PracticeActivity extends AppCompatActivity {
                 incorrectAnswers.add(answers.get(key));
             }
         }
+
+        // Once submitted, save the attempt
+        practiceViewModel.insertPracticeAttempt(new PracticeAttempt(score, getMaxScore()));
 
         // Display the score dialog
         PracticeScoreDialogFragment scoreDialog = PracticeScoreDialogFragment.newInstance();

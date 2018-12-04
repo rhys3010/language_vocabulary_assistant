@@ -82,6 +82,41 @@ public class PracticeViewModel extends AndroidViewModel {
         return sharedPreferencesManager.getSecondaryLanguage();
     }
 
+    /**
+     * Get list of practice attempts
+     */
+    public LiveData<List<PracticeAttempt>> getAllPracticeAttempts(){
+        return repository.getAllPracticeAttempts();
+    }
+
+    /**
+     * Get the most recent practice attempt
+     */
+    public LiveData<PracticeAttempt> getMostRecentPracticeAttempt(){
+        return repository.getMostRecentPracticeAttempt();
+    }
+
+    /**
+     * Get best practice attempt
+     */
+    public LiveData<PracticeAttempt> getBestPracticeAttempt(){
+        return repository.getBestPracticeAttempt();
+    }
+
+    /**
+     * Insert practice attempt
+     */
+    public void insertPracticeAttempt(PracticeAttempt practiceAttempt){
+        repository.insertPracticeAttempt(practiceAttempt);
+    }
+
+    /**
+     * Delete all practice attempts
+     */
+    public void deleteAllPracticeAttempts(){
+        repository.deleteAllPracticeAttempts();
+    }
+
 
     /**
      * Set the recycle view adapter

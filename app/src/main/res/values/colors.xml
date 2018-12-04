@@ -9,4 +9,9 @@
     <!-- Slight Grey for Input Boxes -->
     <color name="colorInput">#E5E5E8</color>
     <color name="colorDarkGray">#4D4D4D</color>
+
+    <!-- Red, Orange and Green Color -->
+    <color name="colorSuccess">@android:color/holo_green_dark</color>
+    <color name="colorWarning">@android:color/holo_orange_dark</color>
+    <color name="colorDanger">@android:color/holo_red_light</color>
 </resources>

@@ -20,6 +20,7 @@ import java.util.List;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.databinding.RecyclerViewVocabEntryBinding;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.LVAMainActivity;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.practice.PracticeScoreDialogFragment;
 
 /**
  * Recycler View Adapter to display vocabulary list

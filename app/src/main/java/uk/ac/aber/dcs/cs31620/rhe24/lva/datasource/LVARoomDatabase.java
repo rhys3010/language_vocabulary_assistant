@@ -68,8 +68,8 @@ public abstract class LVARoomDatabase extends RoomDatabase {
     private static RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback(){
 
         @Override
-        public void onCreate(@NonNull SupportSQLiteDatabase db){
-            super.onCreate(db);
+        public void onOpen(@NonNull SupportSQLiteDatabase db){
+            super.onOpen(db);
 
             // Ensure databse is built in a seperate thread
             new PopulateDbAsync(INSTANCE).execute();
@@ -92,6 +92,9 @@ public abstract class LVARoomDatabase extends RoomDatabase {
 
         @Override
         protected Void doInBackground(final Void... params){
+
+            // Nuke table
+            vocabularyEntryDao.deleteAll();
 
             // TEMP
             // Populate Database with test data

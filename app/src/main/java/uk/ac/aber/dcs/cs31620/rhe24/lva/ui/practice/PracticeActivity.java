@@ -22,7 +22,7 @@ import java.util.Objects;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.R;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAnswer;
-import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeRecyclerAdapter;
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeQuestionsRecyclerAdapter;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeViewModel;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
 
@@ -57,7 +57,7 @@ public class PracticeActivity extends AppCompatActivity {
     /**
      * The Practice Recycler adapter to handle list
      */
-    private PracticeRecyclerAdapter practiceRecyclerAdapter;
+    private PracticeQuestionsRecyclerAdapter practiceQuestionsRecyclerAdapter;
 
     /**
      * The practice entry list
@@ -80,6 +80,16 @@ public class PracticeActivity extends AppCompatActivity {
     private SparseArray<PracticeAnswer> answers;
 
     /**
+     * The user's practice attempt score
+     */
+    private int score;
+
+    /**
+     * A list of all the answers the user got wrong
+     */
+    private List<PracticeAnswer> incorrectAnswers;
+
+    /**
      * Called when the activity is created
      */
     @Override
@@ -100,12 +110,12 @@ public class PracticeActivity extends AppCompatActivity {
 
 
         // Initialize recycler view adapter
-        practiceRecyclerAdapter = practiceViewModel.getAdapter();
+        practiceQuestionsRecyclerAdapter = practiceViewModel.getAdapter();
 
         // If adapter has not yet been initialized/set, do it
-        if(practiceRecyclerAdapter == null){
-            practiceRecyclerAdapter = new PracticeRecyclerAdapter(this);
-            practiceViewModel.setAdapter(practiceRecyclerAdapter);
+        if(practiceQuestionsRecyclerAdapter == null){
+            practiceQuestionsRecyclerAdapter = new PracticeQuestionsRecyclerAdapter(this);
+            practiceViewModel.setAdapter(practiceQuestionsRecyclerAdapter);
         }
 
         // Initialize the list to be displayed
@@ -120,7 +130,7 @@ public class PracticeActivity extends AppCompatActivity {
         practiceQuestionList.setItemViewCacheSize(NUMBER_OF_ENTRIES);
 
         // Attach adapter to recycler view
-        practiceQuestionList.setAdapter(practiceRecyclerAdapter);
+        practiceQuestionList.setAdapter(practiceQuestionsRecyclerAdapter);
         practiceQuestionList.setLayoutManager(new LinearLayoutManager(this));
 
         setupObserver(savedInstanceState);
@@ -133,6 +143,24 @@ public class PracticeActivity extends AppCompatActivity {
     @Override
     public void onBackPressed(){
         abandonPractice();
+    }
+
+    /**
+     * Save the current question set so that it doesn't
+     * reset every-time the screen is rotated.
+     * Also save answers
+     * @param outState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+
+        // Save question set (cast as ArrayList (for some reason it doesnt like List<> ??))
+        ArrayList<VocabularyEntry> list = new ArrayList<>(currentList);
+        outState.putParcelableArrayList(CURRENT_LIST_KEY, list);
+
+        // Save answers to instance state
+        outState.putSparseParcelableArray(ANSWERS_KEY, answers);
     }
 
     /**
@@ -162,22 +190,29 @@ public class PracticeActivity extends AppCompatActivity {
     }
 
     /**
-     * Save the current question set so that it doesn't
-     * reset every-time the screen is rotated.
-     * Also save answers
-     * @param outState
+     * Returns the score of the attempt
+     * @return
      */
-    @Override
-    public void onSaveInstanceState(Bundle outState){
-        super.onSaveInstanceState(outState);
-
-        // Save question set (cast as ArrayList (for some reason it doesnt like List<> ??))
-        ArrayList<VocabularyEntry> list = new ArrayList<>(currentList);
-        outState.putParcelableArrayList(CURRENT_LIST_KEY, list);
-
-        // Save answers to instance state
-        outState.putSparseParcelableArray(ANSWERS_KEY, answers);
+    public int getScore(){
+        return score;
     }
+
+    /**
+     * Returns the max possible score
+     * @return
+     */
+    public int getMaxScore(){
+        return NUMBER_OF_ENTRIES;
+    }
+
+    /**
+     * Returns all the answers the user got wrong - to display after practice ends
+     * @return
+     */
+    public List<PracticeAnswer> getIncorrectAnswers(){
+        return incorrectAnswers;
+    }
+
 
     /**
      * Setup the observer to handle the live data
@@ -207,7 +242,7 @@ public class PracticeActivity extends AppCompatActivity {
                         currentList = getRandomEntries(entries);
                     }
 
-                    practiceRecyclerAdapter.changeDataSet(currentList);
+                    practiceQuestionsRecyclerAdapter.changeDataSet(currentList);
                 }
             });
         }
@@ -291,7 +326,10 @@ public class PracticeActivity extends AppCompatActivity {
      */
     private void submitPractice(){
         // The score for the practice attempt
-        int score = 0;
+        score = 0;
+
+        // Initialize incorrect answers
+        incorrectAnswers = new ArrayList<>();
 
         // Traverse dictionary to add up score
         for(int i = 0; i < answers.size(); i++){
@@ -300,17 +338,15 @@ public class PracticeActivity extends AppCompatActivity {
             // Increment score if answer was correct
             if(answers.get(key).isAnswerCorrect()){
                 score++;
+
+                // If wrong, add to incorrect answers list
+            }else{
+                incorrectAnswers.add(answers.get(key));
             }
         }
 
-        // TEMP
-        // display score in a dialog
-        AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(this);
-        dialogBuilder.setTitle("Finished");
-        dialogBuilder.setMessage("Your Score: " + score);
-        dialogBuilder.show();
-
-        // End Activity
-        finish();
+        // Display the score dialog
+        PracticeScoreDialogFragment scoreDialog = PracticeScoreDialogFragment.newInstance();
+        scoreDialog.show(getSupportFragmentManager(), "fragment_practice_score");
     }
 }

@@ -81,7 +81,7 @@ public class PracticeAnswer implements Parcelable {
      * @return
      */
     public boolean isAnswerCorrect(){
-        return answer.equals(correctAnswer);
+        return answer.equalsIgnoreCase(correctAnswer);
     }
 
     /**

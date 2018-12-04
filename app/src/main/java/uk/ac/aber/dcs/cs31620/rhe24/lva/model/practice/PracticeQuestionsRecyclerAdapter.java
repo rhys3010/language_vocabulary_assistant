@@ -19,13 +19,13 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.ui.practice.PracticeActivity;
 
 /**
- * PracticeRecyclerAdapter.java
+ * PracticeQuestionsRecyclerAdapter.java
  *
  * Recycler View Adapter to display vocabulary list on practice screen
  * @author Rhys Evans
  * @version 3/12/2018
  */
-public class PracticeRecyclerAdapter extends RecyclerView.Adapter<PracticeRecyclerAdapter.ViewHolder>{
+public class PracticeQuestionsRecyclerAdapter extends RecyclerView.Adapter<PracticeQuestionsRecyclerAdapter.ViewHolder>{
 
     /**
      * Application context
@@ -41,7 +41,7 @@ public class PracticeRecyclerAdapter extends RecyclerView.Adapter<PracticeRecycl
      * Initializes Adapter
      * @param context
      */
-    public PracticeRecyclerAdapter(Context context){
+    public PracticeQuestionsRecyclerAdapter(Context context){
         this.context = context;
     }
 

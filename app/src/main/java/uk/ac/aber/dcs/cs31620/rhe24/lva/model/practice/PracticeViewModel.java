@@ -29,7 +29,7 @@ public class PracticeViewModel extends AndroidViewModel {
     /**
      * Recycler View Adapter for PracticeVocabList
      */
-    PracticeRecyclerAdapter adapter;
+    PracticeQuestionsRecyclerAdapter adapter;
 
     /**
      * The shared preference manager
@@ -62,7 +62,7 @@ public class PracticeViewModel extends AndroidViewModel {
      * Gets the recycle view adapter
      * @return
      */
-    public PracticeRecyclerAdapter getAdapter(){
+    public PracticeQuestionsRecyclerAdapter getAdapter(){
         return adapter;
     }
 
@@ -87,7 +87,7 @@ public class PracticeViewModel extends AndroidViewModel {
      * Set the recycle view adapter
      * @param adapter
      */
-    public void setAdapter(PracticeRecyclerAdapter adapter){
+    public void setAdapter(PracticeQuestionsRecyclerAdapter adapter){
         this.adapter = adapter;
     }
 }

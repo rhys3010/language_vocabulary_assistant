@@ -62,6 +62,9 @@
     <string name="practice_abandon_title">Really Give Up?</string>
     <string name="practice_abandon_message">You will not be awarded any score for this practice attempt.</string>
 
+    <string name="practice_score_label">You Scored: </string>
+    <string name="practice_score">%1$d/%2$d</string>
+
     <string-array name="language_suggestions_array">
         <item>Afrikaans</item>
         <item>Aghem</item>

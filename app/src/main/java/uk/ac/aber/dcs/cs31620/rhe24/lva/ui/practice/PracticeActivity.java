@@ -113,6 +113,8 @@ public class PracticeActivity extends AppCompatActivity {
             incorrectAnswers = savedInstanceState.getParcelableArrayList(INCORRECT_ANSWERS_KEY);
             // Get score
             score = savedInstanceState.getInt(SCORE_KEY);
+            // Get current list of vocabulary entries
+            currentList = savedInstanceState.getParcelableArrayList(CURRENT_LIST_KEY);
         }
 
 
@@ -170,8 +172,10 @@ public class PracticeActivity extends AppCompatActivity {
         outState.putSparseParcelableArray(ANSWERS_KEY, answers);
 
         // Save incorrect answers to instance state
-        ArrayList<PracticeAnswer>  incorrectAnswersList = new ArrayList<>(incorrectAnswers);
-        outState.putParcelableArrayList(INCORRECT_ANSWERS_KEY, incorrectAnswersList);
+        if(incorrectAnswers != null){
+            ArrayList<PracticeAnswer>  incorrectAnswersList = new ArrayList<>(incorrectAnswers);
+            outState.putParcelableArrayList(INCORRECT_ANSWERS_KEY, incorrectAnswersList);
+        }
 
         // Save score to instance state
         outState.putInt(SCORE_KEY, score);
@@ -216,7 +220,11 @@ public class PracticeActivity extends AppCompatActivity {
      * @return
      */
     public int getMaxScore(){
-        return currentList.size();
+        if(currentList != null){
+            return currentList.size();
+        }else{
+            return 0;
+        }
     }
 
     /**

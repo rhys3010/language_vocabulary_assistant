@@ -82,6 +82,7 @@ public class PracticeViewModel extends AndroidViewModel {
         return sharedPreferencesManager.getSecondaryLanguage();
     }
 
+
     /**
      * Set the recycle view adapter
      * @param adapter

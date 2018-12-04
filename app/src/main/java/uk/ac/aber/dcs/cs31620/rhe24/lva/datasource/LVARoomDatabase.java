@@ -97,37 +97,26 @@ public abstract class LVARoomDatabase extends RoomDatabase {
             // Populate Database with test data
             List<VocabularyEntry> vocabList = new ArrayList<>();
 
-            vocabList.add(new VocabularyEntry("Hello", "Bonjour"));
-            vocabList.add(new VocabularyEntry("Hello", "Helo"));
-            vocabList.add(new VocabularyEntry("Goodbye", "Au Revoir"));
-            vocabList.add(new VocabularyEntry("Goodbye", "Hwyl Fawr"));
-            vocabList.add(new VocabularyEntry("Thank You", "Merci"));
-            vocabList.add(new VocabularyEntry("Thank You", "Diolch"));
-            vocabList.add(new VocabularyEntry("A Very Long Phrase is entered here", "A very long translation is entered here"));
-            vocabList.add(new VocabularyEntry("Hello", "Bonjour"));
-            vocabList.add(new VocabularyEntry("Hello", "Helo"));
-            vocabList.add(new VocabularyEntry("Goodbye", "Au Revoir"));
-            vocabList.add(new VocabularyEntry("Goodbye", "Hwyl Fawr"));
-            vocabList.add(new VocabularyEntry("Thank You", "Merci"));
-            vocabList.add(new VocabularyEntry("Thank You", "Diolch"));
-            vocabList.add(new VocabularyEntry("Hello", "Bonjour"));
-            vocabList.add(new VocabularyEntry("Hello", "Helo"));
-            vocabList.add(new VocabularyEntry("Goodbye", "Au Revoir"));
-            vocabList.add(new VocabularyEntry("Goodbye", "Hwyl Fawr"));
-            vocabList.add(new VocabularyEntry("Thank You", "Merci"));
-            vocabList.add(new VocabularyEntry("Thank You", "Diolch"));
-            vocabList.add(new VocabularyEntry("Hello", "Bonjour"));
-            vocabList.add(new VocabularyEntry("Hello", "Helo"));
-            vocabList.add(new VocabularyEntry("Goodbye", "Au Revoir"));
-            vocabList.add(new VocabularyEntry("Goodbye", "Hwyl Fawr"));
-            vocabList.add(new VocabularyEntry("Thank You", "Merci"));
-            vocabList.add(new VocabularyEntry("Thank You", "Diolch"));
-            vocabList.add(new VocabularyEntry("Hello", "Bonjour"));
-            vocabList.add(new VocabularyEntry("Hello", "Helo"));
-            vocabList.add(new VocabularyEntry("Goodbye", "Au Revoir"));
-            vocabList.add(new VocabularyEntry("Goodbye", "Hwyl Fawr"));
-            vocabList.add(new VocabularyEntry("Thank You", "Merci"));
-            vocabList.add(new VocabularyEntry("Thank You", "Diolch"));
+            vocabList.add(new VocabularyEntry("Complete", "Gorffen"));
+            vocabList.add(new VocabularyEntry("House", "Ty"));
+            vocabList.add(new VocabularyEntry("First", "Cyntaf"));
+            vocabList.add(new VocabularyEntry("Look", "Edrych"));
+            vocabList.add(new VocabularyEntry("New", "Newydd"));
+            vocabList.add(new VocabularyEntry("Truck", "Tryc"));
+            vocabList.add(new VocabularyEntry("Christmas", "Nadolig"));
+            vocabList.add(new VocabularyEntry("Attempting", "Ymdrechu"));
+            vocabList.add(new VocabularyEntry("Worked", "Gweithio"));
+            vocabList.add(new VocabularyEntry("Working", "Gweithio"));
+            vocabList.add(new VocabularyEntry("Job", "Swydd"));
+            vocabList.add(new VocabularyEntry("Hurts", "Brifo"));
+            vocabList.add(new VocabularyEntry("Cutest", "Delaf"));
+            vocabList.add(new VocabularyEntry("Turkey", "Twrci"));
+            vocabList.add(new VocabularyEntry("New House", "Ty Newydd"));
+            vocabList.add(new VocabularyEntry("Compared to last time", "Cymharu i tro dwaethaf"));
+            vocabList.add(new VocabularyEntry("Thank you", "Diolch"));
+            vocabList.add(new VocabularyEntry("How are you?", "Syt wyt ti?"));
+            vocabList.add(new VocabularyEntry("Singing", "Canu"));
+            vocabList.add(new VocabularyEntry("Television", "Teledu"));
 
             vocabularyEntryDao.insertVocabularyEntry(vocabList);
 

@@ -23,8 +23,7 @@
             android:gravity="center_horizontal"
             android:textColor="@color/colorPrimaryDark"
             android:textAllCaps="true"
-            android:textStyle="bold"
-            android:text="English"/>
+            android:textStyle="bold"/>
 
         <TextView
             android:id="@+id/language_preference_secondary"
@@ -34,8 +33,7 @@
             android:gravity="center_horizontal"
             android:textColor="@color/colorPrimaryDark"
             android:textAllCaps="true"
-            android:textStyle="bold"
-            android:text="Welsh"/>
+            android:textStyle="bold"/>
     </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -59,6 +57,7 @@
         android:background="@color/colorBackground">
 
         <Button
+            android:id="@+id/practice_abandon_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
@@ -68,6 +67,7 @@
             android:theme="?android:attr/buttonBarButtonStyle"/>
 
         <Button
+            android:id="@+id/practice_submit_button"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"

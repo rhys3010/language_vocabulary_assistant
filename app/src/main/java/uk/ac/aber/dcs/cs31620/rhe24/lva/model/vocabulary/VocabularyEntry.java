@@ -5,21 +5,25 @@ import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 import android.arch.persistence.room.TypeConverter;
 import android.arch.persistence.room.TypeConverters;
+import android.os.Parcel;
+import android.os.Parcelable;
 import android.support.annotation.NonNull;
 
 import java.util.Date;
 
+import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAnswer;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.util.DateTimeConverter;
 
 /**
  * VocabularyEntry.java
  * Defines a Vocabulary Entry
+ * The class implements parcelable and can therefore be bundled into state instance
  * @author Rhys Evans
  * @version 29/11/2018
  */
 @Entity(tableName = "vocabulary_entries")
 @TypeConverters({DateTimeConverter.class})
-public class VocabularyEntry {
+public class VocabularyEntry implements Parcelable {
 
     /**
      * Unique ID for each vocabulary entry
@@ -48,6 +52,30 @@ public class VocabularyEntry {
     private Date dateCreated;
 
     /**
+     * Place all instance variables in parcel
+     * @param out
+     * @param flags
+     */
+    @Override
+    public void writeToParcel(Parcel out, int flags){
+        out.writeInt(id);
+        out.writeString(wordPrimaryLanguage);
+        out.writeString(wordSecondaryLanguage);
+        out.writeSerializable(dateCreated);
+    }
+
+    /**
+     * Priave constructor for parcelable
+     * @param in
+     */
+    private VocabularyEntry(Parcel in){
+        this.id = in.readInt();
+        this.wordPrimaryLanguage = in.readString();
+        this.wordSecondaryLanguage = in.readString();
+        this.dateCreated = (Date)in.readSerializable();
+    }
+
+    /**
      * Construct VocabularyEntry object and assign all attributes
      * @param wordPrimaryLanguage
      * @param wordSecondaryLanguage
@@ -57,6 +85,15 @@ public class VocabularyEntry {
         this.wordSecondaryLanguage = wordSecondaryLanguage;
         // Created now
         this.dateCreated = new Date();
+    }
+
+    /**
+     * No description of contents required
+     * @return
+     */
+    @Override
+    public int describeContents(){
+        return 0;
     }
 
     /**
@@ -135,4 +172,30 @@ public class VocabularyEntry {
                 ", dateCreated=" + dateCreated +
                 '}';
     }
+
+    /**
+     * The CREATOR constant for parcelable
+     */
+    public static final Parcelable.Creator<VocabularyEntry> CREATOR = new Parcelable.Creator<VocabularyEntry>(){
+
+        /**
+         * Call private constructor to create object from parcel
+         * @param parcel
+         * @return
+         */
+        @Override
+        public VocabularyEntry createFromParcel(Parcel parcel) {
+            return new VocabularyEntry(parcel);
+        }
+
+        /**
+         * Create as array
+         * @param i
+         * @return
+         */
+        @Override
+        public VocabularyEntry[] newArray(int i) {
+            return new VocabularyEntry[i];
+        }
+    };
 }

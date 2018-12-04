@@ -36,6 +36,11 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyListViewModel
 public class VocabularyListFragment extends Fragment{
 
     /**
+     * Bundle key for sort type
+     */
+    private static final String SORT_TYPE_KEY = "SORT_TYPE";
+
+    /**
      * The view model class to interface with the persistent data
      */
     private VocabularyListViewModel vocabularyListViewModel;
@@ -54,6 +59,11 @@ public class VocabularyListFragment extends Fragment{
      * The previous vocabulary list
      */
     private LiveData<List<VocabularyEntry>> oldVocabularyEntries;
+
+    /**
+     * Store the user's sort type
+     */
+    private VocabularyListSortType sortType;
 
 
     public VocabularyListFragment() {
@@ -86,7 +96,14 @@ public class VocabularyListFragment extends Fragment{
             vocabularyListViewModel.setAdapter(vocabularyListAdapter);
         }
 
-        vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.UNSORTED);
+        // Get sort type from saved instance state
+        if(savedInstanceState != null){
+            sortType = (VocabularyListSortType) savedInstanceState.getSerializable(SORT_TYPE_KEY);
+        }else{
+            sortType = VocabularyListSortType.UNSORTED;
+        }
+
+        vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(sortType);
 
         setupRecyclerView(view);
         setupObserver();
@@ -100,6 +117,16 @@ public class VocabularyListFragment extends Fragment{
         secondaryLanguageLabel.setText(vocabularyListViewModel.getSecondaryLanguage());
 
         return view;
+    }
+
+    /**
+     * Save the user's sort preference
+     * @param outState
+     */
+    @Override
+    public void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putSerializable(SORT_TYPE_KEY, sortType);
     }
 
 
@@ -211,23 +238,26 @@ public class VocabularyListFragment extends Fragment{
 
                     @Override
                     public boolean onMenuItemClick(MenuItem menuItem) {
+                        // Sort the entries and save sort type
                         switch(menuItem.getItemId()){
 
-                            // Sort entries by created date in ascending order and update observer
                             case R.id.vocab_list_sort_created_asc:
+                                sortType = VocabularyListSortType.DATE_CREATED_ASC;
                                 vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.DATE_CREATED_ASC);
                                 break;
 
-                            // Sort entries by created date in descending order and update observer
                             case R.id.vocab_list_sort_created_desc:
+                                sortType = VocabularyListSortType.DATE_CREATED_DESC;
                                 vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.DATE_CREATED_DESC);
                                 break;
 
                             case R.id.vocab_list_sort_alphabet_asc:
+                                sortType = VocabularyListSortType.ALPHABETICAL_ASC;
                                 vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.ALPHABETICAL_ASC);
                                 break;
 
                             case R.id.vocab_list_sort_alphabet_desc:
+                                sortType = VocabularyListSortType.ALPHABETICAL_DESC;
                                 vocabularyEntriesList = vocabularyListViewModel.getVocabularyList(VocabularyListSortType.ALPHABETICAL_DESC);
                                 break;
 

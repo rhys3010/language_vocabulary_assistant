@@ -2,6 +2,7 @@ package uk.ac.aber.dcs.cs31620.rhe24.lva.ui.vocabulary;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.DialogFragment;
@@ -9,6 +10,8 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -146,6 +149,22 @@ public class AddVocabularyEntryDialogFragment extends DialogFragment {
         // Initialize the word inputs
         primaryWordInput = view.findViewById(R.id.primary_word_input);
         secondaryWordInput = view.findViewById(R.id.secondary_word_input);
+
+        // Force Soft-Keyboard to show
+        // Solution here: https://turbomanage.wordpress.com/2012/05/02/show-soft-keyboard-automatically-when-edittext-receives-focus/
+        // (Maybe not the cleanest thing ever, but it works and provides a better UX)
+        primaryWordInput.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View view, boolean b) {
+                primaryWordInput.post(new Runnable(){
+                    @Override
+                    public void run() {
+                        InputMethodManager imm = (InputMethodManager)getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.showSoftInput(primaryWordInput, InputMethodManager.SHOW_IMPLICIT);
+                    }
+                });
+            }
+        });
 
         // Set title label
         dialogTitle.setText(R.string.dialog_add_word_title);

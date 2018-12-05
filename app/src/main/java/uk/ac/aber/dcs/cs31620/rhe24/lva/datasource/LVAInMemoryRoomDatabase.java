@@ -58,7 +58,7 @@ public abstract class LVAInMemoryRoomDatabase extends RoomDatabase implements Ro
         if(INSTANCE == null){
             synchronized(LVAInMemoryRoomDatabase.class){
                 if (INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), LVAInMemoryRoomDatabase.class, "lva_database").build();
+                    INSTANCE = Room.inMemoryDatabaseBuilder(context.getApplicationContext(), LVAInMemoryRoomDatabase.class).build();
                 }
             }
         }

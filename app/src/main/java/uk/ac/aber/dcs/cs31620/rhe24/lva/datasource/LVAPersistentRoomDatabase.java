@@ -6,11 +6,6 @@ import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.arch.persistence.room.migration.Migration;
 import android.content.Context;
-import android.os.AsyncTask;
-import android.support.annotation.NonNull;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttempt;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttemptDao;
@@ -18,39 +13,50 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntryDao;
 
 /**
- * Create and initialize the Room Database using a singleton Room Database class
+ * Create and initialize the Persistent Room Database using a singleton Room Database class
  * @author Rhys Evans
  * @version 29/11/2018
  */
 @Database(entities = {VocabularyEntry.class, PracticeAttempt.class}, version = 2)
-public abstract class LVARoomDatabase extends RoomDatabase {
+public abstract class LVAPersistentRoomDatabase extends RoomDatabase implements RoomDatabaseI {
 
     /**
      * The singleton instance of the LVA Room Database
      */
-    private static LVARoomDatabase INSTANCE;
+    private static LVAPersistentRoomDatabase INSTANCE;
 
     /**
      * Get the Data Access Object for the vocabulary entry
      * @return
      */
+    @Override
     public abstract VocabularyEntryDao getVocabularyEntryDao();
 
     /**
      * Get the data access object for practice attempt
      */
+    @Override
     public abstract PracticeAttemptDao getPracticeAttemptDao();
+
+    /**
+     * Close the database
+     */
+    @Override
+    public void closeDb(){
+        INSTANCE.close();
+        INSTANCE = null;
+    }
 
     /**
      * Returns the Room Database object
      * @param context
      * @return
      */
-    public static LVARoomDatabase getDatabase(final Context context){
+    public static LVAPersistentRoomDatabase getDatabase(final Context context){
         if(INSTANCE == null){
-            synchronized(LVARoomDatabase.class){
+            synchronized(LVAPersistentRoomDatabase.class){
                 if (INSTANCE == null){
-                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), LVARoomDatabase.class, "lva_database").addMigrations(MIGRATION_1_2).build();
+                    INSTANCE = Room.databaseBuilder(context.getApplicationContext(), LVAPersistentRoomDatabase.class, "lva_database").addMigrations(MIGRATION_1_2).build();
                 }
             }
         }

@@ -2,10 +2,12 @@ package uk.ac.aber.dcs.cs31620.rhe24.lva.datasource;
 
 import android.app.Application;
 import android.arch.lifecycle.LiveData;
+import android.arch.persistence.room.RoomDatabase;
 import android.os.AsyncTask;
 
 import java.util.List;
 
+import uk.ac.aber.dcs.cs31620.rhe24.lva.Injection;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttempt;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.practice.PracticeAttemptDao;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
@@ -36,7 +38,8 @@ public class LVARepository {
      * @param application
      */
     public LVARepository(Application application){
-        LVARoomDatabase db = LVARoomDatabase.getDatabase(application);
+        // Get database from a given injection
+        RoomDatabaseI db = Injection.getDatabase(application);
         vocabularyEntryDao = db.getVocabularyEntryDao();
         practiceAttemptDao = db.getPracticeAttemptDao();
     }

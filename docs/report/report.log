@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2017.5.9)  5 DEC 2018 06:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Debian) (preloaded format=pdflatex 2018.3.4)  5 DEC 2018 15:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -162,34 +162,59 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 \Gin@req@height=\dimen125
 \Gin@req@width=\dimen126
 )
-(./report.aux)
+(/usr/share/texlive/texmf-dist/tex/latex/appendix/appendix.sty
+Package: appendix 2009/09/02 v1.2b extra appendix facilities
+\c@@pps=\count117
+\c@@ppsavesec=\count118
+\c@@ppsaveapp=\count119
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2014/10/28 v2.10 `tabularx' package (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2014/10/28 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen127
+\extrarowheight=\dimen128
+\NC@list=\toks19
+\extratabsurround=\skip45
+\backup@length=\skip46
+)
+\TX@col@width=\dimen129
+\TX@old@table=\dimen130
+\TX@old@col=\dimen131
+\TX@target=\dimen132
+\TX@delta=\dimen133
+\TX@cols=\count120
+\TX@ftn=\toks20
+) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 4.
-LaTeX Font Info:    ... okay on input line 4.
- (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 6.
+LaTeX Font Info:    ... okay on input line 6.
+
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count117
-\scratchdimen=\dimen127
+\scratchcounter=\count121
+\scratchdimen=\dimen134
 \scratchbox=\box54
-\nofMPsegments=\count118
-\nofMParguments=\count119
-\everyMPshowfont=\toks19
-\MPscratchCnt=\count120
-\MPscratchDim=\dimen128
-\MPnumerator=\count121
-\makeMPintoPDFobject=\count122
-\everyMPtoPDFconversion=\toks20
+\nofMPsegments=\count122
+\nofMParguments=\count123
+\everyMPshowfont=\toks21
+\MPscratchCnt=\count124
+\MPscratchDim=\dimen135
+\MPnumerator=\count125
+\makeMPintoPDFobject=\count126
+\everyMPtoPDFconversion=\toks22
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
 )
@@ -239,37 +264,646 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 9.
+(Font)              <7> on input line 11.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 9.
+(Font)              <5> on input line 11.
 
 [1
 
-{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
-Underfull \hbox (badness 10000) in paragraph at lines 53--54
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2]
+<./img/schema.png, id=15, 594.22pt x 272.01625pt>
+File: ./img/schema.png Graphic file (type png)
+ <use ./img/schema.png>
+Package pdftex.def Info: ./img/schema.png used on input line 31.
+(pdftex.def)             Requested size: 260.34265pt x 119.18114pt.
+
+<./img/dialog.png, id=16, 361.35pt x 351.3125pt>
+File: ./img/dialog.png Graphic file (type png)
+ <use ./img/dialog.png>
+Package pdftex.def Info: ./img/dialog.png used on input line 43.
+(pdftex.def)             Requested size: 173.56177pt x 168.74065pt.
+
+[3 <./img/schema.png>] <./img/styleguide.png, id=20, 580.1675pt x 374.39874pt>
+File: ./img/styleguide.png Graphic file (type png)
+
+<use ./img/styleguide.png>
+Package pdftex.def Info: ./img/styleguide.png used on input line 52.
+(pdftex.def)             Requested size: 260.34265pt x 168.00941pt.
+ [4 <./img/dialog.png> <./img/styleguide.png>]
+[5] [6] [7]
+Underfull \hbox (badness 10000) in paragraph at lines 86--87
 []\OT1/cmr/m/n/9 Material De-sign. (2018). In-tro-duc-tion. [on-line] Avail-abl
 e at:
  []
 
-[4] (./report.aux) ) 
+
+Overfull \hbox (4.90457pt too wide) in paragraph at lines 101--102
+[]\OT1/cmr/bx/n/10 FR5 \OT1/cmr/m/n/10 - Al-low user to change lan-guage pref-e
+r-ences, the user should be prompted
+ []
+
+[8]
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Verify that
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 when app
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 is launched
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 with-out any
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 pref-er-ences
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Check that
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 lan-guage pref-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 in-putted and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Type valid
+ []
+
+
+Underfull \hbox (badness 2318) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 lan-guage in-put
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Preferences
+ []
+
+
+Underfull \hbox (badness 2042) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 are saved into
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Check that
+ []
+
+
+Underfull \hbox (badness 2318) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 lan-guage in-put
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Start typ-ing
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 into lan-guage
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 After two
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 char-ac-ters are
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 en-tered, a
+ []
+
+
+Underfull \hbox (badness 3088) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 popup ap-pears
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 with lan-guage
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Check that
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 for lan-guage
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 pref-er-ence is
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 work-ing cor-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Provide in-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 valid in-put
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 as lan-guage
+ []
+
+
+Underfull \hbox (badness 4872) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 pref-er-ence and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Error mes-sage
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Check that
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 lan-guage pref-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Press 'change
+ []
+
+
+Underfull \hbox (badness 7326) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 lan-guage' but-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Current pref-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 er-ences are
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Check that
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 chang-ing lan-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 guage pref-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 er-ences also
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 deletes vo-cab-
+ []
+
+
+Underfull \hbox (badness 3657) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 u-lary list and
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Change the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 lan-guage pref-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 er-ences whilst
+ []
+
+
+Underfull \hbox (badness 7631) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 there are en-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 tries in the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 and prac-tice
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 overview stats
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Check that
+ []
+
+
+Underfull \hbox (badness 3098) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 vo-cab-u-lary list
+ []
+
+
+Underfull \hbox (badness 2503) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 along with all
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 en-try' but-ton
+ []
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Press the 'add
+ []
+
+
+Underfull \hbox (badness 2726) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 A di-a-log with
+ []
+
+
+Underfull \hbox (badness 3189) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 vo-cab-u-lary en-
+ []
+
+
+Underfull \hbox (badness 1092) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 tries are prop-
+ []
+
+
+Underfull \hbox (badness 1028) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Press the 'add
+ []
+
+
+Underfull \hbox (badness 2103) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 ton and in-put
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 New en-try
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 is saved to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Verify that
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 for new vo-
+ []
+
+
+Underfull \hbox (badness 4899) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 cab-u-lary en-try
+ []
+
+
+Underfull \hbox (badness 2103) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Submit an in-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+[]|\OT1/cmr/m/n/9 Error mes-sage
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 149--149
+\OT1/cmr/m/n/9 is dis-played
+ []
+
+
+LaTeX Warning: Float too large for page by 79.66165pt on input line 150.
+
+[9] [10]
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 All vo-cab-u-lary
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 dis-played in a
+ []
+
+
+Underfull \hbox (badness 1565) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Naviagte to 'vo-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 All en-tries are
+ []
+
+
+Underfull \hbox (badness 1810) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 present and dis-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Check that
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 deleted vo-cab-u-
+ []
+
+
+Underfull \hbox (badness 3884) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 lary en-tries can
+ []
+
+
+Underfull \hbox (badness 2884) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 be re-trieved via
+ []
+
+
+Underfull \hbox (badness 3302) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Delete a vo-cab-
+ []
+
+
+Underfull \hbox (badness 3138) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 u-lary en-try and
+ []
+
+
+Underfull \hbox (badness 5105) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 press 'undo' on
+ []
+
+
+Underfull \hbox (badness 3108) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 is re-added into
+ []
+
+
+Underfull \hbox (badness 5533) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Press the 'sort'
+ []
+
+
+Underfull \hbox (badness 2426) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 but-ton and sort
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 The list has
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 changed or-der
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 ing on sort-ing
+ []
+
+
+Underfull \hbox (badness 6001) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Check that the
+ []
+
+
+Underfull \hbox (badness 6001) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Check that the
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 user can view
+ []
+
+
+Underfull \hbox (badness 2027) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Check that user
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 can view their
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 best prac-tice
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Navigate to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 'practice-
+ []
+
+
+Underfull \hbox (badness 2027) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Check that user
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 can view their
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 av-er-age prat-ice
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Navigate to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 'practice-
+ []
+
+
+Underfull \hbox (badness 3557) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Correect av-er-age
+ []
+
+
+Underfull \hbox (badness 2027) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Check that user
+ []
+
+
+Underfull \hbox (badness 1521) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Press 'start new
+ []
+
+
+Underfull \hbox (badness 5607) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 A new prac-tice
+ []
+
+
+Underfull \hbox (badness 2913) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Check that cor-
+ []
+
+
+Underfull \hbox (badness 7595) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 rect num-ber of
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 179--179
+\OT1/cmr/m/n/9 vo-cab-u-lary en-
+ []
+
+
+Underfull \hbox (badness 6001) in paragraph at lines 179--179
+[]|\OT1/cmr/m/n/9 Check that the
+ []
+
+
+Underfull \hbox (badness 2469) in paragraph at lines 197--197
+[]|\OT1/cmr/m/n/9 Check that cur-
+ []
+
+
+Underfull \hbox (badness 1275) in paragraph at lines 197--197
+[]|\OT1/cmr/m/n/9 Press the 'aban-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+\OT1/cmr/m/n/9 don' but-ton or
+ []
+
+
+Underfull \hbox (badness 1715) in paragraph at lines 197--197
+\OT1/cmr/m/n/9 ton and con-firm
+ []
+
+
+Underfull \hbox (badness 1127) in paragraph at lines 197--197
+[]|\OT1/cmr/m/n/9 The prac-tice ac-
+ []
+
+
+Underfull \hbox (badness 1009) in paragraph at lines 197--197
+[]|\OT1/cmr/m/n/9 Results di-a-log is
+ []
+
+
+Underfull \hbox (badness 1460) in paragraph at lines 197--197
+\OT1/cmr/m/n/9 rect an-swers are
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 197--197
+\OT1/cmr/m/n/9 and cor-rec-tions
+ []
+
+
+Underfull \hbox (badness 5939) in paragraph at lines 197--197
+[]|\OT1/cmr/m/n/9 Dismiss the re-
+ []
+
+
+Underfull \hbox (badness 5970) in paragraph at lines 197--197
+[]|\OT1/cmr/m/n/9 Practice ac-tiv-ity
+ []
+
+[11] [12] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 1899 strings out of 493029
- 26121 string characters out of 6136235
- 95509 words of memory out of 5000000
- 5437 multiletter control sequences out of 15000+600000
- 5932 words of font info for 22 fonts, out of 8000000 for 9000
+ 2120 strings out of 493029
+ 29077 string characters out of 6136235
+ 114688 words of memory out of 5000000
+ 5640 multiletter control sequences out of 15000+600000
+ 7456 words of font info for 27 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 37i,5n,23p,1133b,185s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
-x12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx9.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/
-share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
-Output written on report.pdf (4 pages, 93501 bytes).
+ 38i,9n,23p,1658b,316s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
+cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmb
+x9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr9.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt9.pfb>
+Output written on report.pdf (12 pages, 173994 bytes).
 PDF statistics:
- 41 PDF objects out of 1000 (max. 8388607)
- 28 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 46 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 16 words of extra memory for PDF output out of 10000 (max. 10000000)
 

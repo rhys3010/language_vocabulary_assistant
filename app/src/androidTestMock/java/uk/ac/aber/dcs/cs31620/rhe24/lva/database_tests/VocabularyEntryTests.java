@@ -25,15 +25,16 @@ import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntry;
 import uk.ac.aber.dcs.cs31620.rhe24.lva.model.vocabulary.VocabularyEntryDao;
 
 /**
- * InsertVocabularyEntryTest.java
+ * VocabularyEntryTests.java
  *
- * Tests the VocabularyEntryDao to ensure entries are being successfully inserted into the database
+ * Tests all CRUD operations through the VocabularyEntryDao to ensure
+ * they are performed successfully.
  *
  * @author Rhys Evans
  * @version 4/12/2018
  */
 @RunWith(AndroidJUnit4.class)
-public class InsertVocabularyEntryTest {
+public class VocabularyEntryTests {
 
     /**
      * Execute database queries etc, synchronously for testing purposes
@@ -86,5 +87,25 @@ public class InsertVocabularyEntryTest {
         LiveData<List<VocabularyEntry>> foundEntries = vocabularyEntryDao.getAllVocabularyEntries();
         Assert.assertEquals(1, LiveDataTestUtil.getValue(foundEntries).size());
 
+    }
+
+    /**
+     * Test that deleting all entries actually deletes them
+     */
+    @Test
+    public void onDeleteAllVocabularyEntries_checkThat_allVocabularyEntriesWereDeleted() throws Exception{
+        // Create a list of 10 entries
+        List<VocabularyEntry> vocabularyEntries = testUtil.createVocabularyList(10);
+
+        // Insert them into the database
+        vocabularyEntryDao.insertVocabularyEntry(vocabularyEntries);
+
+        // Delete all entries
+        vocabularyEntryDao.deleteAll();
+
+        // Get all entries from the database
+        LiveData<List<VocabularyEntry>> foundEntries = vocabularyEntryDao.getAllVocabularyEntries();
+        // Verify that datbase is empty
+        Assert.assertEquals(0, LiveDataTestUtil.getValue(foundEntries).size());
     }
 }

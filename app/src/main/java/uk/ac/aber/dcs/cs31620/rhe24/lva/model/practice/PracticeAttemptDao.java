@@ -33,6 +33,13 @@ public interface PracticeAttemptDao {
     void insertPracticeAttempt(PracticeAttempt practiceAttempt);
 
     /**
+     * Overload insert method to support inserting lists
+     * (useful for testing)
+     */
+    @Insert(onConflict = IGNORE)
+    void insertPracticeAttempt(List<PracticeAttempt> practiceAttemptList);
+
+    /**
      * Get all practice attempts from the database
      */
     @Query("SELECT * FROM practice_attempts")
